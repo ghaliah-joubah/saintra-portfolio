@@ -13,20 +13,20 @@
               S
             </div>
             <div class="flex flex-col">
-              <span class="font-bold text-xl tracking-wider text-white">SAINTRA</span>
+              <span class="font-bold text-xl tracking-wider text-white">{{ t(companyState.shortName) }}</span>
               <span class="text-[10px] text-slate-400">سيقما تكنولوجي</span>
             </div>
           </router-link>
 
           <p class="text-sm leading-relaxed text-slate-300 max-w-sm">
-            {{ t(companyData.aboutStory) }}
+            {{ t(companyState.aboutStory) }}
           </p>
 
           <!-- Social Links -->
           <div class="flex items-center gap-3 pt-2">
             <a
-              v-if="companyData.socials.linkedin"
-              :href="companyData.socials.linkedin"
+              v-if="companyState.socials.linkedin"
+              :href="companyState.socials.linkedin"
               target="_blank"
               rel="noopener noreferrer"
               class="w-9 h-9 rounded-lg bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-300 hover:text-sky-400 hover:border-sky-500/50 transition-colors focus:outline-none focus:ring-2 focus:ring-sky-500"
@@ -35,8 +35,8 @@
               <Linkedin class="w-4 h-4" />
             </a>
             <a
-              v-if="companyData.socials.github"
-              :href="companyData.socials.github"
+              v-if="companyState.socials.github"
+              :href="companyState.socials.github"
               target="_blank"
               rel="noopener noreferrer"
               class="w-9 h-9 rounded-lg bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-300 hover:text-sky-400 hover:border-sky-500/50 transition-colors focus:outline-none focus:ring-2 focus:ring-sky-500"
@@ -45,8 +45,8 @@
               <Github class="w-4 h-4" />
             </a>
             <a
-              v-if="companyData.socials.x"
-              :href="companyData.socials.x"
+              v-if="companyState.socials.x"
+              :href="companyState.socials.x"
               target="_blank"
               rel="noopener noreferrer"
               class="w-9 h-9 rounded-lg bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-300 hover:text-sky-400 hover:border-sky-500/50 transition-colors focus:outline-none focus:ring-2 focus:ring-sky-500"
@@ -55,8 +55,8 @@
               <Twitter class="w-4 h-4" />
             </a>
             <a
-              v-if="companyData.socials.facebook"
-              :href="companyData.socials.facebook"
+              v-if="companyState.socials.facebook"
+              :href="companyState.socials.facebook"
               target="_blank"
               rel="noopener noreferrer"
               class="w-9 h-9 rounded-lg bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-300 hover:text-sky-400 hover:border-sky-500/50 transition-colors focus:outline-none focus:ring-2 focus:ring-sky-500"
@@ -69,7 +69,7 @@
 
         <!-- Quick Links -->
         <div class="space-y-4">
-          <h3 class="text-white font-semibold text-base">{{ t(siteCopy.footer.quickLinks) }}</h3>
+          <h3 class="text-white font-semibold text-base">{{ t(siteCopyState.footer.quickLinks) }}</h3>
           <ul class="space-y-2.5 text-sm">
             <li v-for="link in navLinks" :key="link.path">
               <router-link :to="link.path" class="hover:text-sky-400 transition-colors">
@@ -81,9 +81,9 @@
 
         <!-- Services Links -->
         <div class="space-y-4">
-          <h3 class="text-white font-semibold text-base">{{ t(siteCopy.footer.services) }}</h3>
+          <h3 class="text-white font-semibold text-base">{{ t(siteCopyState.footer.services) }}</h3>
           <ul class="space-y-2.5 text-sm">
-            <li v-for="service in servicesData.slice(0, 5)" :key="service.id">
+            <li v-for="service in servicesState.slice(0, 5)" :key="service.id">
               <router-link :to="`/services/${service.id}`" class="hover:text-sky-400 transition-colors line-clamp-1">
                 {{ t(service.title) }}
               </router-link>
@@ -93,16 +93,16 @@
 
         <!-- Contact Info & Controls -->
         <div class="space-y-4">
-          <h3 class="text-white font-semibold text-base">{{ t(siteCopy.footer.contactInfo) }}</h3>
+          <h3 class="text-white font-semibold text-base">{{ t(siteCopyState.footer.contactInfo) }}</h3>
           <div class="space-y-3 text-sm text-slate-300">
             <div class="flex items-start gap-2.5">
               <MapPin class="w-4 h-4 text-sky-400 shrink-0 mt-1" />
-              <span>{{ t(companyData.contact.address) }}</span>
+              <span>{{ t(companyState.contact.address) }}</span>
             </div>
-            <div v-if="companyData.contact.email" class="flex items-center gap-2.5">
+            <div v-if="companyState.contact.email" class="flex items-center gap-2.5">
               <Mail class="w-4 h-4 text-sky-400 shrink-0" />
-              <a :href="`mailto:${companyData.contact.email}`" class="hover:text-sky-400 transition-colors">
-                {{ companyData.contact.email }}
+              <a :href="`mailto:${companyState.contact.email}`" class="hover:text-sky-400 transition-colors">
+                {{ companyState.contact.email }}
               </a>
             </div>
           </div>
@@ -123,7 +123,7 @@
 
       <!-- Bottom Bar -->
       <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
-        <p>{{ t(siteCopy.footer.rights) }}</p>
+        <p>{{ t(siteCopyState.footer.rights) }}</p>
 
         <!-- Back to Top -->
         <button
@@ -131,7 +131,7 @@
           class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 hover:text-white hover:border-slate-700 transition-colors focus:outline-none focus:ring-2 focus:ring-sky-500"
         >
           <ArrowUp class="w-3.5 h-3.5 text-sky-400" />
-          <span>{{ t(siteCopy.common.backToTop) }}</span>
+          <span>{{ t(siteCopyState.common.backToTop) }}</span>
         </button>
       </div>
     </div>
@@ -142,18 +142,16 @@
 import { computed } from 'vue';
 import { Linkedin, Github, Twitter, Facebook, MapPin, Mail, Globe, ArrowUp } from 'lucide-vue-next';
 import { useI18n } from '@/composables/useI18n';
-import { siteCopy } from '@/data/siteCopy';
-import { companyData } from '@/data/company';
-import { servicesData } from '@/data/services';
+import { siteCopyState, companyState, servicesState } from '@/services/dataService';
 
 const { currentLang, toggleLanguage, t } = useI18n();
 
 const navLinks = computed(() => [
-  { path: '/', label: t(siteCopy.nav.home) },
-  { path: '/about', label: t(siteCopy.nav.about) },
-  { path: '/services', label: t(siteCopy.nav.services) },
-  { path: '/projects', label: t(siteCopy.nav.projects) },
-  { path: '/contact', label: t(siteCopy.nav.contact) }
+  { path: '/', label: t(siteCopyState.nav.home) },
+  { path: '/about', label: t(siteCopyState.nav.about) },
+  { path: '/services', label: t(siteCopyState.nav.services) },
+  { path: '/projects', label: t(siteCopyState.nav.projects) },
+  { path: '/contact', label: t(siteCopyState.nav.contact) }
 ]);
 
 function scrollToTop() {

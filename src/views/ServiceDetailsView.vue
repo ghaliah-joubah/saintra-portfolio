@@ -1,7 +1,6 @@
 <template>
   <div v-if="service" class="space-y-16 py-12 pb-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-    <!-- Service Header & Breadcrumb -->
     <div class="space-y-4">
       <router-link
         to="/services"
@@ -9,7 +8,7 @@
       >
         <ArrowLeft v-if="!isRtl" class="w-4 h-4" />
         <ArrowRight v-else class="w-4 h-4" />
-        <span>{{ t(siteCopy.nav.services) }}</span>
+        <span>{{ t(siteCopyState.nav.services) }}</span>
       </router-link>
 
       <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pt-2">
@@ -29,14 +28,13 @@
           to="/contact"
           class="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl font-bold bg-gradient-to-r from-sky-500 to-indigo-600 text-white shadow-lg shadow-sky-500/25 hover:scale-105 transition-transform shrink-0"
         >
-          <span>{{ t(siteCopy.buttons.contactUs) }}</span>
+          <span>{{ t(siteCopyState.buttons.contactUs) }}</span>
           <ArrowRight v-if="!isRtl" class="w-5 h-5" />
           <ArrowLeft v-else class="w-5 h-5" />
         </router-link>
       </div>
     </div>
 
-    <!-- Service Media & Overview -->
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
       <div class="lg:col-span-7 space-y-6">
         <div class="glass-card p-8 rounded-3xl border border-slate-800 space-y-4">
@@ -46,11 +44,10 @@
           </p>
         </div>
 
-        <!-- What's Included -->
         <div class="glass-card p-8 rounded-3xl border border-slate-800 space-y-6">
           <h2 class="text-2xl font-bold text-white flex items-center gap-3">
             <CheckCircle2 class="w-6 h-6 text-sky-400" />
-            <span>{{ t(siteCopy.serviceDetailsPage.whatsIncludedTitle) }}</span>
+            <span>{{ t(siteCopyState.serviceDetailsPage.whatsIncludedTitle) }}</span>
           </h2>
 
           <div class="grid grid-cols-1 gap-3">
@@ -66,9 +63,7 @@
         </div>
       </div>
 
-      <!-- Sidebar / Service Image / Video -->
       <div class="lg:col-span-5 space-y-6">
-        <!-- Optional Image -->
         <div v-if="service.image" class="rounded-3xl overflow-hidden border border-slate-800 glass-card">
           <img
             :src="service.image"
@@ -77,11 +72,10 @@
           />
         </div>
 
-        <!-- Optional YouTube Video Embed -->
         <div v-if="service.videoUrl" class="glass-card p-6 rounded-3xl border border-slate-800 space-y-4">
           <h3 class="text-lg font-bold text-white flex items-center gap-2">
             <Video class="w-5 h-5 text-sky-400" />
-            <span>{{ t(siteCopy.serviceDetailsPage.videoTitle) }}</span>
+            <span>{{ t(siteCopyState.serviceDetailsPage.videoTitle) }}</span>
           </h3>
 
           <div class="relative w-full aspect-video rounded-2xl overflow-hidden border border-slate-800 bg-slate-950">
@@ -99,11 +93,10 @@
       </div>
     </div>
 
-    <!-- Our Process Section -->
     <div v-if="service.ourProcess && service.ourProcess.length > 0" class="space-y-8">
       <div class="text-center space-y-2">
         <h2 class="text-3xl font-extrabold text-white">
-          {{ t(siteCopy.serviceDetailsPage.ourProcessTitle) }}
+          {{ t(siteCopyState.serviceDetailsPage.ourProcessTitle) }}
         </h2>
         <p class="text-slate-400 text-sm">خطوات منهجية مدروسة تضمن جودة المخرجات</p>
       </div>
@@ -127,11 +120,10 @@
       </div>
     </div>
 
-    <!-- Related Projects Section -->
     <div v-if="relatedProjects.length > 0" class="space-y-8 pt-8 border-t border-slate-800">
       <div class="space-y-2">
         <h2 class="text-3xl font-extrabold text-white">
-          {{ t(siteCopy.serviceDetailsPage.relatedProjectsTitle) }}
+          {{ t(siteCopyState.serviceDetailsPage.relatedProjectsTitle) }}
         </h2>
         <p class="text-slate-400 text-sm">أمثلة لمشاريع تم تطبيق هذه الخدمة فيها</p>
       </div>
@@ -153,7 +145,7 @@
               :to="`/projects/${project.id}`"
               class="inline-flex items-center gap-2 text-xs font-bold text-sky-400 hover:text-sky-300 transition-colors pt-2 border-t border-slate-800"
             >
-              <span>{{ t(siteCopy.buttons.details) }}</span>
+              <span>{{ t(siteCopyState.buttons.details) }}</span>
               <ArrowRight v-if="!isRtl" class="w-3.5 h-3.5" />
               <ArrowLeft v-else class="w-3.5 h-3.5" />
             </router-link>
@@ -164,17 +156,16 @@
 
   </div>
 
-  <!-- Invalid Service ID / 404 Fallback -->
   <div v-else class="py-24 text-center space-y-6 max-w-md mx-auto px-4">
     <AlertCircle class="w-16 h-16 text-rose-500 mx-auto" />
     <h1 class="text-2xl font-bold text-white">
-      {{ t(siteCopy.serviceDetailsPage.notFound) }}
+      {{ t(siteCopyState.serviceDetailsPage.notFound) }}
     </h1>
     <router-link
       to="/services"
       class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-sky-500 text-white font-semibold text-sm"
     >
-      <span>{{ t(siteCopy.buttons.viewAllServices) }}</span>
+      <span>{{ t(siteCopyState.buttons.viewAllServices) }}</span>
     </router-link>
   </div>
 </template>
@@ -184,19 +175,17 @@ import { computed } from 'vue';
 import { useRoute } from 'vue-router';
 import { ArrowRight, ArrowLeft, CheckCircle2, Video, AlertCircle } from 'lucide-vue-next';
 import { useI18n } from '@/composables/useI18n';
-import { siteCopy } from '@/data/siteCopy';
-import { servicesData } from '@/data/services';
-import { projectsData } from '@/data/projects';
+import { siteCopyState, servicesState, projectsState } from '@/services/dataService';
 
 const route = useRoute();
 const { isRtl, t } = useI18n();
 
 const service = computed(() => {
-  return servicesData.find((s) => s.id === route.params.id);
+  return servicesState.find((s) => s.id === route.params.id);
 });
 
 const relatedProjects = computed(() => {
   if (!service.value) return [];
-  return projectsData.filter((p) => p.serviceIds.includes(service.value!.id));
+  return projectsState.filter((p) => p.serviceIds.includes(service.value!.id));
 });
 </script>

@@ -8,7 +8,7 @@
           S
         </div>
         <div class="flex flex-col">
-          <span class="font-bold text-xl tracking-wider text-white group-hover:text-sky-400 transition-colors">SAINTRA</span>
+          <span class="font-bold text-xl tracking-wider text-white group-hover:text-sky-400 transition-colors">{{ t(companyState.shortName) }}</span>
           <span class="text-[10px] text-slate-400 font-normal">سيقما تكنولوجي</span>
         </div>
       </router-link>
@@ -32,7 +32,7 @@
         <button
           @click="toggleLanguage"
           class="flex items-center gap-2 px-3.5 py-2 rounded-xl text-sm font-semibold bg-slate-900 border border-slate-800 text-slate-200 hover:text-sky-400 hover:border-sky-500/50 transition-all focus:outline-none focus:ring-2 focus:ring-sky-500"
-          :aria-label="siteCopy.common.languageSwitch[currentLang === 'ar' ? 'en' : 'ar']"
+          :aria-label="siteCopyState.common.languageSwitch[currentLang === 'ar' ? 'en' : 'ar']"
         >
           <Globe class="w-4 h-4 text-sky-400" />
           <span>{{ currentLang === 'ar' ? 'English' : 'العربية' }}</span>
@@ -42,7 +42,7 @@
           to="/contact"
           class="px-5 py-2.5 rounded-xl text-sm font-semibold bg-gradient-to-r from-sky-500 to-indigo-600 text-white shadow-lg shadow-sky-500/25 hover:shadow-sky-500/40 hover:scale-[1.02] active:scale-[0.98] transition-all focus:outline-none focus:ring-2 focus:ring-sky-400"
         >
-          {{ t(siteCopy.buttons.contactUs) }}
+          {{ t(siteCopyState.buttons.contactUs) }}
         </router-link>
       </div>
 
@@ -102,7 +102,7 @@
             @click="isMobileMenuOpen = false"
             class="w-full text-center py-3 rounded-xl bg-gradient-to-r from-sky-500 to-indigo-600 text-white font-semibold"
           >
-            {{ t(siteCopy.buttons.contactUs) }}
+            {{ t(siteCopyState.buttons.contactUs) }}
           </router-link>
         </div>
       </div>
@@ -114,16 +114,16 @@
 import { ref, computed } from 'vue';
 import { Globe, Menu, X } from 'lucide-vue-next';
 import { useI18n } from '@/composables/useI18n';
-import { siteCopy } from '@/data/siteCopy';
+import { siteCopyState, companyState } from '@/services/dataService';
 
 const { currentLang, toggleLanguage, t } = useI18n();
 const isMobileMenuOpen = ref(false);
 
 const navLinks = computed(() => [
-  { path: '/', label: t(siteCopy.nav.home) },
-  { path: '/about', label: t(siteCopy.nav.about) },
-  { path: '/services', label: t(siteCopy.nav.services) },
-  { path: '/projects', label: t(siteCopy.nav.projects) },
-  { path: '/contact', label: t(siteCopy.nav.contact) }
+  { path: '/', label: t(siteCopyState.nav.home) },
+  { path: '/about', label: t(siteCopyState.nav.about) },
+  { path: '/services', label: t(siteCopyState.nav.services) },
+  { path: '/projects', label: t(siteCopyState.nav.projects) },
+  { path: '/contact', label: t(siteCopyState.nav.contact) }
 ]);
 </script>

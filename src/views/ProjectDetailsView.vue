@@ -1,7 +1,6 @@
 <template>
   <div v-if="project" class="space-y-16 py-12 pb-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-    <!-- Breadcrumb & Header -->
     <div class="space-y-4">
       <router-link
         to="/projects"
@@ -9,7 +8,7 @@
       >
         <ArrowLeft v-if="!isRtl" class="w-4 h-4" />
         <ArrowRight v-else class="w-4 h-4" />
-        <span>{{ t(siteCopy.nav.projects) }}</span>
+        <span>{{ t(siteCopyState.nav.projects) }}</span>
       </router-link>
 
       <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pt-2">
@@ -25,7 +24,6 @@
           </p>
         </div>
 
-        <!-- Conditional Visit Project Button -->
         <a
           v-if="project.liveUrl"
           :href="project.liveUrl"
@@ -33,19 +31,14 @@
           rel="noopener noreferrer"
           class="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl font-bold bg-gradient-to-r from-sky-500 to-indigo-600 text-white shadow-lg shadow-sky-500/25 hover:scale-105 transition-transform shrink-0"
         >
-          <span>{{ t(siteCopy.buttons.visitProject) }}</span>
+          <span>{{ t(siteCopyState.buttons.visitProject) }}</span>
           <ExternalLink class="w-5 h-5" />
         </a>
       </div>
     </div>
 
-    <!-- Main Cover & Details Grid -->
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-
-      <!-- Left Column: Description & Gallery -->
       <div class="lg:col-span-8 space-y-8">
-
-        <!-- Cover Image -->
         <div class="rounded-3xl overflow-hidden border border-slate-800 glass-card">
           <img
             :src="project.coverImage"
@@ -54,7 +47,6 @@
           />
         </div>
 
-        <!-- Full Description -->
         <div class="glass-card p-8 rounded-3xl border border-slate-800 space-y-4">
           <h2 class="text-2xl font-bold text-white">تفاصيل ونطاق العمل / Overview</h2>
           <p class="text-slate-300 text-base leading-relaxed whitespace-pre-line">
@@ -62,11 +54,10 @@
           </p>
         </div>
 
-        <!-- Gallery / Screenshots Carousel with Lightbox -->
         <div v-if="project.gallery && project.gallery.length > 0" class="glass-card p-8 rounded-3xl border border-slate-800 space-y-6">
           <h2 class="text-2xl font-bold text-white flex items-center gap-2">
             <Maximize2 class="w-5 h-5 text-sky-400" />
-            <span>{{ t(siteCopy.projectDetailsPage.galleryTitle) }}</span>
+            <span>{{ t(siteCopyState.projectDetailsPage.galleryTitle) }}</span>
           </h2>
 
           <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
@@ -86,42 +77,38 @@
 
       </div>
 
-      <!-- Right Column: Project Metadata & Related Services -->
       <div class="lg:col-span-4 space-y-6">
-
-        <!-- Project Info Card -->
         <div class="glass-card p-6 rounded-3xl border border-slate-800 space-y-5">
           <h3 class="text-xl font-bold text-white border-b border-slate-800 pb-3">
-            {{ t(siteCopy.projectDetailsPage.infoTitle) }}
+            {{ t(siteCopyState.projectDetailsPage.infoTitle) }}
           </h3>
 
           <div class="space-y-4 text-sm">
             <div class="flex items-center justify-between text-slate-300">
-              <span class="text-slate-400 font-semibold">{{ t(siteCopy.projectDetailsPage.yearLabel) }}:</span>
+              <span class="text-slate-400 font-semibold">{{ t(siteCopyState.projectDetailsPage.yearLabel) }}:</span>
               <span class="font-bold text-white">{{ project.year }}</span>
             </div>
 
             <div class="flex items-center justify-between text-slate-300">
-              <span class="text-slate-400 font-semibold">{{ t(siteCopy.projectDetailsPage.completionLabel) }}:</span>
+              <span class="text-slate-400 font-semibold">{{ t(siteCopyState.projectDetailsPage.completionLabel) }}:</span>
               <span class="font-bold text-white">{{ t(project.completionDate) }}</span>
             </div>
 
             <div class="flex items-center justify-between text-slate-300">
-              <span class="text-slate-400 font-semibold">{{ t(siteCopy.projectDetailsPage.teamLabel) }}:</span>
+              <span class="text-slate-400 font-semibold">{{ t(siteCopyState.projectDetailsPage.teamLabel) }}:</span>
               <span class="font-bold text-white">{{ t(project.teamSize) }}</span>
             </div>
 
             <div class="flex items-center justify-between text-slate-300">
-              <span class="text-slate-400 font-semibold">{{ t(siteCopy.projectDetailsPage.platformLabel) }}:</span>
+              <span class="text-slate-400 font-semibold">{{ t(siteCopyState.projectDetailsPage.platformLabel) }}:</span>
               <span class="font-bold text-white">{{ t(project.platform) }}</span>
             </div>
           </div>
         </div>
 
-        <!-- Tech Stack Card -->
         <div class="glass-card p-6 rounded-3xl border border-slate-800 space-y-4">
           <h3 class="text-xl font-bold text-white border-b border-slate-800 pb-3">
-            {{ t(siteCopy.projectDetailsPage.techTitle) }}
+            {{ t(siteCopyState.projectDetailsPage.techTitle) }}
           </h3>
 
           <div class="flex flex-wrap gap-2">
@@ -135,10 +122,9 @@
           </div>
         </div>
 
-        <!-- Related Services Card -->
         <div v-if="relatedServices.length > 0" class="glass-card p-6 rounded-3xl border border-slate-800 space-y-4">
           <h3 class="text-xl font-bold text-white border-b border-slate-800 pb-3">
-            {{ t(siteCopy.projectDetailsPage.relatedServicesTitle) }}
+            {{ t(siteCopyState.projectDetailsPage.relatedServicesTitle) }}
           </h3>
 
           <div class="space-y-2">
@@ -157,7 +143,6 @@
 
     </div>
 
-    <!-- Lightbox Modal -->
     <LightboxModal
       :is-open="isLightboxOpen"
       :images="project.gallery"
@@ -167,17 +152,16 @@
 
   </div>
 
-  <!-- Invalid Project ID Fallback -->
   <div v-else class="py-24 text-center space-y-6 max-w-md mx-auto px-4">
     <AlertCircle class="w-16 h-16 text-rose-500 mx-auto" />
     <h1 class="text-2xl font-bold text-white">
-      {{ t(siteCopy.projectDetailsPage.notFound) }}
+      {{ t(siteCopyState.projectDetailsPage.notFound) }}
     </h1>
     <router-link
       to="/projects"
       class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-sky-500 text-white font-semibold text-sm"
     >
-      <span>{{ t(siteCopy.buttons.viewAllProjects) }}</span>
+      <span>{{ t(siteCopyState.buttons.viewAllProjects) }}</span>
     </router-link>
   </div>
 </template>
@@ -187,9 +171,7 @@ import { ref, computed } from 'vue';
 import { useRoute } from 'vue-router';
 import { ArrowRight, ArrowLeft, ExternalLink, Maximize2, AlertCircle } from 'lucide-vue-next';
 import { useI18n } from '@/composables/useI18n';
-import { siteCopy } from '@/data/siteCopy';
-import { projectsData } from '@/data/projects';
-import { servicesData } from '@/data/services';
+import { siteCopyState, projectsState, servicesState } from '@/services/dataService';
 import LightboxModal from '@/components/ui/LightboxModal.vue';
 
 const route = useRoute();
@@ -199,12 +181,12 @@ const isLightboxOpen = ref(false);
 const activeImageIndex = ref(0);
 
 const project = computed(() => {
-  return projectsData.find((p) => p.id === route.params.id);
+  return projectsState.find((p) => p.id === route.params.id);
 });
 
 const relatedServices = computed(() => {
   if (!project.value) return [];
-  return servicesData.filter((s) => project.value!.serviceIds.includes(s.id));
+  return servicesState.filter((s) => project.value!.serviceIds.includes(s.id));
 });
 
 function openLightbox(index: number) {

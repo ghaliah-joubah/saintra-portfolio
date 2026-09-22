@@ -1,28 +1,26 @@
 <template>
   <div class="space-y-12 py-12 pb-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-    <!-- Page Header -->
     <div class="text-center space-y-4 max-w-3xl mx-auto">
       <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-card border border-sky-500/30 text-sky-300 text-xs font-semibold">
         <Layers class="w-4 h-4 text-sky-400" />
-        <span>{{ t(siteCopy.nav.services) }}</span>
+        <span>{{ t(siteCopyState.nav.services) }}</span>
       </div>
       <h1 class="text-4xl sm:text-5xl font-extrabold text-white">
-        {{ t(siteCopy.servicesPage.title) }}
+        {{ t(siteCopyState.servicesPage.title) }}
       </h1>
       <p class="text-slate-300 text-base leading-relaxed">
-        {{ t(siteCopy.servicesPage.subtitle) }}
+        {{ t(siteCopyState.servicesPage.subtitle) }}
       </p>
     </div>
 
-    <!-- Category Filter Tabs -->
     <div class="flex flex-wrap items-center justify-center gap-2 pt-4">
       <button
         @click="selectedCategory = 'ALL'"
         class="px-5 py-2.5 rounded-xl text-sm font-semibold transition-all focus:outline-none focus:ring-2 focus:ring-sky-500"
         :class="selectedCategory === 'ALL' ? 'bg-sky-500 text-white shadow-lg shadow-sky-500/25' : 'bg-slate-900 border border-slate-800 text-slate-300 hover:text-white hover:border-slate-700'"
       >
-        {{ t(siteCopy.buttons.filterAll) }}
+        {{ t(siteCopyState.buttons.filterAll) }}
       </button>
 
       <button
@@ -36,7 +34,6 @@
       </button>
     </div>
 
-    <!-- Services Grid -->
     <div v-if="filteredServices.length > 0" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pt-6">
       <div
         v-for="service in filteredServices"
@@ -60,7 +57,6 @@
             {{ t(service.shortDescription) }}
           </p>
 
-          <!-- What's Included Preview -->
           <ul class="space-y-2 pt-2 border-t border-slate-800/80 text-xs text-slate-300">
             <li v-for="(inc, idx) in service.whatsIncluded.slice(0, 3)" :key="idx" class="flex items-center gap-2">
               <CheckCircle2 class="w-3.5 h-3.5 text-sky-400 shrink-0" />
@@ -73,24 +69,23 @@
           :to="`/services/${service.id}`"
           class="inline-flex items-center gap-2 text-sm font-bold text-sky-400 hover:text-sky-300 transition-colors pt-3 border-t border-slate-800"
         >
-          <span>{{ t(siteCopy.buttons.details) }}</span>
+          <span>{{ t(siteCopyState.buttons.details) }}</span>
           <ArrowRight v-if="!isRtl" class="w-4 h-4" />
           <ArrowLeft v-else class="w-4 h-4" />
         </router-link>
       </div>
     </div>
 
-    <!-- Empty State -->
     <div v-else class="glass-card p-12 rounded-3xl border border-slate-800 text-center space-y-4">
       <AlertCircle class="w-12 h-12 text-slate-500 mx-auto" />
       <p class="text-slate-300 font-semibold text-lg">
-        {{ t(siteCopy.servicesPage.emptyState) }}
+        {{ t(siteCopyState.servicesPage.emptyState) }}
       </p>
       <button
         @click="selectedCategory = 'ALL'"
         class="px-5 py-2 rounded-xl bg-sky-500 text-white font-semibold text-sm"
       >
-        {{ t(siteCopy.buttons.filterAll) }}
+        {{ t(siteCopyState.buttons.filterAll) }}
       </button>
     </div>
 
@@ -114,15 +109,14 @@ import {
   Code2
 } from 'lucide-vue-next';
 import { useI18n } from '@/composables/useI18n';
-import { siteCopy } from '@/data/siteCopy';
-import { servicesData } from '@/data/services';
+import { siteCopyState, servicesState } from '@/services/dataService';
 
 const { isRtl, t } = useI18n();
 const selectedCategory = ref('ALL');
 
 const categories = computed(() => {
   const map = new Map();
-  servicesData.forEach((s) => {
+  servicesState.forEach((s) => {
     if (!map.has(s.category.en)) {
       map.set(s.category.en, s.category);
     }
@@ -131,8 +125,8 @@ const categories = computed(() => {
 });
 
 const filteredServices = computed(() => {
-  if (selectedCategory.value === 'ALL') return servicesData;
-  return servicesData.filter((s) => s.category.en === selectedCategory.value);
+  if (selectedCategory.value === 'ALL') return servicesState;
+  return servicesState.filter((s) => s.category.en === selectedCategory.value);
 });
 
 function getIcon(name: string) {

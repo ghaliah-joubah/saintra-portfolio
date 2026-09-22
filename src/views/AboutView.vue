@@ -5,13 +5,13 @@
     <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
       <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-card border border-sky-500/30 text-sky-300 text-xs font-semibold">
         <Building2 class="w-4 h-4 text-sky-400" />
-        <span>{{ t(siteCopy.about.subtitle) }}</span>
+        <span>{{ t(siteCopyState.about.subtitle) }}</span>
       </div>
       <h1 class="text-4xl sm:text-6xl font-extrabold text-white tracking-tight">
-        {{ t(siteCopy.about.title) }}
+        {{ t(siteCopyState.about.title) }}
       </h1>
       <p class="text-lg text-slate-300 max-w-3xl mx-auto leading-relaxed">
-        {{ t(companyData.tagline) }}
+        {{ t(companyState.tagline) }}
       </p>
     </section>
 
@@ -21,23 +21,23 @@
         <div class="lg:col-span-7 space-y-6">
           <div class="inline-flex items-center gap-2 text-sky-400 font-bold text-sm">
             <Sparkles class="w-4 h-4" />
-            <span>{{ t(siteCopy.about.storyTitle) }}</span>
+            <span>{{ t(siteCopyState.about.storyTitle) }}</span>
           </div>
           <h2 class="text-3xl font-extrabold text-white leading-snug">
-            {{ t(companyData.name) }}
+            {{ t(companyState.name) }}
           </h2>
           <p class="text-slate-300 text-base sm:text-lg leading-relaxed">
-            {{ t(companyData.aboutStory) }}
+            {{ t(companyState.aboutStory) }}
           </p>
 
           <div class="grid grid-cols-2 gap-4 pt-4 border-t border-slate-800">
             <div>
               <div class="text-xs text-slate-400 font-semibold">سنة التأسيس / Established</div>
-              <div class="text-xl font-bold text-white mt-1">{{ companyData.establishedYear }}</div>
+              <div class="text-xl font-bold text-white mt-1">{{ companyState.establishedYear }}</div>
             </div>
             <div>
               <div class="text-xs text-slate-400 font-semibold">المقر الرئيسي / HQ</div>
-              <div class="text-xl font-bold text-white mt-1">{{ t(companyData.headquarters) }}</div>
+              <div class="text-xl font-bold text-white mt-1">{{ t(companyState.headquarters) }}</div>
             </div>
           </div>
         </div>
@@ -59,29 +59,27 @@
     <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
 
-        <!-- Mission Card -->
         <div class="glass-card p-8 rounded-3xl border border-slate-800 space-y-4 bg-slate-900/40 relative overflow-hidden">
           <div class="w-12 h-12 rounded-2xl bg-sky-500/10 border border-sky-500/20 flex items-center justify-center text-sky-400">
             <Target class="w-6 h-6" />
           </div>
           <h3 class="text-2xl font-bold text-white">
-            {{ t(siteCopy.about.missionTitle) }}
+            {{ t(siteCopyState.about.missionTitle) }}
           </h3>
           <p class="text-slate-300 text-base leading-relaxed">
-            {{ t(companyData.mission) }}
+            {{ t(companyState.mission) }}
           </p>
         </div>
 
-        <!-- Vision Card -->
         <div class="glass-card p-8 rounded-3xl border border-slate-800 space-y-4 bg-slate-900/40 relative overflow-hidden">
           <div class="w-12 h-12 rounded-2xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400">
             <Eye class="w-6 h-6" />
           </div>
           <h3 class="text-2xl font-bold text-white">
-            {{ t(siteCopy.about.visionTitle) }}
+            {{ t(siteCopyState.about.visionTitle) }}
           </h3>
           <p class="text-slate-300 text-base leading-relaxed">
-            {{ t(companyData.vision) }}
+            {{ t(companyState.vision) }}
           </p>
         </div>
 
@@ -92,7 +90,7 @@
     <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
       <div class="text-center space-y-2">
         <h2 class="text-3xl font-extrabold text-white">
-          {{ t(siteCopy.about.statsTitle) }}
+          {{ t(siteCopyState.about.statsTitle) }}
         </h2>
         <p class="text-slate-400 text-sm">
           مؤشرات النجاح والثقة التي حققناها مع شركائنا
@@ -101,7 +99,7 @@
 
       <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
         <StatCard
-          v-for="stat in companyData.stats"
+          v-for="stat in companyState.stats"
           :key="stat.id"
           :stat="stat"
         />
@@ -112,7 +110,7 @@
     <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
       <div class="text-center space-y-2">
         <h2 class="text-3xl font-extrabold text-white">
-          {{ t(siteCopy.about.valuesTitle) }}
+          {{ t(siteCopyState.about.valuesTitle) }}
         </h2>
         <p class="text-slate-400 text-sm">
           المبادئ التي تقود كل قرار وهندسة نضعها في كودنا
@@ -121,7 +119,7 @@
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         <div
-          v-for="(val, idx) in companyData.values"
+          v-for="(val, idx) in companyState.values"
           :key="idx"
           class="glass-card p-6 rounded-2xl border border-slate-800 space-y-3"
         >
@@ -142,7 +140,7 @@
     <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
       <div class="text-center space-y-2">
         <h2 class="text-3xl font-extrabold text-white">
-          {{ t(siteCopy.about.techTitle) }}
+          {{ t(siteCopyState.about.techTitle) }}
         </h2>
         <p class="text-slate-400 text-sm">
           أحدث التقنيات وأطر العمل التي نستخدمها لبناء برمجيات آمنة وسريعة
@@ -151,7 +149,7 @@
 
       <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
         <div
-          v-for="(tech, idx) in companyData.technologies"
+          v-for="(tech, idx) in companyState.technologies"
           :key="idx"
           class="glass-card p-4 rounded-xl border border-slate-800 flex items-center gap-3"
         >
@@ -170,13 +168,13 @@
     <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
       <div class="text-center space-y-2">
         <h2 class="text-3xl font-extrabold text-white">
-          {{ t(siteCopy.about.locationsTitle) }}
+          {{ t(siteCopyState.about.locationsTitle) }}
         </h2>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
         <div
-          v-for="(branch, idx) in companyData.branches"
+          v-for="(branch, idx) in companyState.branches"
           :key="idx"
           class="glass-card p-6 rounded-2xl border border-slate-800 flex items-center gap-4"
         >
@@ -205,7 +203,7 @@
             to="/contact"
             class="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl font-bold bg-gradient-to-r from-sky-500 to-indigo-600 text-white shadow-lg shadow-sky-500/25 hover:scale-105 transition-transform"
           >
-            <span>{{ t(siteCopy.buttons.contactUs) }}</span>
+            <span>{{ t(siteCopyState.buttons.contactUs) }}</span>
             <ArrowRight v-if="!isRtl" class="w-5 h-5" />
             <ArrowLeft v-else class="w-5 h-5" />
           </router-link>
@@ -219,8 +217,7 @@
 <script setup lang="ts">
 import { Building2, Sparkles, Target, Eye, CheckCircle2, MapPin, ArrowRight, ArrowLeft } from 'lucide-vue-next';
 import { useI18n } from '@/composables/useI18n';
-import { siteCopy } from '@/data/siteCopy';
-import { companyData } from '@/data/company';
+import { siteCopyState, companyState } from '@/services/dataService';
 import StatCard from '@/components/ui/StatCard.vue';
 
 const { isRtl, t } = useI18n();

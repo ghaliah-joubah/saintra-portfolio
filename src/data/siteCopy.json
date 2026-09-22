@@ -1,0 +1,103 @@
+{
+  "nav": {
+    "home": { "ar": "الرئيسية", "en": "Home" },
+    "about": { "ar": "من نحن", "en": "About Us" },
+    "services": { "ar": "خدماتنا", "en": "Services" },
+    "projects": { "ar": "أعمالنا", "en": "Projects" },
+    "contact": { "ar": "تواصل معنا", "en": "Contact" }
+  },
+  "buttons": {
+    "viewProjects": { "ar": "استعرض أعمالنا", "en": "Explore Portfolio" },
+    "contactUs": { "ar": "تواصل معنا", "en": "Get in Touch" },
+    "viewAllServices": { "ar": "عرض جميع الخدمات", "en": "View All Services" },
+    "viewAllProjects": { "ar": "عرض جميع المشاريع", "en": "View All Projects" },
+    "readMore": { "ar": "اقرأ المزيد", "en": "Read More" },
+    "details": { "ar": "التفاصيل", "en": "View Details" },
+    "visitProject": { "ar": "زيارة المشروع المباشر", "en": "Visit Live Site" },
+    "sendMessage": { "ar": "تحقق من البيانات محلياً", "en": "Validate Form Locally" },
+    "backToHome": { "ar": "العودة للرئيسية", "en": "Back to Home" },
+    "filterAll": { "ar": "الكل", "en": "All" },
+    "previous": { "ar": "السابق", "en": "Previous" },
+    "next": { "ar": "التالي", "en": "Next" },
+    "page": { "ar": "صفحة", "en": "Page" }
+  },
+  "home": {
+    "heroBadge": { "ar": "⚡ شريكك البرمجي السحابي الموثوق", "en": "⚡ Your Trusted Cloud Engineering Partner" },
+    "heroTitle": { "ar": "نبتكر الأنظمة والمنصات الرقمية لبناء مستقبل أعمالك", "en": "Engineering Next-Gen Digital Platforms for Enterprise Success" },
+    "heroSubtitle": { "ar": "نطور تطبيقات الويب والجوال، الأنظمة السحابية، وحلول الذكاء الاصطناعي وفق أعلى معايير الجودة والأمان.", "en": "We design and develop high-performance web/mobile applications, cloud architectures, and custom AI systems." },
+    "whyChooseUsTitle": { "ar": "لماذا تختار سينترا؟", "en": "Why Partner with SAINTRA?" },
+    "whyChooseUsSubtitle": { "ar": "نقاط تميز تضمن نجاح مشروعك البرمجي من الفكرة إلى الإطلاق", "en": "Key advantages that guarantee your software product delivery" },
+    "servicesTitle": { "ar": "خدماتنا البرمجية", "en": "Software Services" },
+    "servicesSubtitle": { "ar": "حلول متكاملة تغطي كافة جوانب الدورة البرمجية", "en": "End-to-end engineering solutions for every stage of your growth" },
+    "projectsTitle": { "ar": "أحدث أعمالنا ومشاريعنا", "en": "Featured Projects" },
+    "projectsSubtitle": { "ar": "نماذج واقعية لمنصات وأنظمة طورناها لعملائنا", "en": "Real-world platforms and enterprise software built by our engineers" },
+    "ctaTitle": { "ar": "هل لديك مشروع برمجي ترغب في تنفيذه؟", "en": "Have a software project in mind?" },
+    "ctaSubtitle": { "ar": "فريقنا المهندسين جاهز لمساعدتك في التخطيط والتحويل الرقمي الذكي.", "en": "Our software engineering team is ready to analyze and build your solution." }
+  },
+  "about": {
+    "title": { "ar": "عن سينترا لتقنية المعلومات", "en": "About SAINTRA Technology" },
+    "subtitle": { "ar": "شريكك الاستراتيجي في الهندسة البرمجية والتحول الرقمي", "en": "Your Strategic Software Engineering & Digital Partner" },
+    "storyTitle": { "ar": "قصتنا ونشأتنا", "en": "Our Journey" },
+    "missionTitle": { "ar": "رسالتنا", "en": "Our Mission" },
+    "visionTitle": { "ar": "رؤيتنا", "en": "Our Vision" },
+    "valuesTitle": { "ar": "قيمنا الجوهرية", "en": "Core Values" },
+    "statsTitle": { "ar": "أرقام وإنجازات", "en": "Metrics & Impact" },
+    "techTitle": { "ar": "منظومة التقنيات واللغات", "en": "Tech Stack & Frameworks" },
+    "locationsTitle": { "ar": "مقارنا ومكاتبنا", "en": "Our Locations" }
+  },
+  "servicesPage": {
+    "title": { "ar": "خدماتنا وحلولنا البرمجية", "en": "Services & Engineering Solutions" },
+    "subtitle": { "ar": "نقدم نطاقاً واسعاً من الخدمات التكنولوجية المصممة لنمو المنشآت", "en": "Comprehensive software services tailored for modern business scale" },
+    "emptyState": { "ar": "لا توجد خدمات متاحة ضمن هذه الفئة حالياً.", "en": "No services found under this category." }
+  },
+  "serviceDetailsPage": {
+    "whatsIncludedTitle": { "ar": "ماذا تتضمن الخدمة؟", "en": "What's Included" },
+    "ourProcessTitle": { "ar": "خطتنا للتنفيذ (Our Process)", "en": "Execution Methodology" },
+    "relatedProjectsTitle": { "ar": "مشاريع منفذة بهذه الخدمة", "en": "Projects Built with this Service" },
+    "videoTitle": { "ar": "فيديو تعريفي بالخدمة", "en": "Service Overview Video" },
+    "notFound": { "ar": "الخدمة المطلوبة غير موجودة أو تم نقلها.", "en": "The requested service was not found." }
+  },
+  "projectsPage": {
+    "title": { "ar": "معرض الأعمال والمشاريع", "en": "Portfolio & Projects" },
+    "subtitle": { "ar": "استعرض المشاريع والمنصات التي طورناها عبر مختلف القطاعات", "en": "Explore enterprise platforms and digital products built by SAINTRA" },
+    "emptyState": { "ar": "لا توجد مشاريع مطابقة للتصنيف المختار.", "en": "No projects match the selected filter." }
+  },
+  "projectDetailsPage": {
+    "galleryTitle": { "ar": "معرض صور المشروع", "en": "Project Screenshots & Gallery" },
+    "infoTitle": { "ar": "معلومات المشروع", "en": "Project Information" },
+    "techTitle": { "ar": "التقنيات وأطر العمل", "en": "Technologies & Frameworks" },
+    "relatedServicesTitle": { "ar": "الخدمات ذات الصلة", "en": "Related Services" },
+    "yearLabel": { "ar": "سنة التنفيذ", "en": "Year" },
+    "completionLabel": { "ar": "تاريخ الإنجاز", "en": "Completion Date" },
+    "teamLabel": { "ar": "حجم الفريق", "en": "Team Size" },
+    "platformLabel": { "ar": "المنصة", "en": "Platform" },
+    "typeLabel": { "ar": "التصنيف", "en": "Category" },
+    "notFound": { "ar": "المشروع المطلوب غير موجود.", "en": "The requested project was not found." }
+  },
+  "contactPage": {
+    "title": { "ar": "تواصل معنا", "en": "Contact Us" },
+    "subtitle": { "ar": "يسعدنا مناقشة فكرة مشروعك والرد على كافة استفساراتك", "en": "We would love to discuss your project ideas and engineering needs" },
+    "formTitle": { "ar": "نموذج التواصل السريع (اختبار تجريبي محلي)", "en": "Inquiry Form (Local Demo)" },
+    "demoNotice": { "ar": "⚠️ تنبيه: هذا النموذج تجريبي للعرض والتحقق المحلي فقط؛ لا يقوم بإرسال أو تخزين الرسائل ولا يمسح مدخلاتك.", "en": "⚠️ Note: This is a local demo form. It validates inputs locally without sending or storing messages." },
+    "nameLabel": { "ar": "الاسم الكامل", "en": "Full Name" },
+    "emailLabel": { "ar": "البريد الإلكتروني", "en": "Email Address" },
+    "phoneLabel": { "ar": "رقم الهاتف (اختياري)", "en": "Phone Number (Optional)" },
+    "serviceLabel": { "ar": "الخدمة المطلوبة", "en": "Service Needed" },
+    "messageLabel": { "ar": "تفاصيل الرسالة أو المشروع", "en": "Project Details or Message" },
+    "validationMsg": { "ar": "تم التحقق من البيانات محلياً بنجاح؛ لم تُرسل الرسالة فعلياً.", "en": "Validated locally; no message was sent." },
+    "directContactTitle": { "ar": "بيانات التواصل المباشر", "en": "Direct Communication Channels" },
+    "addressLabel": { "ar": "العنوان المقر الرئيسي", "en": "Headquarters Address" },
+    "workingHoursLabel": { "ar": "ساعات العمل الرسمية", "en": "Working Hours" }
+  },
+  "footer": {
+    "rights": { "ar": "جميع الحقوق محفوظة © سينترا لتقنية المعلومات", "en": "All Rights Reserved © SAINTRA Technology" },
+    "tagline": { "ar": "بيت الخبرة البرمجية والهندسة الرقمية", "en": "Premier Software Engineering & Cloud Solutions" },
+    "quickLinks": { "ar": "روابط سريعة", "en": "Quick Links" },
+    "services": { "ar": "خدماتنا", "en": "Services" },
+    "contactInfo": { "ar": "معلومات التواصل", "en": "Contact Info" }
+  },
+  "common": {
+    "backToTop": { "ar": "العودة للأعلى", "en": "Back to Top" },
+    "languageSwitch": { "ar": "English", "en": "العربية" }
+  }
+}
