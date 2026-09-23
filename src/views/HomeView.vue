@@ -3,19 +3,11 @@
 
     <!-- Hero Section -->
     <section class="relative min-h-[90vh] flex items-center overflow-hidden pt-20 pb-20 bg-slate-50 border-b border-slate-200">
-
-      <!-- Background subtle grid -->
       <div class="absolute inset-0 bg-[linear-gradient(to_right,#cbd5e130_1px,transparent_1px),linear-gradient(to_bottom,#cbd5e130_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none"></div>
 
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 
-        <!-- Text Content -->
         <div class="space-y-8 text-center lg:text-start order-2 lg:order-1">
-          <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-sky-100 border border-sky-200 text-sky-700 text-xs sm:text-sm font-bold shadow-sm">
-            <Sparkles class="w-4 h-4 text-sky-500 animate-pulse" />
-            <span>{{ t(siteCopyState.home.heroBadge) }}</span>
-          </div>
-
           <h1 class="text-4xl sm:text-6xl font-extrabold text-navy-900 tracking-tight leading-[1.15]">
             {{ t(siteCopyState.home.heroTitle) }}
           </h1>
@@ -27,7 +19,7 @@
           <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
             <router-link
               to="/projects"
-              class="w-full sm:w-auto px-8 py-4 rounded-xl text-base font-bold bg-sky-500 text-white shadow-lg shadow-sky-500/30 hover:-translate-y-1 hover:shadow-sky-500/40 active:translate-y-0 transition-all flex items-center justify-center gap-2"
+              class="w-full sm:w-auto px-8 py-4 rounded-xl text-base font-bold bg-sky-500 text-white shadow-lg shadow-sky-500/30 hover:-translate-y-1 hover:shadow-sky-500/40 active:translate-y-0 transition-transform flex items-center justify-center gap-2"
             >
               <span>{{ t(siteCopyState.buttons.viewProjects) }}</span>
               <ArrowRight v-if="!isRtl" class="w-5 h-5" />
@@ -36,7 +28,7 @@
 
             <router-link
               to="/contact"
-              class="w-full sm:w-auto px-8 py-4 rounded-xl text-base font-bold bg-white border-2 border-slate-200 text-navy-900 hover:border-sky-500 hover:text-sky-600 transition-all flex items-center justify-center gap-2"
+              class="w-full sm:w-auto px-8 py-4 rounded-xl text-base font-bold bg-white border-2 border-slate-200 text-navy-900 hover:border-sky-500 hover:text-sky-600 shadow-sm hover:shadow-md hover:-translate-y-1 active:translate-y-0 transition-all flex items-center justify-center gap-2"
             >
               <MessageSquare class="w-5 h-5" />
               <span>{{ t(siteCopyState.buttons.contactUs) }}</span>
@@ -44,12 +36,10 @@
           </div>
         </div>
 
-        <!-- Visual / 3D Element Placeholder (CSS Animated Shape) -->
         <div class="order-1 lg:order-2 flex justify-center lg:justify-end relative h-80 sm:h-[450px]">
           <div class="absolute w-[300px] h-[300px] sm:w-[450px] sm:h-[450px] bg-gradient-to-tr from-sky-400 to-indigo-500 rounded-full blur-[80px] opacity-20 animate-pulse"></div>
 
           <div class="relative w-[280px] h-[280px] sm:w-[400px] sm:h-[400px] z-10 flex items-center justify-center">
-            <!-- Simulated 3D object using CSS transforms -->
             <div class="w-48 h-48 sm:w-64 sm:h-64 bg-white/40 backdrop-blur-xl border border-white/60 rounded-3xl shadow-2xl flex items-center justify-center animate-[spin_20s_linear_infinite] [transform-style:preserve-3d]">
               <div class="w-32 h-32 sm:w-48 sm:h-48 bg-gradient-to-br from-sky-400 to-blue-600 rounded-2xl shadow-inner [transform:translateZ(50px)]"></div>
             </div>
@@ -74,15 +64,15 @@
         <div
           v-for="(value, idx) in companyState.values"
           :key="idx"
-          class="space-y-4 group"
+          class="space-y-3 group"
         >
           <div class="flex items-center gap-3">
-            <component :is="getIcon(value.icon)" class="w-8 h-8 text-sky-500 group-hover:scale-110 transition-transform" />
+            <component :is="getIcon(value.icon)" class="w-7 h-7 text-sky-500 group-hover:scale-110 transition-transform shrink-0" />
             <h3 class="text-xl font-bold text-navy-900 group-hover:text-sky-600 transition-colors">
               {{ t(value.title) }}
             </h3>
           </div>
-          <p class="text-sm text-slate-600 leading-relaxed">
+          <p class="text-sm text-slate-600 leading-relaxed font-medium pl-10 rtl:pr-10 rtl:pl-0">
             {{ t(value.description) }}
           </p>
         </div>
@@ -90,7 +80,7 @@
     </section>
 
     <!-- Services Preview Section -->
-    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 bg-white py-16 rounded-[3rem] shadow-sm border border-slate-100">
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12">
         <div class="space-y-2">
           <h2 class="text-3xl sm:text-4xl font-extrabold text-navy-900">
@@ -103,7 +93,7 @@
 
         <router-link
           to="/services"
-          class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-sky-600 font-bold hover:bg-sky-50 hover:border-sky-200 transition-all text-sm shrink-0"
+          class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white border border-slate-200 text-sky-600 font-bold hover:bg-sky-50 hover:border-sky-200 shadow-sm hover:shadow transition-all text-sm shrink-0"
         >
           <span>{{ t(siteCopyState.buttons.viewAllServices) }}</span>
           <ArrowRight v-if="!isRtl" class="w-4 h-4" />
@@ -112,10 +102,11 @@
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div
+        <router-link
           v-for="service in servicesState.slice(0, 3)"
           :key="service.id"
-          class="bg-slate-50 p-6 rounded-2xl border border-slate-200 hover:border-sky-300 hover:shadow-lg hover:-translate-y-1 transition-all flex flex-col justify-between space-y-6"
+          :to="`/services/${service.id}`"
+          class="standard-card p-6 flex flex-col justify-between space-y-6 group"
         >
           <div class="space-y-4">
             <div class="flex items-center gap-3">
@@ -127,7 +118,7 @@
               </span>
             </div>
 
-            <h3 class="text-xl font-bold text-navy-900">
+            <h3 class="text-xl font-bold text-navy-900 group-hover:text-sky-600 transition-colors">
               {{ t(service.title) }}
             </h3>
             <p class="text-sm text-slate-600 line-clamp-3 leading-relaxed">
@@ -135,19 +126,16 @@
             </p>
           </div>
 
-          <router-link
-            :to="`/services/${service.id}`"
-            class="inline-flex items-center gap-2 text-sm font-bold text-sky-600 hover:text-sky-700 transition-colors pt-4 border-t border-slate-200"
-          >
+          <div class="inline-flex items-center gap-2 text-sm font-bold text-sky-600 group-hover:text-sky-700 transition-colors pt-4 border-t border-slate-100">
             <span>{{ t(siteCopyState.buttons.details) }}</span>
             <ArrowRight v-if="!isRtl" class="w-4 h-4" />
             <ArrowLeft v-else class="w-4 h-4" />
-          </router-link>
-        </div>
+          </div>
+        </router-link>
       </div>
     </section>
 
-    <!-- Projects Preview Section -->
+    <!-- Projects Preview Section (Up to 6) -->
     <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12">
         <div class="space-y-2">
@@ -161,7 +149,7 @@
 
         <router-link
           to="/projects"
-          class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white border border-slate-200 text-sky-600 font-bold hover:bg-sky-50 hover:border-sky-200 transition-all text-sm shrink-0 shadow-sm"
+          class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white border border-slate-200 text-sky-600 font-bold hover:bg-sky-50 hover:border-sky-200 shadow-sm hover:shadow transition-all text-sm shrink-0"
         >
           <span>{{ t(siteCopyState.buttons.viewAllProjects) }}</span>
           <ArrowRight v-if="!isRtl" class="w-4 h-4" />
@@ -169,13 +157,14 @@
         </router-link>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <router-link
           v-for="project in projectsState.slice(0, 6)"
           :key="project.id"
-          class="group"
+          :to="`/projects/${project.id}`"
+          class="standard-card flex flex-col group"
         >
-          <div class="relative h-56 rounded-2xl bg-slate-200 overflow-hidden mb-4 shadow-sm border border-slate-200">
+          <div class="relative h-56 bg-slate-200 overflow-hidden border-b border-slate-200">
             <img
               :src="project.coverImage"
               :alt="t(project.title)"
@@ -184,20 +173,24 @@
             />
           </div>
 
-          <div class="space-y-2 px-1">
+          <div class="p-6 flex-1 flex flex-col space-y-3">
             <div class="text-xs font-bold text-sky-600 uppercase tracking-wider">
               {{ t(project.type) }}
             </div>
             <h3 class="text-xl font-bold text-navy-900 group-hover:text-sky-600 transition-colors">
-              <router-link :to="`/projects/${project.id}`">
-                {{ t(project.title) }}
-              </router-link>
+              {{ t(project.title) }}
             </h3>
-            <p class="text-sm text-slate-600 line-clamp-2 leading-relaxed">
+            <p class="text-sm text-slate-600 line-clamp-2 leading-relaxed flex-1">
               {{ t(project.shortDescription) }}
             </p>
+
+            <div class="inline-flex items-center gap-2 text-sm font-bold text-sky-600 group-hover:text-sky-700 transition-colors pt-3 mt-auto border-t border-slate-100">
+              <span>{{ t(siteCopyState.buttons.details) }}</span>
+              <ArrowRight v-if="!isRtl" class="w-4 h-4" />
+              <ArrowLeft v-else class="w-4 h-4" />
+            </div>
           </div>
-        </div>
+        </router-link>
       </div>
     </section>
 
@@ -216,7 +209,7 @@
         <div class="pt-4 relative z-10">
           <router-link
             to="/contact"
-            class="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-base font-bold bg-sky-500 text-white shadow-lg shadow-sky-500/30 hover:-translate-y-1 transition-all"
+            class="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-base font-bold bg-sky-500 text-white shadow-lg shadow-sky-500/30 hover:-translate-y-1 active:translate-y-0 transition-transform"
           >
             <span>{{ t(siteCopyState.buttons.contactUs) }}</span>
             <ArrowRight v-if="!isRtl" class="w-5 h-5" />

@@ -106,6 +106,7 @@ export interface SiteCopy {
     sendMessage: LocalizedString;
     backToHome: LocalizedString;
     filterAll: LocalizedString;
+    filterLabel: LocalizedString;
   };
   home: {
     heroBadge: LocalizedString;
@@ -125,6 +126,7 @@ export interface SiteCopy {
     subtitle: LocalizedString;
     storyTitle: LocalizedString;
     statsTitle: LocalizedString;
+    establishedLabel: LocalizedString;
   };
   servicesPage: {
     title: LocalizedString;
@@ -168,6 +170,7 @@ export interface SiteCopy {
     addressLabel: LocalizedString;
     workingHoursLabel: LocalizedString;
     emailLabel: LocalizedString;
+    whatsappLabel: LocalizedString;
   };
   footer: {
     rights: LocalizedString;

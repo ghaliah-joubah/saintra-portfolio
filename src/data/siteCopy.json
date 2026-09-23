@@ -2,8 +2,8 @@
   "nav": {
     "home": { "ar": "الرئيسية", "en": "Home" },
     "about": { "ar": "من نحن", "en": "About Us" },
-    "services": { "ar": "خدماتنا", "en": "Services" },
-    "projects": { "ar": "أعمالنا", "en": "Projects" },
+    "services": { "ar": "الخدمات", "en": "Services" },
+    "projects": { "ar": "المشاريع", "en": "Projects" },
     "contact": { "ar": "تواصل معنا", "en": "Contact" }
   },
   "buttons": {
@@ -14,9 +14,10 @@
     "readMore": { "ar": "اقرأ المزيد", "en": "Read More" },
     "details": { "ar": "التفاصيل", "en": "View Details" },
     "visitProject": { "ar": "زيارة المشروع المباشر", "en": "Visit Live Site" },
-    "sendMessage": { "ar": "إرسال", "en": "Send" },
+    "sendMessage": { "ar": "إرسال", "en": "Send Message" },
     "backToHome": { "ar": "العودة للرئيسية", "en": "Back to Home" },
-    "filterAll": { "ar": "الكل", "en": "All" }
+    "filterAll": { "ar": "الكل", "en": "All" },
+    "filterLabel": { "ar": "تصفية المشاريع", "en": "Filter Projects" }
   },
   "home": {
     "heroBadge": { "ar": "⚡ شريكك البرمجي الموثوق", "en": "⚡ Your Trusted Software Partner" },
@@ -35,7 +36,8 @@
     "title": { "ar": "عن سينترا لتقنية المعلومات", "en": "About SAINTRA Technology" },
     "subtitle": { "ar": "شريكك الاستراتيجي في الهندسة البرمجية والتحول الرقمي", "en": "Your Strategic Software Engineering & Digital Partner" },
     "storyTitle": { "ar": "قصتنا ونشأتنا", "en": "Our Journey" },
-    "statsTitle": { "ar": "أرقام وإنجازات", "en": "Metrics & Impact" }
+    "statsTitle": { "ar": "أرقام وإنجازات", "en": "Metrics & Impact" },
+    "establishedLabel": { "ar": "سنة التأسيس", "en": "Established" }
   },
   "servicesPage": {
     "title": { "ar": "خدماتنا وحلولنا البرمجية", "en": "Services & Engineering Solutions" },
@@ -57,9 +59,9 @@
   "projectDetailsPage": {
     "galleryTitle": { "ar": "معرض صور المشروع", "en": "Project Gallery" },
     "infoTitle": { "ar": "معلومات المشروع", "en": "Project Information" },
-    "techTitle": { "ar": "التقنيات وأطر العمل", "en": "Technologies & Frameworks" },
-    "relatedServicesTitle": { "ar": "الخدمات ذات الصلة", "en": "Related Services" },
-    "yearLabel": { "ar": "سنة التنفيذ", "en": "Year" },
+    "techTitle": { "ar": "التقنيات وأطر العمل", "en": "Technologies" },
+    "relatedServicesTitle": { "ar": "الخدمات المرتبطة", "en": "Related Services" },
+    "yearLabel": { "ar": "سنة التنفيذ", "en": "Implementation Year" },
     "completionLabel": { "ar": "تاريخ الإنجاز", "en": "Completion Date" },
     "notFound": { "ar": "المشروع المطلوب غير موجود.", "en": "The requested project was not found." },
     "detailsScopeTitle": { "ar": "تفاصيل ونطاق العمل", "en": "Details & Scope" }
@@ -67,18 +69,19 @@
   "contactPage": {
     "title": { "ar": "تواصل معنا", "en": "Contact Us" },
     "subtitle": { "ar": "يسعدنا مناقشة فكرة مشروعك والرد على كافة استفساراتك", "en": "We would love to discuss your project ideas and engineering needs" },
-    "formTitle": { "ar": "نموذج التواصل السريع", "en": "Inquiry Form" },
+    "formTitle": { "ar": "نموذج التواصل المباشر", "en": "Inquiry Form" },
     "placeholders": {
       "name": { "ar": "أدخل اسمك الكامل", "en": "Enter your full name" },
       "email": { "ar": "أدخل بريدك الإلكتروني", "en": "Enter your email address" },
-      "phone": { "ar": "رقم الهاتف (اختياري)", "en": "Phone number (optional)" },
-      "service": { "ar": "اختر الخدمة", "en": "Select a service" },
-      "message": { "ar": "اكتب تفاصيل مشروعك هنا...", "en": "Describe your project or inquiry..." }
+      "phone": { "ar": "أدخل رقم الهاتف", "en": "Enter your phone number" },
+      "service": { "ar": "اختر الخدمة المطلوبة...", "en": "Select a service..." },
+      "message": { "ar": "اكتب تفاصيل مشروعك أو استفسارك هنا...", "en": "Describe your project or inquiry here..." }
     },
     "directContactTitle": { "ar": "بيانات التواصل المباشر", "en": "Direct Communication Channels" },
-    "addressLabel": { "ar": "المقر", "en": "Location" },
+    "addressLabel": { "ar": "المقر الرئيسي", "en": "Headquarters" },
     "workingHoursLabel": { "ar": "ساعات العمل الرسمية", "en": "Working Hours" },
-    "emailLabel": { "ar": "البريد الإلكتروني", "en": "Email Address" }
+    "emailLabel": { "ar": "البريد الإلكتروني", "en": "Email Address" },
+    "whatsappLabel": { "ar": "تواصل عبر الواتساب", "en": "WhatsApp" }
   },
   "footer": {
     "rights": { "ar": "جميع الحقوق محفوظة © سينترا لتقنية المعلومات", "en": "All Rights Reserved © SAINTRA Technology" },

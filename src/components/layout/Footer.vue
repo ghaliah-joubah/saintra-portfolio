@@ -18,8 +18,45 @@
           <p class="text-sm leading-relaxed text-slate-300 max-w-sm">
             {{ t(companyState.aboutStory) }}
           </p>
+        </div>
 
-          <div class="flex items-center gap-3 pt-2">
+        <!-- Quick Links -->
+        <div class="space-y-4">
+          <h3 class="text-white font-semibold text-base">{{ t(siteCopyState.footer.quickLinks) }}</h3>
+          <ul class="space-y-2.5 text-sm">
+            <li v-for="link in navLinks" :key="link.path">
+              <router-link :to="link.path" class="hover:text-sky-400 transition-colors">
+                {{ link.label }}
+              </router-link>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Contact Info & Social -->
+        <div class="space-y-4">
+          <h3 class="text-white font-semibold text-base">{{ t(siteCopyState.footer.contactInfo) }}</h3>
+
+          <div class="space-y-3 text-sm text-slate-300">
+            <div class="flex items-start gap-2.5">
+              <MapPin class="w-4 h-4 text-sky-400 shrink-0 mt-1" />
+              <span>{{ t(companyState.contact.address) }}</span>
+            </div>
+            <div v-if="companyState.contact.email" class="flex items-center gap-2.5">
+              <Mail class="w-4 h-4 text-sky-400 shrink-0" />
+              <a :href="`mailto:${companyState.contact.email}`" class="hover:text-sky-400 transition-colors">
+                {{ companyState.contact.email }}
+              </a>
+            </div>
+            <div v-if="companyState.contact.whatsapp" class="flex items-center gap-2.5">
+              <MessageCircle class="w-4 h-4 text-emerald-400 shrink-0" />
+              <a :href="`https://wa.me/${companyState.contact.whatsapp.replace(/[^0-9]/g, '')}`" target="_blank" rel="noopener noreferrer" class="hover:text-emerald-400 transition-colors dir-ltr">
+                {{ companyState.contact.whatsapp }}
+              </a>
+            </div>
+          </div>
+
+          <!-- Social Links Moved Here -->
+          <div class="flex items-center gap-3 pt-4">
             <a
               v-if="companyState.socials.linkedin"
               :href="companyState.socials.linkedin"
@@ -61,41 +98,7 @@
               <Facebook class="w-4 h-4" />
             </a>
           </div>
-        </div>
 
-        <!-- Quick Links -->
-        <div class="space-y-4">
-          <h3 class="text-white font-semibold text-base">{{ t(siteCopyState.footer.quickLinks) }}</h3>
-          <ul class="space-y-2.5 text-sm">
-            <li v-for="link in navLinks" :key="link.path">
-              <router-link :to="link.path" class="hover:text-sky-400 transition-colors">
-                {{ link.label }}
-              </router-link>
-            </li>
-          </ul>
-        </div>
-
-        <!-- Contact Info -->
-        <div class="space-y-4">
-          <h3 class="text-white font-semibold text-base">{{ t(siteCopyState.footer.contactInfo) }}</h3>
-          <div class="space-y-3 text-sm text-slate-300">
-            <div class="flex items-start gap-2.5">
-              <MapPin class="w-4 h-4 text-sky-400 shrink-0 mt-1" />
-              <span>{{ t(companyState.contact.address) }}</span>
-            </div>
-            <div v-if="companyState.contact.email" class="flex items-center gap-2.5">
-              <Mail class="w-4 h-4 text-sky-400 shrink-0" />
-              <a :href="`mailto:${companyState.contact.email}`" class="hover:text-sky-400 transition-colors">
-                {{ companyState.contact.email }}
-              </a>
-            </div>
-            <div v-if="companyState.contact.whatsapp" class="flex items-center gap-2.5">
-              <MessageCircle class="w-4 h-4 text-sky-400 shrink-0" />
-              <a :href="`https://wa.me/${companyState.contact.whatsapp.replace(/[^0-9]/g, '')}`" target="_blank" rel="noopener noreferrer" class="hover:text-sky-400 transition-colors dir-ltr">
-                {{ companyState.contact.whatsapp }}
-              </a>
-            </div>
-          </div>
         </div>
 
       </div>
@@ -114,28 +117,32 @@
             <Globe class="w-4 h-4" />
             <span>{{ currentLang === 'ar' ? 'EN' : 'AR' }}</span>
           </button>
-
-          <!-- Back to Top (Arrow only) -->
-          <button
-            @click="scrollToTop"
-            class="p-2 rounded-full bg-navy-800 hover:bg-navy-700 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-sky-500"
-            aria-label="Back to top"
-          >
-            <ArrowUp class="w-4 h-4" />
-          </button>
         </div>
       </div>
     </div>
   </footer>
+
+  <!-- Global Floating Back To Top Button -->
+  <button
+    @click="scrollToTop"
+    class="fixed bottom-6 z-40 p-3 rounded-full bg-navy-900 text-white shadow-xl hover:bg-sky-600 hover:-translate-y-1 transition-all focus:outline-none focus:ring-2 focus:ring-sky-500"
+    :class="[
+      isRtl ? 'left-6' : 'right-6',
+      showBackToTop ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10 pointer-events-none'
+    ]"
+    aria-label="Back to top"
+  >
+    <ArrowUp class="w-5 h-5" />
+  </button>
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed, ref, onMounted, onUnmounted } from 'vue';
 import { Linkedin, Github, Twitter, Facebook, MapPin, Mail, MessageCircle, Globe, ArrowUp } from 'lucide-vue-next';
 import { useI18n } from '@/composables/useI18n';
 import { siteCopyState, companyState } from '@/services/dataService';
 
-const { currentLang, toggleLanguage, t } = useI18n();
+const { currentLang, toggleLanguage, t, isRtl } = useI18n();
 
 const navLinks = computed(() => [
   { path: '/', label: t(siteCopyState.nav.home) },
@@ -145,7 +152,21 @@ const navLinks = computed(() => [
   { path: '/contact', label: t(siteCopyState.nav.contact) }
 ]);
 
+const showBackToTop = ref(false);
+
+function handleScroll() {
+  showBackToTop.value = window.scrollY > 300;
+}
+
 function scrollToTop() {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
+
+onMounted(() => {
+  window.addEventListener('scroll', handleScroll);
+});
+
+onUnmounted(() => {
+  window.removeEventListener('scroll', handleScroll);
+});
 </script>

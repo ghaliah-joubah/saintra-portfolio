@@ -1,13 +1,8 @@
 <template>
   <div class="space-y-20 py-12 pb-20">
 
-    <!-- Header Banner & Location merged -->
+    <!-- Header Banner -->
     <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4 pt-10">
-      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-sky-100 border border-sky-200 text-sky-700 text-xs font-bold shadow-sm">
-        <MapPin class="w-4 h-4 text-sky-500" />
-        <span>{{ t(companyState.headquarters) }}</span>
-      </div>
-
       <h1 class="text-4xl sm:text-6xl font-extrabold text-navy-900 tracking-tight">
         {{ t(siteCopyState.about.title) }}
       </h1>
@@ -33,8 +28,18 @@
 
           <div class="grid grid-cols-2 gap-4 pt-6 border-t border-slate-100">
             <div>
-              <div class="text-xs text-slate-500 font-bold uppercase tracking-wider">سنة التأسيس / Est.</div>
+              <div class="text-xs text-slate-500 font-bold uppercase tracking-wider">{{ t(siteCopyState.about.establishedLabel) }}</div>
               <div class="text-2xl font-extrabold text-navy-900 mt-1">{{ companyState.establishedYear }}</div>
+            </div>
+            <!-- Re-integrated HQ Location -->
+            <div>
+              <div class="text-xs text-slate-500 font-bold uppercase tracking-wider">
+                {{ t(siteCopyState.contactPage.addressLabel) }}
+              </div>
+              <div class="text-2xl font-extrabold text-navy-900 mt-1 flex items-center gap-2">
+                <MapPin class="w-5 h-5 text-sky-500" />
+                <span>{{ t(companyState.headquarters) }}</span>
+              </div>
             </div>
           </div>
         </div>
@@ -101,15 +106,15 @@
         <div class="absolute w-[400px] h-[400px] bg-sky-500/20 rounded-full blur-[80px] -bottom-20 -left-20"></div>
 
         <h2 class="text-3xl font-extrabold text-white relative z-10">
-          دعنا نساعدك في بناء خطتك البرمجية التالية
+          {{ t(siteCopyState.home.ctaTitle) }}
         </h2>
         <p class="text-sky-100 max-w-xl mx-auto text-base relative z-10">
-          تواصل معنا اليوم للحديث عن تفاصيل مشروعك واستشارة مهندسينا.
+          {{ t(siteCopyState.home.ctaSubtitle) }}
         </p>
         <div class="pt-4 relative z-10">
           <router-link
             to="/contact"
-            class="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-bold bg-sky-500 text-white shadow-lg shadow-sky-500/30 hover:-translate-y-1 transition-all"
+            class="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-bold bg-sky-500 text-white shadow-lg shadow-sky-500/30 hover:-translate-y-1 active:translate-y-0 transition-transform"
           >
             <span>{{ t(siteCopyState.buttons.contactUs) }}</span>
             <ArrowRight v-if="!isRtl" class="w-5 h-5" />

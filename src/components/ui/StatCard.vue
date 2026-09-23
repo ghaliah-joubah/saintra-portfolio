@@ -27,6 +27,7 @@ const cardRef = ref<HTMLElement | null>(null);
 const animatedValue = ref(0);
 let observer: IntersectionObserver | null = null;
 let animationFrameId: number | null = null;
+let hasAnimated = false; // Prevent restarting
 
 function startCounter() {
   const target = props.stat.value;
@@ -37,7 +38,6 @@ function startCounter() {
     const elapsed = currentTime - startTime;
     const progress = Math.min(elapsed / duration, 1);
 
-    // Ease Out Quad
     const easeProgress = 1 - (1 - progress) * (1 - progress);
     animatedValue.value = Math.floor(easeProgress * target);
 
@@ -52,15 +52,16 @@ function startCounter() {
 }
 
 onMounted(() => {
-  // Respect prefers-reduced-motion
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     animatedValue.value = props.stat.value;
+    hasAnimated = true;
     return;
   }
 
   observer = new IntersectionObserver(
     (entries) => {
-      if (entries[0].isIntersecting) {
+      if (entries[0].isIntersecting && !hasAnimated) {
+        hasAnimated = true;
         startCounter();
         if (observer && cardRef.value) {
           observer.unobserve(cardRef.value);

@@ -28,23 +28,12 @@
   background: #94a3b8;
 }
 
-/* Light Glassmorphism Effects */
-.glass-card {
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
+/* Project/Service Card Standard Elevation & Boundaries */
+.standard-card {
+  @apply bg-white border border-slate-200 rounded-2xl shadow-sm transition-all overflow-hidden relative block;
 }
-
-.glass-card-hover {
-  transition: var(--transition-smooth);
-}
-.glass-card-hover:hover {
-  background: rgba(255, 255, 255, 0.95);
-  border-color: rgba(56, 189, 248, 0.2);
-  transform: translateY(-4px);
-  box-shadow: 0 12px 30px -10px rgba(14, 165, 233, 0.15);
+.standard-card:hover {
+  @apply shadow-lg border-sky-300 -translate-y-1;
 }
 
 .gradient-text {
