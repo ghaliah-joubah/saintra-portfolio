@@ -106,9 +106,6 @@ export interface SiteCopy {
     sendMessage: LocalizedString;
     backToHome: LocalizedString;
     filterAll: LocalizedString;
-    previous: LocalizedString;
-    next: LocalizedString;
-    page: LocalizedString;
   };
   home: {
     heroBadge: LocalizedString;
@@ -127,12 +124,7 @@ export interface SiteCopy {
     title: LocalizedString;
     subtitle: LocalizedString;
     storyTitle: LocalizedString;
-    missionTitle: LocalizedString;
-    visionTitle: LocalizedString;
-    valuesTitle: LocalizedString;
     statsTitle: LocalizedString;
-    techTitle: LocalizedString;
-    locationsTitle: LocalizedString;
   };
   servicesPage: {
     title: LocalizedString;
@@ -158,25 +150,24 @@ export interface SiteCopy {
     relatedServicesTitle: LocalizedString;
     yearLabel: LocalizedString;
     completionLabel: LocalizedString;
-    teamLabel: LocalizedString;
-    platformLabel: LocalizedString;
-    typeLabel: LocalizedString;
     notFound: LocalizedString;
+    detailsScopeTitle: LocalizedString;
   };
   contactPage: {
     title: LocalizedString;
     subtitle: LocalizedString;
     formTitle: LocalizedString;
-    demoNotice: LocalizedString;
-    nameLabel: LocalizedString;
-    emailLabel: LocalizedString;
-    phoneLabel: LocalizedString;
-    serviceLabel: LocalizedString;
-    messageLabel: LocalizedString;
-    validationMsg: LocalizedString;
+    placeholders: {
+      name: LocalizedString;
+      email: LocalizedString;
+      phone: LocalizedString;
+      service: LocalizedString;
+      message: LocalizedString;
+    };
     directContactTitle: LocalizedString;
     addressLabel: LocalizedString;
     workingHoursLabel: LocalizedString;
+    emailLabel: LocalizedString;
   };
   footer: {
     rights: LocalizedString;

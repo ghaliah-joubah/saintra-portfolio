@@ -1,12 +1,12 @@
 <template>
   <div
     ref="cardRef"
-    class="glass-card glass-card-hover p-6 rounded-2xl border border-slate-800 text-center space-y-2 relative overflow-hidden"
+    class="bg-white p-8 rounded-3xl border border-slate-200 text-center space-y-3 shadow-sm hover:shadow-md hover:border-sky-200 hover:-translate-y-1 transition-all relative overflow-hidden"
   >
-    <div class="text-4xl sm:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-blue-400 to-indigo-400">
-      {{ animatedValue }}{{ stat.suffix }}
+    <div class="text-4xl sm:text-5xl font-extrabold text-navy-900 tracking-tight">
+      {{ animatedValue }}<span class="text-sky-500">{{ stat.suffix }}</span>
     </div>
-    <div class="text-sm font-semibold text-slate-300">
+    <div class="text-sm font-bold text-slate-500 uppercase tracking-wide">
       {{ t(stat.label) }}
     </div>
   </div>
@@ -14,7 +14,7 @@
 
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue';
-import type { StatItem } from '@/data/company';
+import type { StatItem } from '@/types/data';
 import { useI18n } from '@/composables/useI18n';
 
 const props = defineProps<{

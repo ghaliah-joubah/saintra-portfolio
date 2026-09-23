@@ -17,12 +17,11 @@
   },
   "establishedYear": "2021",
   "headquarters": {
-    "ar": "الرياض، المملكة العربية السعودية",
-    "en": "Riyadh, Kingdom of Saudi Arabia"
+    "ar": "سوريا",
+    "en": "Syria"
   },
   "branches": [
-    { "ar": "الرياض، المملكة العربية السعودية", "en": "Riyadh, KSA" },
-    { "ar": "جدة، المملكة العربية السعودية", "en": "Jeddah, KSA" }
+    { "ar": "سوريا", "en": "Syria" }
   ],
   "mission": {
     "ar": "تمكين قطاعات الأعمال والمؤسسات من تحقيق أقصى طاقاتها الرقمية من خلال تقديم برمجيات عالية الكفاءة والقابلية للتوسع.",
@@ -96,11 +95,11 @@
   ],
   "contact": {
     "email": "info@saintra.sa",
-    "phone": "+966500000000",
-    "whatsapp": "+966500000000",
+    "phone": "+963900000000",
+    "whatsapp": "+963900000000",
     "address": {
-      "ar": "طريق الملك فهد، حي الصحافة، الرياض، المملكة العربية السعودية",
-      "en": "King Fahd Road, Al Sahafah Dist., Riyadh, Saudi Arabia"
+      "ar": "سوريا",
+      "en": "Syria"
     },
     "workingHours": {
       "ar": "الأحد - الخميس: 9:00 صباحاً - 5:00 مساءً",

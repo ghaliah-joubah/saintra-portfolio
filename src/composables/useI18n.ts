@@ -1,9 +1,9 @@
-import { ref, computed, watch, onMounted } from 'vue';
-import type { LocalizedString } from '@/data/company';
+import { ref, computed, onMounted } from 'vue';
+import type { LocalizedString } from '@/types/data';
 
 type Language = 'ar' | 'en';
 
-const currentLang = ref<Language>('ar');
+const currentLang = ref<Language>('en');
 
 export function useI18n() {
   const isRtl = computed(() => currentLang.value === 'ar');
@@ -26,13 +26,16 @@ export function useI18n() {
 
   function t(localized: LocalizedString | undefined | null, fallback = ''): string {
     if (!localized) return fallback;
-    return localized[currentLang.value] || localized.ar || localized.en || fallback;
+    return localized[currentLang.value] || fallback;
   }
 
   onMounted(() => {
     const saved = localStorage.getItem('saintra_lang') as Language | null;
     if (saved && (saved === 'ar' || saved === 'en')) {
       currentLang.value = saved;
+    } else {
+      currentLang.value = 'en';
+      localStorage.setItem('saintra_lang', 'en');
     }
     applyDocumentDir(currentLang.value);
   });

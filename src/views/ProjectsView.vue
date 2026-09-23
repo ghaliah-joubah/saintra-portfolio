@@ -1,84 +1,71 @@
 <template>
   <div class="space-y-12 py-12 pb-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-    <div class="text-center space-y-4 max-w-3xl mx-auto">
-      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-card border border-sky-500/30 text-sky-300 text-xs font-semibold">
-        <FolderGit2 class="w-4 h-4 text-sky-400" />
+    <div class="text-center space-y-4 max-w-3xl mx-auto pt-10">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-sky-100 border border-sky-200 text-sky-700 text-xs font-bold shadow-sm">
+        <FolderGit2 class="w-4 h-4 text-sky-500" />
         <span>{{ t(siteCopyState.nav.projects) }}</span>
       </div>
-      <h1 class="text-4xl sm:text-5xl font-extrabold text-white">
+      <h1 class="text-4xl sm:text-5xl font-extrabold text-navy-900 tracking-tight">
         {{ t(siteCopyState.projectsPage.title) }}
       </h1>
-      <p class="text-slate-300 text-base leading-relaxed">
+      <p class="text-slate-600 text-base leading-relaxed font-medium">
         {{ t(siteCopyState.projectsPage.subtitle) }}
       </p>
     </div>
 
-    <div class="flex flex-wrap items-center justify-center gap-2 pt-2">
-      <button
-        @click="selectFilter('ALL')"
-        class="px-5 py-2.5 rounded-xl text-sm font-semibold transition-all focus:outline-none focus:ring-2 focus:ring-sky-500"
-        :class="selectedType === 'ALL' ? 'bg-sky-500 text-white shadow-lg shadow-sky-500/25' : 'bg-slate-900 border border-slate-800 text-slate-300 hover:text-white hover:border-slate-700'"
-      >
-        {{ t(siteCopyState.buttons.filterAll) }}
-      </button>
-
-      <button
-        v-for="type in types"
-        :key="type.en"
-        @click="selectFilter(type.en)"
-        class="px-5 py-2.5 rounded-xl text-sm font-semibold transition-all focus:outline-none focus:ring-2 focus:ring-sky-500"
-        :class="selectedType === type.en ? 'bg-sky-500 text-white shadow-lg shadow-sky-500/25' : 'bg-slate-900 border border-slate-800 text-slate-300 hover:text-white hover:border-slate-700'"
-      >
-        {{ t(type) }}
-      </button>
+    <!-- Dropdown Filter -->
+    <div class="flex items-center justify-center pt-2">
+      <div class="relative w-full max-w-xs">
+        <select
+          v-model="selectedType"
+          @change="currentPage = 1"
+          class="w-full appearance-none px-5 py-3 rounded-xl bg-white border border-slate-200 text-navy-900 text-sm font-bold shadow-sm focus:outline-none focus:ring-2 focus:ring-sky-500 cursor-pointer"
+          aria-label="Filter projects by type"
+        >
+          <option value="ALL">{{ t(siteCopyState.buttons.filterAll) }}</option>
+          <option v-for="type in types" :key="type.en" :value="type.en">
+            {{ t(type) }}
+          </option>
+        </select>
+        <ChevronDown class="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400 pointer-events-none" />
+      </div>
     </div>
 
     <div v-if="paginatedProjects.length > 0" class="space-y-12">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pt-4">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pt-4">
         <div
           v-for="project in paginatedProjects"
           :key="project.id"
-          class="glass-card glass-card-hover rounded-2xl overflow-hidden border border-slate-800 flex flex-col justify-between space-y-4"
+          class="group flex flex-col"
         >
-          <div class="relative h-48 bg-slate-900 overflow-hidden group">
+          <div class="relative h-56 rounded-2xl bg-slate-200 overflow-hidden mb-4 shadow-sm border border-slate-200">
             <img
               :src="project.coverImage"
               :alt="t(project.title)"
               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               loading="lazy"
             />
-            <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent opacity-80"></div>
-            <span class="absolute top-3 right-3 px-3 py-1 rounded-full text-xs font-semibold bg-slate-950/80 border border-slate-700 text-sky-300 backdrop-blur-md">
-              {{ t(project.type) }}
-            </span>
           </div>
 
-          <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
-            <div class="space-y-2">
-              <h2 class="text-xl font-bold text-white hover:text-sky-400 transition-colors">
-                <router-link :to="`/projects/${project.id}`">
-                  {{ t(project.title) }}
-                </router-link>
-              </h2>
-              <p class="text-sm text-slate-300 line-clamp-2 leading-relaxed">
-                {{ t(project.shortDescription) }}
-              </p>
+          <div class="space-y-2 px-1 flex-1 flex flex-col">
+            <div class="text-xs font-bold text-sky-600 uppercase tracking-wider">
+              {{ t(project.type) }}
             </div>
 
-            <div class="flex flex-wrap gap-1.5 pt-2">
-              <span
-                v-for="tech in project.technologies.slice(0, 4)"
-                :key="tech"
-                class="px-2.5 py-0.5 rounded-md text-[11px] font-medium bg-slate-800/80 text-slate-300 border border-slate-700/60"
-              >
-                {{ tech }}
-              </span>
-            </div>
+            <h2 class="text-xl font-bold text-navy-900 group-hover:text-sky-600 transition-colors">
+              <router-link :to="`/projects/${project.id}`">
+                {{ t(project.title) }}
+              </router-link>
+            </h2>
+
+            <p class="text-sm text-slate-600 line-clamp-2 leading-relaxed flex-1">
+              {{ t(project.shortDescription) }}
+            </p>
 
             <router-link
               :to="`/projects/${project.id}`"
-              class="inline-flex items-center gap-2 text-sm font-bold text-sky-400 hover:text-sky-300 transition-colors pt-3 border-t border-slate-800"
+              class="inline-flex items-center gap-2 text-sm font-bold text-sky-600 hover:text-sky-700 transition-colors pt-3 mt-auto"
             >
               <span>{{ t(siteCopyState.buttons.details) }}</span>
               <ArrowRight v-if="!isRtl" class="w-4 h-4" />
@@ -88,41 +75,51 @@
         </div>
       </div>
 
-      <div v-if="totalPages > 1" class="flex items-center justify-center gap-4 pt-6 border-t border-slate-800">
+      <!-- Arrow + Number Pagination -->
+      <div v-if="totalPages > 1" class="flex items-center justify-center gap-6 pt-6 border-t border-slate-200">
         <button
           @click="currentPage--"
           :disabled="currentPage === 1"
-          class="flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-900 border border-slate-800 text-sm font-semibold text-slate-300 disabled:opacity-40 hover:text-white transition-colors"
+          class="p-2 rounded-full bg-white border border-slate-200 text-slate-500 disabled:opacity-40 hover:text-sky-600 hover:border-sky-200 hover:shadow-sm transition-all"
+          aria-label="Previous page"
         >
-          <ChevronLeft v-if="!isRtl" class="w-4 h-4" />
-          <ChevronRight v-else class="w-4 h-4" />
-          <span>{{ t(siteCopyState.buttons.previous) }}</span>
+          <ChevronLeft v-if="!isRtl" class="w-5 h-5" />
+          <ChevronRight v-else class="w-5 h-5" />
         </button>
 
-        <span class="text-sm font-semibold text-slate-400">
-          {{ t(siteCopyState.buttons.page) }} {{ currentPage }} / {{ totalPages }}
-        </span>
+        <div class="flex items-center gap-2">
+          <span
+            v-for="page in totalPages"
+            :key="page"
+            class="text-sm font-bold w-8 h-8 flex items-center justify-center rounded-full transition-colors"
+            :class="currentPage === page ? 'bg-sky-100 text-sky-700' : 'text-slate-500'"
+          >
+            {{ page }}
+          </span>
+        </div>
 
         <button
           @click="currentPage++"
           :disabled="currentPage === totalPages"
-          class="flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-900 border border-slate-800 text-sm font-semibold text-slate-300 disabled:opacity-40 hover:text-white transition-colors"
+          class="p-2 rounded-full bg-white border border-slate-200 text-slate-500 disabled:opacity-40 hover:text-sky-600 hover:border-sky-200 hover:shadow-sm transition-all"
+          aria-label="Next page"
         >
-          <span>{{ t(siteCopyState.buttons.next) }}</span>
-          <ChevronRight v-if="!isRtl" class="w-4 h-4" />
-          <ChevronLeft v-else class="w-4 h-4" />
+          <ChevronRight v-if="!isRtl" class="w-5 h-5" />
+          <ChevronLeft v-else class="w-5 h-5" />
         </button>
       </div>
     </div>
 
-    <div v-else class="glass-card p-12 rounded-3xl border border-slate-800 text-center space-y-4">
-      <AlertCircle class="w-12 h-12 text-slate-500 mx-auto" />
-      <p class="text-slate-300 font-semibold text-lg">
+    <div v-else class="bg-white p-12 rounded-[2rem] border border-slate-200 text-center space-y-4 shadow-sm">
+      <div class="w-16 h-16 rounded-full bg-slate-50 flex items-center justify-center mx-auto mb-2">
+        <AlertCircle class="w-8 h-8 text-slate-400" />
+      </div>
+      <p class="text-slate-600 font-bold text-lg">
         {{ t(siteCopyState.projectsPage.emptyState) }}
       </p>
       <button
         @click="selectFilter('ALL')"
-        class="px-5 py-2 rounded-xl bg-sky-500 text-white font-semibold text-sm"
+        class="inline-flex items-center px-6 py-2.5 rounded-xl bg-sky-500 text-white font-bold text-sm shadow-md hover:bg-sky-600 transition-colors"
       >
         {{ t(siteCopyState.buttons.filterAll) }}
       </button>
@@ -139,6 +136,7 @@ import {
   ArrowLeft,
   ChevronLeft,
   ChevronRight,
+  ChevronDown,
   AlertCircle
 } from 'lucide-vue-next';
 import { useI18n } from '@/composables/useI18n';
