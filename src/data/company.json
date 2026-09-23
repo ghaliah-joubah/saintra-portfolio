@@ -21,8 +21,14 @@
     "en": "Riyadh, Kingdom of Saudi Arabia"
   },
   "branches": [
-    { "ar": "الرياض، المملكة العربية السعودية", "en": "Riyadh, KSA" },
-    { "ar": "جدة، المملكة العربية السعودية", "en": "Jeddah, KSA" }
+    {
+      "ar": "الرياض، المملكة العربية السعودية",
+      "en": "Riyadh, KSA"
+    },
+    {
+      "ar": "جدة، المملكة العربية السعودية",
+      "en": "Jeddah, KSA"
+    }
   ],
   "mission": {
     "ar": "تمكين قطاعات الأعمال والمؤسسات من تحقيق أقصى طاقاتها الرقمية من خلال تقديم برمجيات عالية الكفاءة والقابلية للتوسع.",
@@ -35,26 +41,50 @@
   "values": [
     {
       "id": "val-1",
-      "title": { "ar": "الابتكار المستمر", "en": "Continuous Innovation" },
-      "description": { "ar": "نستثمر في أحدث التقنيات لتقديم حلول سابقة لعصرها.", "en": "Investing in cutting-edge technologies to deliver forward-looking software." },
+      "title": {
+        "ar": "الابتكار المستمر",
+        "en": "Continuous Innovation"
+      },
+      "description": {
+        "ar": "نستثمر في أحدث التقنيات لتقديم حلول سابقة لعصرها.",
+        "en": "Investing in cutting-edge technologies to deliver forward-looking software."
+      },
       "icon": "Zap"
     },
     {
       "id": "val-2",
-      "title": { "ar": "الجودة البرمجية", "en": "Engineering Excellence" },
-      "description": { "ar": "نلتزم بكتابة كود نظيف، آمن، وقابل للتوسع المستقبلي.", "en": "Committed to writing clean, secure, and maintainable codebase." },
+      "title": {
+        "ar": "الجودة البرمجية",
+        "en": "Engineering Excellence"
+      },
+      "description": {
+        "ar": "نلتزم بكتابة كود نظيف، آمن، وقابل للتوسع المستقبلي.",
+        "en": "Committed to writing clean, secure, and maintainable codebase."
+      },
       "icon": "Code"
     },
     {
       "id": "val-3",
-      "title": { "ar": "الشفافية والشراكة", "en": "Transparency & Partnership" },
-      "description": { "ar": "نعمل كشركاء نجاح حقيقيين مع عملائنا في كل مرحلة.", "en": "Operating as genuine growth partners with complete transparency." },
+      "title": {
+        "ar": "الشفافية والشراكة",
+        "en": "Transparency & Partnership"
+      },
+      "description": {
+        "ar": "نعمل كشركاء نجاح حقيقيين مع عملائنا في كل مرحلة.",
+        "en": "Operating as genuine growth partners with complete transparency."
+      },
       "icon": "Users"
     },
     {
       "id": "val-4",
-      "title": { "ar": "سرعة التنفيذ", "en": "Agile & Speed" },
-      "description": { "ar": "نعتمد منهجيات Agile لضمان تسليم المشاريع بدقة في وقتها.", "en": "Utilizing Agile workflows to ensure timely and precise delivery." },
+      "title": {
+        "ar": "سرعة التنفيذ",
+        "en": "Agile & Speed"
+      },
+      "description": {
+        "ar": "نعتمد منهجيات Agile لضمان تسليم المشاريع بدقة في وقتها.",
+        "en": "Utilizing Agile workflows to ensure timely and precise delivery."
+      },
       "icon": "Clock"
     }
   ],
@@ -63,36 +93,72 @@
       "id": "projects",
       "value": 45,
       "suffix": "+",
-      "label": { "ar": "مشروعاً ناجحاً", "en": "Successful Projects" }
+      "label": {
+        "ar": "مشروعاً ناجحاً",
+        "en": "Successful Projects"
+      }
     },
     {
       "id": "experience",
-      "value": 5,
+      "value": 6,
       "suffix": "+",
-      "label": { "ar": "سنوات خبرة", "en": "Years Experience" }
+      "label": {
+        "ar": "سنوات خبرة",
+        "en": "Years Experience"
+      }
     },
     {
       "id": "clients",
       "value": 35,
       "suffix": "+",
-      "label": { "ar": "عميل وشركة", "en": "Enterprise Clients" }
+      "label": {
+        "ar": "عميل وشركة",
+        "en": "Enterprise Clients"
+      }
     },
     {
       "id": "satisfaction",
       "value": 99,
       "suffix": "%",
-      "label": { "ar": "نسبة رضا العملاء", "en": "Satisfaction Rate" }
+      "label": {
+        "ar": "نسبة رضا العملاء",
+        "en": "Satisfaction Rate"
+      }
     }
   ],
   "technologies": [
-    { "name": "Vue.js / Nuxt", "category": "Frontend" },
-    { "name": "TypeScript", "category": "Language" },
-    { "name": "Node.js / Express", "category": "Backend" },
-    { "name": "Python / Django", "category": "Backend & AI" },
-    { "name": "Flutter / React Native", "category": "Mobile" },
-    { "name": "PostgreSQL / MongoDB", "category": "Database" },
-    { "name": "Docker / Kubernetes", "category": "DevOps" },
-    { "name": "AWS / Google Cloud", "category": "Cloud" }
+    {
+      "name": "Vue.js / Nuxt",
+      "category": "Frontend"
+    },
+    {
+      "name": "TypeScript",
+      "category": "Language"
+    },
+    {
+      "name": "Node.js / Express",
+      "category": "Backend"
+    },
+    {
+      "name": "Python / Django",
+      "category": "Backend & AI"
+    },
+    {
+      "name": "Flutter / React Native",
+      "category": "Mobile"
+    },
+    {
+      "name": "PostgreSQL / MongoDB",
+      "category": "Database"
+    },
+    {
+      "name": "Docker / Kubernetes",
+      "category": "DevOps"
+    },
+    {
+      "name": "AWS / Google Cloud",
+      "category": "Cloud"
+    }
   ],
   "contact": {
     "email": "info@saintra.sa",
