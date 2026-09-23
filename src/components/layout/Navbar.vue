@@ -1,8 +1,8 @@
 <template>
   <header
-    class="fixed top-0 inset-x-0 z-50 transition-all duration-300"
+    class="fixed top-0 inset-x-0 z-50 transition-[background-color,box-shadow,border-color,backdrop-filter] duration-500 ease-out"
     :class="[
-      isScrolled || !isHome ? 'bg-white shadow-md border-b border-slate-200' : 'bg-white/35 backdrop-blur-md border-b border-white/50'
+      isScrolled || !isHome || isMobileMenuOpen ? 'bg-white/95 backdrop-blur-md shadow-md border-b border-slate-200/80' : 'bg-transparent border-b border-transparent'
     ]"
   >
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">

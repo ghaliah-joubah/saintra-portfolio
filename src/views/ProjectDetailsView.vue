@@ -2,7 +2,7 @@
   <div v-if="project" class="pb-20">
 
     <!-- 1. Introduction Section -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-12 space-y-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-12 space-y-8">
 
       <div class="space-y-4 max-w-4xl">
         <router-link
@@ -104,32 +104,32 @@
       </div>
     </div>
 
-    <section v-if="displayImages.length" class="py-14" :aria-label="t(siteCopyState.projectDetailsPage.galleryTitle)">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-7">
+    <section v-if="galleryImages.length" class="py-14" :aria-label="t(siteCopyState.projectDetailsPage.galleryTitle)">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-7 flex items-center justify-between gap-4">
         <h2 class="text-2xl sm:text-3xl font-bold text-navy-900">{{ t(siteCopyState.projectDetailsPage.galleryTitle) }}</h2>
+        <div v-if="galleryImages.length > 1" class="flex items-center gap-2" dir="ltr">
+          <button type="button" :disabled="activeIndex === 0" :aria-label="t(siteCopyState.projectDetailsPage.previousImage)" class="gallery-arrow" @click="activateImage(activeIndex - 1)"><ArrowLeft class="w-5 h-5" /></button>
+          <button type="button" :disabled="activeIndex === galleryImages.length - 1" :aria-label="t(siteCopyState.projectDetailsPage.nextImage)" class="gallery-arrow" @click="activateImage(activeIndex + 1)"><ArrowRight class="w-5 h-5" /></button>
+        </div>
       </div>
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)] gap-3 sm:gap-4">
-        <figure class="min-w-0 overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-md">
-          <div class="relative h-72 sm:h-[440px] lg:h-[500px] overflow-hidden bg-slate-100">
-            <Transition name="gallery-swap" mode="out-in">
-              <img :key="displayImages[0]" :src="displayImages[0]" :alt="`${t(project.title)} — ${t(siteCopyState.projectDetailsPage.galleryImage)}`" class="absolute inset-0 h-full w-full object-cover" />
-            </Transition>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div ref="galleryViewport" class="gallery-viewport overflow-hidden" dir="ltr" @touchstart.passive="onTouchStart" @touchend.passive="onTouchEnd">
+          <div class="gallery-track flex gap-2 sm:gap-3" :style="{ transform: `translate3d(${-trackOffset}px, 0, 0)` }">
+            <button
+              v-for="(img, index) in galleryImages"
+              :key="img"
+              type="button"
+              :disabled="galleryImages.length === 1"
+              :aria-current="activeIndex === index ? 'true' : undefined"
+              :aria-label="`${t(siteCopyState.projectDetailsPage.selectImage)} ${index + 1}`"
+              class="gallery-slide relative flex-none h-72 sm:h-[440px] lg:h-[500px] overflow-hidden rounded-3xl border bg-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-500"
+              :class="activeIndex === index ? 'border-sky-300 shadow-lg cursor-default' : 'border-slate-200 hover:border-sky-300 cursor-pointer'"
+              :style="{ width: `${activeIndex === index ? expandedWidth : collapsedWidth}px` }"
+              @click="activateImage(index)"
+            >
+              <img :src="img" :alt="`${t(project.title)} — ${t(siteCopyState.projectDetailsPage.galleryImage)} ${index + 1}`" class="w-full h-full bg-slate-50" :class="activeIndex === index ? 'object-contain' : 'object-cover'" :loading="index === 0 ? 'eager' : 'lazy'" />
+            </button>
           </div>
-          <figcaption class="px-5 py-3 text-xs text-slate-500">{{ t(siteCopyState.projectDetailsPage.galleryCaption) }}</figcaption>
-        </figure>
-        <div v-if="displayImages.length > 1" class="grid grid-cols-4 gap-2 sm:gap-3 lg:h-[500px]" :aria-label="t(siteCopyState.projectDetailsPage.galleryTitle)">
-          <button
-            v-for="(img, index) in displayImages.slice(1)"
-            :key="index"
-            type="button"
-            class="group relative h-28 sm:h-40 lg:h-full min-w-0 overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 shadow-sm transition-[transform,border-color,box-shadow] duration-300 hover:z-10 hover:scale-[1.04] hover:border-sky-400 hover:shadow-xl focus-visible:z-10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-500"
-            :aria-label="`${t(siteCopyState.projectDetailsPage.selectImage)} ${index + 2}`"
-            @click="swapWithMain(index + 1)"
-          >
-            <Transition name="thumb-swap" mode="out-in">
-              <img :key="img" :src="img" alt="" class="absolute inset-0 h-full w-full object-cover" loading="lazy" />
-            </Transition>
-          </button>
         </div>
       </div>
     </section>
@@ -151,7 +151,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref, watch } from 'vue';
+import { computed, ref, watch, onMounted, onUnmounted } from 'vue';
 import { useRoute } from 'vue-router';
 import { ArrowRight, ArrowLeft, ExternalLink, AlertCircle } from 'lucide-vue-next';
 import { useI18n } from '@/composables/useI18n';
@@ -178,17 +178,54 @@ function displayTechnology(name: string) {
 const project = computed(() => {
   return projectsState.find((p) => p.id === route.params.id);
 });
-const displayImages = ref<string[]>([]);
-watch(() => project.value?.gallery, (images) => {
-  displayImages.value = images?.filter(Boolean).slice() ?? [];
-}, { immediate: true, deep: true });
-
-function swapWithMain(index: number) {
-  if (index <= 0 || index >= displayImages.value.length) return;
-  const next = [...displayImages.value];
-  [next[0], next[index]] = [next[index], next[0]];
-  displayImages.value = next;
+const galleryImages = computed(() => project.value?.gallery?.filter(Boolean) ?? []);
+const activeIndex = ref(0);
+const galleryViewport = ref<HTMLElement | null>(null);
+const viewportWidth = ref(0);
+const isCompact = ref(false);
+const gap = computed(() => isCompact.value ? 8 : 12);
+const expandedWidth = computed(() => galleryImages.value.length === 1 ? viewportWidth.value : viewportWidth.value * (isCompact.value ? .64 : .60));
+const collapsedWidth = computed(() => viewportWidth.value * (isCompact.value ? .20 : .18));
+const trackOffset = computed(() => {
+  if (galleryImages.value.length < 2) return 0;
+  const step = collapsedWidth.value + gap.value;
+  const desired = Math.max(0, activeIndex.value - 1) * step;
+  const total = expandedWidth.value + (galleryImages.value.length - 1) * step;
+  return Math.max(0, Math.min(desired, total - viewportWidth.value));
+});
+let resizeObserver: ResizeObserver | undefined;
+let touchStart: { x: number; y: number } | undefined;
+function measureGallery() {
+  viewportWidth.value = galleryViewport.value?.clientWidth ?? 0;
+  isCompact.value = window.innerWidth < 640;
 }
+function activateImage(index: number) {
+  if (index >= 0 && index < galleryImages.value.length) activeIndex.value = index;
+}
+function onTouchStart(event: TouchEvent) {
+  touchStart = { x: event.changedTouches[0].clientX, y: event.changedTouches[0].clientY };
+}
+function onTouchEnd(event: TouchEvent) {
+  if (!touchStart) return;
+  const dx = event.changedTouches[0].clientX - touchStart.x;
+  const dy = event.changedTouches[0].clientY - touchStart.y;
+  if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy)) activateImage(activeIndex.value + (dx < 0 ? 1 : -1));
+  touchStart = undefined;
+}
+watch(() => project.value?.id, () => { activeIndex.value = 0; });
+watch(galleryImages, (images) => { activeIndex.value = Math.min(activeIndex.value, Math.max(0, images.length - 1)); });
+onMounted(() => {
+  measureGallery();
+  if (galleryViewport.value) {
+    resizeObserver = new ResizeObserver(measureGallery);
+    resizeObserver.observe(galleryViewport.value);
+  }
+  window.addEventListener('resize', measureGallery);
+});
+onUnmounted(() => {
+  resizeObserver?.disconnect();
+  window.removeEventListener('resize', measureGallery);
+});
 
 const relatedServices = computed(() => {
   if (!project.value) return [];
@@ -197,17 +234,13 @@ const relatedServices = computed(() => {
 </script>
 
 <style scoped>
-.gallery-swap-enter-active, .gallery-swap-leave-active,
-.thumb-swap-enter-active, .thumb-swap-leave-active {
-  transition: opacity 240ms ease, transform 240ms ease;
-}
-.gallery-swap-enter-from, .gallery-swap-leave-to,
-.thumb-swap-enter-from, .thumb-swap-leave-to {
-  opacity: 0;
-  transform: scale(.97);
-}
+.gallery-track, .gallery-slide { transition: transform 560ms cubic-bezier(.22, 1, .36, 1), width 560ms cubic-bezier(.22, 1, .36, 1), border-color 300ms, box-shadow 300ms; }
+.gallery-viewport { touch-action: pan-y; }
+.gallery-arrow { width: 44px; height: 44px; display: grid; place-items: center; border: 1px solid #dbe4ef; border-radius: 14px; background: white; color: #0f679d; transition: background-color 200ms, box-shadow 200ms; }
+.gallery-arrow:not(:disabled):hover { background: #eff8ff; box-shadow: 0 3px 10px #16406719; }
+.gallery-arrow:disabled { opacity: .4; cursor: not-allowed; }
+.gallery-arrow:focus-visible { outline: 2px solid #0ea5e9; outline-offset: 2px; }
 @media (prefers-reduced-motion: reduce) {
-  .gallery-swap-enter-active, .gallery-swap-leave-active,
-  .thumb-swap-enter-active, .thumb-swap-leave-active { transition: none; }
+  .gallery-track, .gallery-slide { transition: none; }
 }
 </style>

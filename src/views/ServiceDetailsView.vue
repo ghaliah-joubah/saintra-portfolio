@@ -1,7 +1,7 @@
 <template>
-  <div v-if="service" class="space-y-16 py-12 pb-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <div v-if="service" class="space-y-16 pt-28 pb-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-    <div class="space-y-6">
+    <section class="rounded-[2.5rem] border border-sky-100 bg-gradient-to-br from-white via-sky-50 to-white p-6 sm:p-10 lg:p-12 shadow-sm space-y-8">
       <router-link
         to="/services"
         class="inline-flex items-center gap-2 text-sm text-sky-600 font-bold hover:underline"
@@ -11,8 +11,8 @@
         <span>{{ t(siteCopyState.nav.services) }}</span>
       </router-link>
 
-      <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
-        <div class="space-y-4 max-w-3xl">
+      <div class="grid grid-cols-1 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,.8fr)] gap-8 lg:gap-12 items-center">
+        <div class="space-y-6 min-w-0">
           <div class="inline-block px-4 py-1.5 rounded-full text-xs font-bold bg-sky-100 text-sky-700 uppercase tracking-wider shadow-sm">
             {{ t(service.category) }}
           </div>
@@ -20,40 +20,25 @@
             {{ t(service.title) }}
           </h1>
           <p class="text-lg leading-relaxed text-slate-600">{{ t(service.shortDescription) }}</p>
+          <div class="space-y-3 pt-2">
+            <h2 class="text-2xl font-bold text-navy-900">{{ t(siteCopyState.serviceDetailsPage.overviewTitle) }}</h2>
+            <p class="text-slate-600 text-base sm:text-lg leading-relaxed whitespace-pre-line font-medium">{{ t(service.fullDescription) }}</p>
+          </div>
+          <router-link
+            to="/contact"
+            class="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl font-bold bg-sky-500 text-white shadow-lg shadow-sky-500/20 hover:-translate-y-0.5 active:translate-y-0 transition-transform"
+          >
+            <span>{{ t(siteCopyState.buttons.contactUs) }}</span>
+            <ArrowRight v-if="!isRtl" class="w-5 h-5" />
+            <ArrowLeft v-else class="w-5 h-5" />
+          </router-link>
         </div>
 
-        <router-link
-          to="/contact"
-          class="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl font-bold bg-sky-500 text-white shadow-lg shadow-sky-500/20 hover:-translate-y-0.5 active:translate-y-0 transition-transform shrink-0"
-        >
-          <span>{{ t(siteCopyState.buttons.contactUs) }}</span>
-          <ArrowRight v-if="!isRtl" class="w-5 h-5" />
-          <ArrowLeft v-else class="w-5 h-5" />
-        </router-link>
-      </div>
-    </div>
-
-    <!-- Reordered Section 1: Overview + Image -->
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
-      <div class="lg:col-span-6 space-y-6">
-        <div class="bg-white p-8 sm:p-10 rounded-3xl border border-slate-200 shadow-sm space-y-4">
-          <h2 class="text-2xl font-bold text-navy-900">{{ t(siteCopyState.serviceDetailsPage.overviewTitle) }}</h2>
-          <p class="text-slate-600 text-lg leading-relaxed whitespace-pre-line font-medium">
-            {{ t(service.fullDescription) }}
-          </p>
+        <div v-if="service.image" class="rounded-3xl overflow-hidden border border-sky-100 bg-white shadow-md">
+          <img :src="service.image" :alt="t(service.title)" class="w-full h-64 sm:h-80 lg:h-[360px] object-contain" />
         </div>
       </div>
-
-      <div class="lg:col-span-6">
-        <div v-if="service.image" class="rounded-[2.5rem] overflow-hidden border border-slate-200 shadow-md">
-          <img
-            :src="service.image"
-            :alt="t(service.title)"
-            class="w-full h-80 sm:h-96 object-cover"
-          />
-        </div>
-      </div>
-    </div>
+    </section>
 
     <!-- Reordered Section 2: What's Included (2 Columns) -->
     <div class="bg-white p-10 sm:p-16 rounded-[3rem] border border-slate-200 shadow-sm space-y-8">

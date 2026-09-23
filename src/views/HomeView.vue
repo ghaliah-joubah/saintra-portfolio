@@ -2,8 +2,8 @@
   <div class="space-y-20 pb-20">
 
     <!-- Hero Section -->
-    <section class="relative min-h-[90vh] flex items-center overflow-hidden pt-20 pb-20 bg-slate-50 border-b border-slate-200">
-      <div class="absolute inset-0 bg-[linear-gradient(to_right,#cbd5e130_1px,transparent_1px),linear-gradient(to_bottom,#cbd5e130_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none"></div>
+    <section class="relative min-h-[90vh] flex items-center overflow-hidden pt-28 pb-20 bg-gradient-to-br from-white via-sky-50 to-[#dceffc]">
+      <div class="absolute inset-0 bg-[linear-gradient(to_right,#cbd5e122_1px,transparent_1px),linear-gradient(to_bottom,#cbd5e122_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_65%_65%_at_70%_50%,#000_45%,transparent_100%)] pointer-events-none"></div>
 
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 
@@ -36,14 +36,8 @@
           </div>
         </div>
 
-        <div class="order-1 lg:order-2 flex justify-center lg:justify-end relative h-80 sm:h-[450px]">
-          <div class="absolute w-[300px] h-[300px] sm:w-[450px] sm:h-[450px] bg-gradient-to-tr from-sky-400 to-indigo-500 rounded-full blur-[80px] opacity-20 animate-pulse"></div>
-
-          <div class="relative w-[280px] h-[280px] sm:w-[400px] sm:h-[400px] z-10 flex items-center justify-center">
-            <div class="w-48 h-48 sm:w-64 sm:h-64 bg-white/40 backdrop-blur-xl border border-white/60 rounded-3xl shadow-2xl flex items-center justify-center animate-[spin_20s_linear_infinite] [transform-style:preserve-3d]">
-              <div class="w-32 h-32 sm:w-48 sm:h-48 bg-gradient-to-br from-sky-400 to-blue-600 rounded-2xl shadow-inner [transform:translateZ(50px)]"></div>
-            </div>
-          </div>
+        <div class="order-1 lg:order-2 relative h-72 sm:h-[450px] lg:h-[520px] pointer-events-none" aria-hidden="true">
+          <HeroNetwork class="absolute -inset-10 sm:-inset-16 lg:-inset-24" />
         </div>
 
       </div>
@@ -192,7 +186,6 @@
 
 <script setup lang="ts">
 import {
-  Sparkles,
   ArrowRight,
   ArrowLeft,
   MessageSquare,
@@ -211,6 +204,7 @@ import {
 import { useI18n } from '@/composables/useI18n';
 import { siteCopyState, companyState, servicesState, projectsState } from '@/services/dataService';
 import ProjectCard from '@/components/ui/ProjectCard.vue';
+import HeroNetwork from '@/components/ui/HeroNetwork.vue';
 
 const { isRtl, t } = useI18n();
 

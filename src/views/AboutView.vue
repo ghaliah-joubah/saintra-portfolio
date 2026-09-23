@@ -1,8 +1,8 @@
 <template>
-  <div class="space-y-20 py-12 pb-20">
+  <div class="space-y-20 pt-28 pb-20">
 
     <!-- Header Banner -->
-    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4 pt-10">
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
       <h1 class="text-4xl sm:text-6xl font-extrabold text-navy-900 tracking-tight">
         {{ t(siteCopyState.about.title) }}
       </h1>
@@ -26,10 +26,14 @@
             {{ t(companyState.aboutStory) }}
           </p>
 
-          <div class="pt-6 border-t border-slate-100">
+          <div class="pt-6 border-t border-slate-100 grid grid-cols-2 gap-6">
             <div>
               <div class="text-xs text-slate-500 font-bold uppercase tracking-wider">{{ t(siteCopyState.about.establishedLabel) }}</div>
               <div class="text-2xl font-extrabold text-navy-900 mt-1">{{ companyState.establishedYear }}</div>
+            </div>
+            <div class="border-s border-slate-100 ps-6">
+              <div class="text-xs text-slate-500 font-bold uppercase tracking-wider">{{ t(siteCopyState.contactPage.addressLabel) }}</div>
+              <div class="text-2xl font-extrabold text-navy-900 mt-1">{{ t(companyState.headquarters) }}</div>
             </div>
           </div>
         </div>

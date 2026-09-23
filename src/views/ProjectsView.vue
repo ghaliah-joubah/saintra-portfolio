@@ -1,11 +1,7 @@
 <template>
-  <div class="space-y-12 py-12 pb-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <div class="space-y-12 pt-28 pb-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-    <div class="text-center space-y-4 max-w-3xl mx-auto pt-10">
-      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-sky-100 border border-sky-200 text-sky-700 text-xs font-bold shadow-sm">
-        <FolderGit2 class="w-4 h-4 text-sky-500" />
-        <span>{{ t(siteCopyState.nav.projects) }}</span>
-      </div>
+    <div class="text-center space-y-4 max-w-3xl mx-auto">
       <h1 class="text-4xl sm:text-5xl font-extrabold text-navy-900 tracking-tight">
         {{ t(siteCopyState.projectsPage.title) }}
       </h1>
@@ -94,7 +90,6 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue';
 import {
-  FolderGit2,
   ChevronLeft,
   ChevronRight,
   ChevronDown,
