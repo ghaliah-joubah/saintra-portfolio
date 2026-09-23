@@ -22,6 +22,7 @@ export function useI18n() {
     const dir = lang === 'ar' ? 'rtl' : 'ltr';
     document.documentElement.dir = dir;
     document.documentElement.lang = lang;
+    document.title = lang === 'ar' ? 'سينترا | سيقما تكنولوجي لتقنية المعلومات' : 'SAINTRA | Sigma Technology for IT';
   }
 
   function t(localized: LocalizedString | undefined | null, fallback = ''): string {

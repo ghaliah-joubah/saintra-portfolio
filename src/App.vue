@@ -9,6 +9,7 @@
       </router-view>
     </main>
     <Footer v-if="!isAdminRoute" />
+    <BackToTop v-if="!isAdminRoute" />
   </div>
 </template>
 
@@ -17,6 +18,7 @@ import { computed } from 'vue';
 import { useRoute } from 'vue-router';
 import Navbar from '@/components/layout/Navbar.vue';
 import Footer from '@/components/layout/Footer.vue';
+import BackToTop from '@/components/layout/BackToTop.vue';
 
 const route = useRoute();
 

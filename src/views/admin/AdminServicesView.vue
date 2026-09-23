@@ -102,7 +102,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <label class="text-[11px] text-slate-400">رابط صورة الخدمة</label>
-                <input v-model="service.image" class="w-full p-2 rounded-xl bg-slate-900 border border-slate-800 text-xs text-white" placeholder="/images/photo_..." />
+                <input v-model="service.image" class="w-full p-2 rounded-xl bg-slate-900 border border-slate-800 text-xs text-white" placeholder="/images/service-web-development.svg" />
               </div>
               <div>
                 <label class="text-[11px] text-slate-400">رابط فيديو YouTube (اختياري)</label>

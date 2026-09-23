@@ -123,7 +123,7 @@
             <div class="space-y-2 p-4 rounded-2xl bg-slate-900/60 border border-slate-800">
               <div class="flex items-center justify-between">
                 <span class="text-xs font-bold text-white">معرض صور المشروع / Gallery Images</span>
-                <button @click="project.gallery.push('/images/photo_2026-09-22_14-40-58.jpg')" class="text-[11px] text-sky-400 font-semibold">+ إضافة صورة</button>
+                <button @click="project.gallery.push('/images/project-fintech-pay-1.svg')" class="text-[11px] text-sky-400 font-semibold">+ إضافة صورة</button>
               </div>
 
               <div v-for="(img, imgIdx) in project.gallery" :key="imgIdx" class="flex items-center gap-2">
@@ -156,8 +156,8 @@ function openNewProject() {
     type: { ar: 'تكنولوجيا', en: 'Tech' },
     shortDescription: { ar: 'وصف مختصر للمشروع', en: 'Short description' },
     fullDescription: { ar: 'تفاصيل كاملة عن المشروع', en: 'Full description' },
-    coverImage: '/images/photo_2026-09-22_14-40-58.jpg',
-    gallery: ['/images/photo_2026-09-22_14-40-58.jpg'],
+    coverImage: '/images/project-fintech-pay-1.svg',
+    gallery: ['/images/project-fintech-pay-1.svg'],
     technologies: ['Vue 3', 'TypeScript'],
     platform: { ar: 'منصة ويب', en: 'Web Platform' },
     year: '2024',

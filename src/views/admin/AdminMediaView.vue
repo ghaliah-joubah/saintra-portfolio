@@ -48,11 +48,11 @@ import { ref } from 'vue';
 import AdminLayout from '@/components/admin/AdminLayout.vue';
 
 const availableImages = [
-  '/images/photo_2026-09-22_14-40-58.jpg',
-  '/images/photo_2026-09-22_14-41-07.jpg',
-  '/images/photo_2026-09-22_14-41-15.jpg',
-  '/images/photo_2026-09-22_14-41-21.jpg',
-  '/images/photo_2026-09-22_14-41-27.jpg'
+  '/images/software-team.webp',
+  '/images/project-fintech-pay-1.svg',
+  '/images/project-ehealth-care-1.svg',
+  '/images/project-logistics-hub-1.svg',
+  '/images/project-edu-learn-1.svg'
 ];
 
 const copiedPath = ref('');

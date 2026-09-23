@@ -16,63 +16,26 @@
 
     <!-- Dropdown Filter -->
     <div class="flex items-center justify-center pt-2">
-      <div class="relative w-full max-w-xs">
+      <div class="relative w-full max-w-xs space-y-2">
+        <label for="project-filter" class="block text-sm font-bold text-navy-900">{{ t(siteCopyState.buttons.filterLabel) }}</label>
         <select
+          id="project-filter"
           v-model="selectedType"
           @change="currentPage = 1"
           class="w-full appearance-none px-5 py-3 rounded-xl bg-white border border-slate-200 text-navy-900 text-sm font-bold shadow-sm focus:outline-none focus:ring-2 focus:ring-sky-500 cursor-pointer"
-          aria-label="Filter projects by type"
         >
           <option value="ALL">{{ t(siteCopyState.buttons.filterAll) }}</option>
           <option v-for="type in types" :key="type.en" :value="type.en">
             {{ t(type) }}
           </option>
         </select>
-        <ChevronDown class="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400 pointer-events-none" />
+        <ChevronDown class="absolute end-4 bottom-3.5 w-5 h-5 text-slate-400 pointer-events-none" />
       </div>
     </div>
 
     <div v-if="paginatedProjects.length > 0" class="space-y-12">
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pt-4">
-        <div
-          v-for="project in paginatedProjects"
-          :key="project.id"
-          class="group flex flex-col"
-        >
-          <div class="relative h-56 rounded-2xl bg-slate-200 overflow-hidden mb-4 shadow-sm border border-slate-200">
-            <img
-              :src="project.coverImage"
-              :alt="t(project.title)"
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-              loading="lazy"
-            />
-          </div>
-
-          <div class="space-y-2 px-1 flex-1 flex flex-col">
-            <div class="text-xs font-bold text-sky-600 uppercase tracking-wider">
-              {{ t(project.type) }}
-            </div>
-
-            <h2 class="text-xl font-bold text-navy-900 group-hover:text-sky-600 transition-colors">
-              <router-link :to="`/projects/${project.id}`">
-                {{ t(project.title) }}
-              </router-link>
-            </h2>
-
-            <p class="text-sm text-slate-600 line-clamp-2 leading-relaxed flex-1">
-              {{ t(project.shortDescription) }}
-            </p>
-
-            <router-link
-              :to="`/projects/${project.id}`"
-              class="inline-flex items-center gap-2 text-sm font-bold text-sky-600 hover:text-sky-700 transition-colors pt-3 mt-auto"
-            >
-              <span>{{ t(siteCopyState.buttons.details) }}</span>
-              <ArrowRight v-if="!isRtl" class="w-4 h-4" />
-              <ArrowLeft v-else class="w-4 h-4" />
-            </router-link>
-          </div>
-        </div>
+        <ProjectCard v-for="project in paginatedProjects" :key="project.id" :project="project" />
       </div>
 
       <!-- Arrow + Number Pagination -->
@@ -81,7 +44,7 @@
           @click="currentPage--"
           :disabled="currentPage === 1"
           class="p-2 rounded-full bg-white border border-slate-200 text-slate-500 disabled:opacity-40 hover:text-sky-600 hover:border-sky-200 hover:shadow-sm transition-all"
-          aria-label="Previous page"
+          :aria-label="t(siteCopyState.common.previousPage)"
         >
           <ChevronLeft v-if="!isRtl" class="w-5 h-5" />
           <ChevronRight v-else class="w-5 h-5" />
@@ -102,7 +65,7 @@
           @click="currentPage++"
           :disabled="currentPage === totalPages"
           class="p-2 rounded-full bg-white border border-slate-200 text-slate-500 disabled:opacity-40 hover:text-sky-600 hover:border-sky-200 hover:shadow-sm transition-all"
-          aria-label="Next page"
+          :aria-label="t(siteCopyState.common.nextPage)"
         >
           <ChevronRight v-if="!isRtl" class="w-5 h-5" />
           <ChevronLeft v-else class="w-5 h-5" />
@@ -132,8 +95,6 @@
 import { ref, computed } from 'vue';
 import {
   FolderGit2,
-  ArrowRight,
-  ArrowLeft,
   ChevronLeft,
   ChevronRight,
   ChevronDown,
@@ -141,6 +102,7 @@ import {
 } from 'lucide-vue-next';
 import { useI18n } from '@/composables/useI18n';
 import { siteCopyState, projectsState } from '@/services/dataService';
+import ProjectCard from '@/components/ui/ProjectCard.vue';
 
 const { isRtl, t } = useI18n();
 const selectedType = ref('ALL');

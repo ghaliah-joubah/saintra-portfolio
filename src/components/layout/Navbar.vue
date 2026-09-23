@@ -2,7 +2,7 @@
   <header
     class="fixed top-0 inset-x-0 z-50 transition-all duration-300"
     :class="[
-      isScrolled ? 'bg-white shadow-md border-b border-slate-200' : 'bg-white/80 backdrop-blur-md border-b border-white/50'
+      isScrolled || !isHome ? 'bg-white shadow-md border-b border-slate-200' : 'bg-white/35 backdrop-blur-md border-b border-white/50'
     ]"
   >
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
@@ -10,16 +10,16 @@
       <!-- Logo -->
       <router-link to="/" class="flex items-center gap-3 group focus:outline-none focus:ring-2 focus:ring-sky-500 rounded-lg p-1">
         <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-sky-500 to-indigo-600 flex items-center justify-center text-white font-extrabold text-xl shadow-lg shadow-sky-500/20 group-hover:scale-105 transition-transform">
-          S
+          {{ currentLang === 'ar' ? 'س' : 'S' }}
         </div>
         <div class="flex flex-col">
           <span class="font-bold text-xl tracking-wider text-navy-900 group-hover:text-sky-500 transition-colors">{{ t(companyState.shortName) }}</span>
-          <span class="text-[10px] text-slate-500 font-normal">سيقما تكنولوجي</span>
+          <span class="text-[10px] text-slate-500 font-normal">{{ t(companyState.name) }}</span>
         </div>
       </router-link>
 
       <!-- Desktop Nav -->
-      <nav class="hidden md:flex items-center gap-6" aria-label="Main Navigation">
+      <nav class="hidden md:flex items-center gap-6" :aria-label="t(siteCopyState.common.mainNavigation)">
         <router-link
           v-for="link in navLinks"
           :key="link.path"
@@ -68,7 +68,7 @@
           @click="isMobileMenuOpen = !isMobileMenuOpen"
           class="p-2 text-navy-900 hover:text-sky-500 focus:outline-none"
           :aria-expanded="isMobileMenuOpen"
-          aria-label="Toggle mobile menu"
+          :aria-label="t(siteCopyState.common.mobileMenu)"
         >
           <Menu v-if="!isMobileMenuOpen" class="w-6 h-6" />
           <X v-else class="w-6 h-6" />
@@ -114,10 +114,13 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, onUnmounted } from 'vue';
 import { Globe, Menu, X } from 'lucide-vue-next';
+import { useRoute } from 'vue-router';
 import { useI18n } from '@/composables/useI18n';
 import { siteCopyState, companyState } from '@/services/dataService';
 
 const { currentLang, toggleLanguage, t } = useI18n();
+const route = useRoute();
+const isHome = computed(() => route.path === '/');
 const isMobileMenuOpen = ref(false);
 const isScrolled = ref(false);
 

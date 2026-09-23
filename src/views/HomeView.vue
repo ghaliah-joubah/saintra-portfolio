@@ -64,7 +64,7 @@
         <div
           v-for="(value, idx) in companyState.values"
           :key="idx"
-          class="space-y-3 group"
+          class="h-full rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all hover:border-sky-300 hover:shadow-lg space-y-3 group"
         >
           <div class="flex items-center gap-3">
             <component :is="getIcon(value.icon)" class="w-7 h-7 text-sky-500 group-hover:scale-110 transition-transform shrink-0" />
@@ -158,39 +158,7 @@
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <router-link
-          v-for="project in projectsState.slice(0, 6)"
-          :key="project.id"
-          :to="`/projects/${project.id}`"
-          class="standard-card flex flex-col group"
-        >
-          <div class="relative h-56 bg-slate-200 overflow-hidden border-b border-slate-200">
-            <img
-              :src="project.coverImage"
-              :alt="t(project.title)"
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-              loading="lazy"
-            />
-          </div>
-
-          <div class="p-6 flex-1 flex flex-col space-y-3">
-            <div class="text-xs font-bold text-sky-600 uppercase tracking-wider">
-              {{ t(project.type) }}
-            </div>
-            <h3 class="text-xl font-bold text-navy-900 group-hover:text-sky-600 transition-colors">
-              {{ t(project.title) }}
-            </h3>
-            <p class="text-sm text-slate-600 line-clamp-2 leading-relaxed flex-1">
-              {{ t(project.shortDescription) }}
-            </p>
-
-            <div class="inline-flex items-center gap-2 text-sm font-bold text-sky-600 group-hover:text-sky-700 transition-colors pt-3 mt-auto border-t border-slate-100">
-              <span>{{ t(siteCopyState.buttons.details) }}</span>
-              <ArrowRight v-if="!isRtl" class="w-4 h-4" />
-              <ArrowLeft v-else class="w-4 h-4" />
-            </div>
-          </div>
-        </router-link>
+        <ProjectCard v-for="project in projectsState.slice(0, 6)" :key="project.id" :project="project" />
       </div>
     </section>
 
@@ -242,6 +210,7 @@ import {
 } from 'lucide-vue-next';
 import { useI18n } from '@/composables/useI18n';
 import { siteCopyState, companyState, servicesState, projectsState } from '@/services/dataService';
+import ProjectCard from '@/components/ui/ProjectCard.vue';
 
 const { isRtl, t } = useI18n();
 

@@ -19,6 +19,7 @@
           <h1 class="text-4xl sm:text-6xl font-extrabold text-navy-900 tracking-tight">
             {{ t(service.title) }}
           </h1>
+          <p class="text-lg leading-relaxed text-slate-600">{{ t(service.shortDescription) }}</p>
         </div>
 
         <router-link
@@ -36,7 +37,7 @@
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
       <div class="lg:col-span-6 space-y-6">
         <div class="bg-white p-8 sm:p-10 rounded-3xl border border-slate-200 shadow-sm space-y-4">
-          <h2 class="text-2xl font-bold text-navy-900">نظرة عامة / Overview</h2>
+          <h2 class="text-2xl font-bold text-navy-900">{{ t(siteCopyState.serviceDetailsPage.overviewTitle) }}</h2>
           <p class="text-slate-600 text-lg leading-relaxed whitespace-pre-line font-medium">
             {{ t(service.fullDescription) }}
           </p>
@@ -74,7 +75,7 @@
     </div>
 
     <!-- Reordered Section 3: YouTube Video -->
-    <div v-if="service.videoUrl" class="bg-white p-6 sm:p-10 rounded-[3rem] border border-slate-200 shadow-sm space-y-6">
+    <div v-if="service.videoUrl" class="bg-white p-6 sm:p-10 rounded-[3rem] border border-slate-200 shadow-sm space-y-6 max-w-4xl mx-auto w-full">
       <h3 class="text-2xl font-bold text-navy-900 flex items-center gap-3 px-4">
         <Video class="w-7 h-7 text-sky-500" />
         <span>{{ t(siteCopyState.serviceDetailsPage.videoTitle) }}</span>
@@ -84,7 +85,7 @@
         <iframe
           :src="service.videoUrl"
           class="absolute inset-0 w-full h-full"
-          title="Service Overview Video"
+          :title="t(siteCopyState.serviceDetailsPage.videoTitle)"
           frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen
@@ -99,7 +100,7 @@
         <h2 class="text-3xl sm:text-4xl font-extrabold text-navy-900">
           {{ t(siteCopyState.serviceDetailsPage.ourProcessTitle) }}
         </h2>
-        <p class="text-slate-500 text-base">خطوات منهجية مدروسة تضمن جودة المخرجات</p>
+        <p class="text-slate-500 text-base">{{ t(siteCopyState.serviceDetailsPage.processDescription) }}</p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -124,33 +125,11 @@
         <h2 class="text-3xl font-extrabold text-navy-900">
           {{ t(siteCopyState.serviceDetailsPage.relatedProjectsTitle) }}
         </h2>
-        <p class="text-slate-500 text-base">أمثلة لمشاريع تم تطبيق هذه الخدمة فيها</p>
+        <p class="text-slate-500 text-base">{{ t(siteCopyState.serviceDetailsPage.relatedProjectsDescription) }}</p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div
-          v-for="project in relatedProjects"
-          :key="project.id"
-          class="group flex flex-col"
-        >
-          <div class="relative h-48 rounded-2xl bg-slate-200 overflow-hidden mb-4 shadow-sm border border-slate-200">
-            <img :src="project.coverImage" :alt="t(project.title)" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
-          </div>
-          <div class="space-y-2 px-1 flex-1 flex flex-col">
-            <h3 class="text-xl font-bold text-navy-900 group-hover:text-sky-600 transition-colors">
-              <router-link :to="`/projects/${project.id}`">{{ t(project.title) }}</router-link>
-            </h3>
-            <p class="text-sm text-slate-600 line-clamp-2 leading-relaxed flex-1">{{ t(project.shortDescription) }}</p>
-            <router-link
-              :to="`/projects/${project.id}`"
-              class="inline-flex items-center gap-2 text-sm font-bold text-sky-600 hover:text-sky-700 transition-colors pt-3 mt-auto"
-            >
-              <span>{{ t(siteCopyState.buttons.details) }}</span>
-              <ArrowRight v-if="!isRtl" class="w-4 h-4" />
-              <ArrowLeft v-else class="w-4 h-4" />
-            </router-link>
-          </div>
-        </div>
+        <ProjectCard v-for="project in relatedProjects" :key="project.id" :project="project" />
       </div>
     </div>
 
@@ -176,6 +155,7 @@ import { useRoute } from 'vue-router';
 import { ArrowRight, ArrowLeft, CheckCircle2, Video, AlertCircle } from 'lucide-vue-next';
 import { useI18n } from '@/composables/useI18n';
 import { siteCopyState, servicesState, projectsState } from '@/services/dataService';
+import ProjectCard from '@/components/ui/ProjectCard.vue';
 
 const route = useRoute();
 const { isRtl, t } = useI18n();

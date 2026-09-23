@@ -2,7 +2,7 @@
   <div v-if="project" class="pb-20">
 
     <!-- 1. Introduction Section -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-12 space-y-8">
 
       <div class="space-y-4 max-w-4xl">
         <router-link
@@ -15,9 +15,7 @@
         </router-link>
 
         <div class="space-y-4">
-          <div class="inline-block px-4 py-1.5 rounded-full text-xs font-bold bg-sky-100 text-sky-700 uppercase tracking-wider shadow-sm">
-            {{ t(project.type) }}
-          </div>
+          <p class="text-sm font-bold text-sky-700"><span class="text-slate-500">{{ t(siteCopyState.projectDetailsPage.typeLabel) }}:</span> {{ t(project.type) }}</p>
           <h1 class="text-4xl sm:text-6xl font-extrabold text-navy-900 tracking-tight leading-tight">
             {{ t(project.title) }}
           </h1>
@@ -27,67 +25,31 @@
         </div>
       </div>
 
-      <div class="rounded-[2.5rem] overflow-hidden border border-slate-200 bg-slate-100 shadow-md">
-        <img
-          :src="project.coverImage"
-          :alt="t(project.title)"
-          class="w-full h-80 sm:h-[500px] object-cover"
-        />
-      </div>
-
     </div>
 
-    <!-- 2. Details & Scope -->
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-6">
-      <h2 class="text-3xl font-extrabold text-navy-900">
-        {{ t(siteCopyState.projectDetailsPage.detailsScopeTitle) }}
-      </h2>
-      <p class="text-slate-600 text-lg leading-relaxed whitespace-pre-line">
-        {{ t(project.fullDescription) }}
-      </p>
-    </div>
-
-    <!-- 3. Stripe-style Full-Bleed Slider -->
-    <div v-if="project.gallery && project.gallery.length > 0" class="py-12 bg-slate-50 border-y border-slate-200 overflow-hidden">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-6">
-        <h2 class="text-2xl font-bold text-navy-900 flex items-center gap-2">
-          <Image class="w-6 h-6 text-sky-500" />
-          <span>{{ t(siteCopyState.projectDetailsPage.galleryTitle) }}</span>
-        </h2>
-      </div>
-
-      <div class="w-full overflow-x-auto snap-x snap-mandatory hide-scrollbar">
-        <!-- Flex container extending beyond viewport natively -->
-        <div class="flex gap-6 w-max px-4 sm:px-8 lg:px-[max(2rem,calc((100vw-80rem)/2))]">
-          <img
-            v-for="(img, idx) in project.gallery"
-            :key="idx"
-            :src="img"
-            alt="Project screenshot"
-            class="h-64 sm:h-96 md:h-[450px] w-auto max-w-[85vw] object-cover rounded-3xl shadow-sm border border-slate-200 snap-center shrink-0"
-          />
-        </div>
-      </div>
-    </div>
-
-    <!-- 4, 5, 6. Project Info, Tech, Related -->
+    <!-- Details, scope, and structured information -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
       <div class="grid grid-cols-1 md:grid-cols-12 gap-10 items-start">
 
+        <div class="md:col-span-7 space-y-6">
+          <h2 class="text-3xl font-extrabold text-navy-900">{{ t(siteCopyState.projectDetailsPage.detailsScopeTitle) }}</h2>
+          <p class="text-slate-600 text-lg leading-relaxed whitespace-pre-line">{{ t(project.fullDescription) }}</p>
+        </div>
+
         <!-- Info Column -->
-        <div class="md:col-span-4 space-y-6">
+        <div class="md:col-span-5 space-y-6">
           <div class="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm space-y-6">
             <h3 class="text-xl font-bold text-navy-900 border-b border-slate-100 pb-3">
               {{ t(siteCopyState.projectDetailsPage.infoTitle) }}
             </h3>
 
             <div class="space-y-4 text-sm">
-              <div class="flex items-center justify-between">
+              <div v-if="project.year" class="flex items-center justify-between gap-4">
                 <span class="text-slate-500 font-bold uppercase">{{ t(siteCopyState.projectDetailsPage.yearLabel) }}</span>
                 <span class="font-extrabold text-navy-900">{{ project.year }}</span>
               </div>
 
-              <div class="flex items-center justify-between">
+              <div v-if="project.completionDate && t(project.completionDate)" class="flex items-center justify-between gap-4">
                 <span class="text-slate-500 font-bold uppercase">{{ t(siteCopyState.projectDetailsPage.completionLabel) }}</span>
                 <span class="font-extrabold text-navy-900">{{ t(project.completionDate) }}</span>
               </div>
@@ -104,13 +66,7 @@
                 <ExternalLink class="w-4 h-4" />
               </a>
             </div>
-          </div>
-        </div>
-
-        <!-- Tech & Related Column -->
-        <div class="md:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-8">
-
-          <div class="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm space-y-6">
+            <div v-if="project.technologies?.length" class="border-t border-slate-100 pt-4 space-y-3">
             <h3 class="text-xl font-bold text-navy-900 border-b border-slate-100 pb-3">
               {{ t(siteCopyState.projectDetailsPage.techTitle) }}
             </h3>
@@ -121,12 +77,12 @@
                 :key="tech"
                 class="px-3.5 py-1.5 rounded-lg text-xs font-bold bg-slate-50 border border-slate-200 text-sky-700"
               >
-                {{ tech }}
+                {{ displayTechnology(tech) }}
               </span>
             </div>
-          </div>
+            </div>
 
-          <div v-if="relatedServices.length > 0" class="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm space-y-6">
+            <div v-if="relatedServices.length > 0" class="border-t border-slate-100 pt-4 space-y-3">
             <h3 class="text-xl font-bold text-navy-900 border-b border-slate-100 pb-3">
               {{ t(siteCopyState.projectDetailsPage.relatedServicesTitle) }}
             </h3>
@@ -141,12 +97,42 @@
                 {{ t(srv.title) }}
               </router-link>
             </div>
+            </div>
           </div>
-
         </div>
 
       </div>
     </div>
+
+    <section v-if="displayImages.length" class="py-14" :aria-label="t(siteCopyState.projectDetailsPage.galleryTitle)">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-7">
+        <h2 class="text-2xl sm:text-3xl font-bold text-navy-900">{{ t(siteCopyState.projectDetailsPage.galleryTitle) }}</h2>
+      </div>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)] gap-3 sm:gap-4">
+        <figure class="min-w-0 overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-md">
+          <div class="relative h-72 sm:h-[440px] lg:h-[500px] overflow-hidden bg-slate-100">
+            <Transition name="gallery-swap" mode="out-in">
+              <img :key="displayImages[0]" :src="displayImages[0]" :alt="`${t(project.title)} — ${t(siteCopyState.projectDetailsPage.galleryImage)}`" class="absolute inset-0 h-full w-full object-cover" />
+            </Transition>
+          </div>
+          <figcaption class="px-5 py-3 text-xs text-slate-500">{{ t(siteCopyState.projectDetailsPage.galleryCaption) }}</figcaption>
+        </figure>
+        <div v-if="displayImages.length > 1" class="grid grid-cols-4 gap-2 sm:gap-3 lg:h-[500px]" :aria-label="t(siteCopyState.projectDetailsPage.galleryTitle)">
+          <button
+            v-for="(img, index) in displayImages.slice(1)"
+            :key="index"
+            type="button"
+            class="group relative h-28 sm:h-40 lg:h-full min-w-0 overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 shadow-sm transition-[transform,border-color,box-shadow] duration-300 hover:z-10 hover:scale-[1.04] hover:border-sky-400 hover:shadow-xl focus-visible:z-10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-500"
+            :aria-label="`${t(siteCopyState.projectDetailsPage.selectImage)} ${index + 2}`"
+            @click="swapWithMain(index + 1)"
+          >
+            <Transition name="thumb-swap" mode="out-in">
+              <img :key="img" :src="img" alt="" class="absolute inset-0 h-full w-full object-cover" loading="lazy" />
+            </Transition>
+          </button>
+        </div>
+      </div>
+    </section>
 
   </div>
 
@@ -165,18 +151,44 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed, ref, watch } from 'vue';
 import { useRoute } from 'vue-router';
-import { ArrowRight, ArrowLeft, ExternalLink, Image, AlertCircle } from 'lucide-vue-next';
+import { ArrowRight, ArrowLeft, ExternalLink, AlertCircle } from 'lucide-vue-next';
 import { useI18n } from '@/composables/useI18n';
 import { siteCopyState, projectsState, servicesState } from '@/services/dataService';
 
 const route = useRoute();
-const { isRtl, t } = useI18n();
+const { isRtl, currentLang, t } = useI18n();
+
+const arabicTechnologyNames: Record<string, string> = {
+  'Vue.js 3': 'فيو ٣', 'Vue.js': 'فيو', 'Vue 3': 'فيو ٣',
+  'Node.js': 'نود', 'TypeScript': 'تايب سكريبت', 'PostgreSQL': 'بوستغرس',
+  'Docker': 'دوكر', 'AWS': 'أمازون السحابية', 'AWS S3': 'تخزين أمازون السحابي',
+  'Flutter': 'فلاتر', 'Python': 'بايثون', 'Python/Django': 'بايثون وجانغو',
+  'WebRTC': 'اتصالات الويب الفورية', 'MongoDB': 'مونغو',
+  'Google Maps API': 'خرائط غوغل', 'Redis': 'ريديس', 'WebSockets': 'مقابس الويب',
+  'Tailwind CSS': 'تايلويند', 'Three.js': 'ثري جي إس', 'Express': 'إكسبرس',
+  'MySQL': 'ماي إس كيو إل', 'FastAPI': 'فاست إيه بي آي',
+  'OpenAI API': 'واجهة أوبن إيه آي', 'Chart.js': 'تشارت جي إس'
+};
+function displayTechnology(name: string) {
+  return currentLang.value === 'ar' ? (arabicTechnologyNames[name] || name) : name;
+}
 
 const project = computed(() => {
   return projectsState.find((p) => p.id === route.params.id);
 });
+const displayImages = ref<string[]>([]);
+watch(() => project.value?.gallery, (images) => {
+  displayImages.value = images?.filter(Boolean).slice() ?? [];
+}, { immediate: true, deep: true });
+
+function swapWithMain(index: number) {
+  if (index <= 0 || index >= displayImages.value.length) return;
+  const next = [...displayImages.value];
+  [next[0], next[index]] = [next[index], next[0]];
+  displayImages.value = next;
+}
 
 const relatedServices = computed(() => {
   if (!project.value) return [];
@@ -185,11 +197,17 @@ const relatedServices = computed(() => {
 </script>
 
 <style scoped>
-.hide-scrollbar::-webkit-scrollbar {
-  display: none;
+.gallery-swap-enter-active, .gallery-swap-leave-active,
+.thumb-swap-enter-active, .thumb-swap-leave-active {
+  transition: opacity 240ms ease, transform 240ms ease;
 }
-.hide-scrollbar {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+.gallery-swap-enter-from, .gallery-swap-leave-to,
+.thumb-swap-enter-from, .thumb-swap-leave-to {
+  opacity: 0;
+  transform: scale(.97);
+}
+@media (prefers-reduced-motion: reduce) {
+  .gallery-swap-enter-active, .gallery-swap-leave-active,
+  .thumb-swap-enter-active, .thumb-swap-leave-active { transition: none; }
 }
 </style>

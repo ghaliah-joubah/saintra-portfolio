@@ -68,6 +68,17 @@
       <div class="bg-slate-900 p-6 rounded-3xl border border-slate-800 space-y-4">
         <h3 class="text-lg font-bold text-white border-b border-slate-800 pb-3">نصوص التواصل / Contact Section Headings</h3>
 
+        <div v-for="(val, key) in form.contactPage.labels" :key="`label-${key}`" class="grid grid-cols-1 md:grid-cols-2 gap-3 items-center">
+          <div>
+            <label class="text-[10px] text-slate-400 block">{{ key }} (عربي)</label>
+            <input v-model="val.ar" class="w-full p-2 rounded-xl bg-slate-950 border border-slate-800 text-xs text-white" />
+          </div>
+          <div>
+            <label class="text-[10px] text-slate-400 block">{{ key }} (English)</label>
+            <input v-model="val.en" class="w-full p-2 rounded-xl bg-slate-950 border border-slate-800 text-xs text-white" />
+          </div>
+        </div>
+
         <div v-for="(val, key) in form.contactPage.placeholders" :key="key" class="grid grid-cols-1 md:grid-cols-2 gap-3 items-center">
           <div>
             <label class="text-[10px] text-slate-400 block">Placeholder {{ key }} (عربي)</label>

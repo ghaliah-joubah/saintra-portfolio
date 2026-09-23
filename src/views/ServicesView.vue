@@ -2,34 +2,12 @@
   <div class="space-y-12 py-12 pb-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
     <div class="text-center space-y-4 max-w-3xl mx-auto pt-10">
-      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-sky-100 border border-sky-200 text-sky-700 text-xs font-bold shadow-sm">
-        <Layers class="w-4 h-4 text-sky-500" />
-        <span>{{ t(siteCopyState.nav.services) }}</span>
-      </div>
       <h1 class="text-4xl sm:text-5xl font-extrabold text-navy-900 tracking-tight">
         {{ t(siteCopyState.servicesPage.title) }}
       </h1>
       <p class="text-slate-600 text-base leading-relaxed font-medium">
         {{ t(siteCopyState.servicesPage.subtitle) }}
       </p>
-    </div>
-
-    <!-- Dropdown Filter -->
-    <div class="flex items-center justify-center pt-4">
-      <div class="relative w-full max-w-xs">
-        <select
-          v-model="selectedCategory"
-          @change="currentPage = 1"
-          class="w-full appearance-none px-5 py-3 rounded-xl bg-white border border-slate-200 text-navy-900 text-sm font-bold shadow-sm focus:outline-none focus:ring-2 focus:ring-sky-500 cursor-pointer"
-          aria-label="Filter services by category"
-        >
-          <option value="ALL">{{ t(siteCopyState.buttons.filterAll) }}</option>
-          <option v-for="cat in categories" :key="cat.en" :value="cat.en">
-            {{ t(cat) }}
-          </option>
-        </select>
-        <ChevronDown class="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400 pointer-events-none" />
-      </div>
     </div>
 
     <div v-if="paginatedServices.length > 0" class="space-y-12">
@@ -82,7 +60,7 @@
           @click="currentPage--"
           :disabled="currentPage === 1"
           class="p-2 rounded-full bg-white border border-slate-200 text-slate-500 disabled:opacity-40 hover:text-sky-600 hover:border-sky-200 hover:shadow-sm transition-all"
-          aria-label="Previous page"
+          :aria-label="t(siteCopyState.common.previousPage)"
         >
           <ChevronLeft v-if="!isRtl" class="w-5 h-5" />
           <ChevronRight v-else class="w-5 h-5" />
@@ -103,7 +81,7 @@
           @click="currentPage++"
           :disabled="currentPage === totalPages"
           class="p-2 rounded-full bg-white border border-slate-200 text-slate-500 disabled:opacity-40 hover:text-sky-600 hover:border-sky-200 hover:shadow-sm transition-all"
-          aria-label="Next page"
+          :aria-label="t(siteCopyState.common.nextPage)"
         >
           <ChevronRight v-if="!isRtl" class="w-5 h-5" />
           <ChevronLeft v-else class="w-5 h-5" />
@@ -119,12 +97,6 @@
       <p class="text-slate-600 font-bold text-lg">
         {{ t(siteCopyState.servicesPage.emptyState) }}
       </p>
-      <button
-        @click="selectFilter('ALL')"
-        class="inline-flex items-center px-6 py-2.5 rounded-xl bg-sky-500 text-white font-bold text-sm shadow-md hover:bg-sky-600 transition-colors"
-      >
-        {{ t(siteCopyState.buttons.filterAll) }}
-      </button>
     </div>
 
   </div>
@@ -133,12 +105,10 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue';
 import {
-  Layers,
   ArrowRight,
   ArrowLeft,
   ChevronLeft,
   ChevronRight,
-  ChevronDown,
   Globe,
   Smartphone,
   Database,
@@ -153,38 +123,17 @@ import { useI18n } from '@/composables/useI18n';
 import { siteCopyState, servicesState } from '@/services/dataService';
 
 const { isRtl, t } = useI18n();
-const selectedCategory = ref('ALL');
 const currentPage = ref(1);
 const itemsPerPage = 9;
 
-const categories = computed(() => {
-  const map = new Map();
-  servicesState.forEach((s) => {
-    if (!map.has(s.category.en)) {
-      map.set(s.category.en, s.category);
-    }
-  });
-  return Array.from(map.values());
-});
-
-const filteredServices = computed(() => {
-  if (selectedCategory.value === 'ALL') return servicesState;
-  return servicesState.filter((s) => s.category.en === selectedCategory.value);
-});
-
 const totalPages = computed(() => {
-  return Math.ceil(filteredServices.value.length / itemsPerPage);
+  return Math.ceil(servicesState.length / itemsPerPage);
 });
 
 const paginatedServices = computed(() => {
   const start = (currentPage.value - 1) * itemsPerPage;
-  return filteredServices.value.slice(start, start + itemsPerPage);
+  return servicesState.slice(start, start + itemsPerPage);
 });
-
-function selectFilter(typeEn: string) {
-  selectedCategory.value = typeEn;
-  currentPage.value = 1;
-}
 
 function getIcon(name: string) {
   switch (name) {

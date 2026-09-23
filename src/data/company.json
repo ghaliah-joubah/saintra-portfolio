@@ -20,7 +20,12 @@
     "ar": "سوريا",
     "en": "Syria"
   },
-  "branches": [{ "ar": "سوريا", "en": "Syria" }],
+  "branches": [
+    {
+      "ar": "سوريا",
+      "en": "Syria"
+    }
+  ],
   "mission": {
     "ar": "تمكين قطاعات الأعمال والمؤسسات من تحقيق أقصى طاقاتها الرقمية من خلال تقديم برمجيات عالية الكفاءة والقابلية للتوسع.",
     "en": "Empowering enterprises to unleash their full digital potential through highly efficient, scalable, and resilient software."
@@ -73,7 +78,7 @@
         "en": "Agile & Speed"
       },
       "description": {
-        "ar": "نعتمد منهجيات Agile لضمان تسليم المشاريع بدقة في وقتها.",
+        "ar": "نعتمد منهجيات العمل الرشيق لضمان تسليم المشاريع بدقة في وقتها.",
         "en": "Utilizing Agile workflows to ensure timely and precise delivery."
       },
       "icon": "Clock"

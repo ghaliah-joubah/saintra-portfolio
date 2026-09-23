@@ -11,11 +11,47 @@ import initialAuth from '@/data/authConfig.json';
 function loadInitial<T>(key: string, defaultVal: T): T {
   try {
     const saved = localStorage.getItem(`saintra_data_${key}`);
-    if (saved) return JSON.parse(saved);
+    if (saved) {
+      const parsed = JSON.parse(saved);
+      if (key === 'siteCopy') return mergeMissingCopy(defaultVal, parsed);
+      if (key === 'projects' || key === 'services') return migrateLegacyMedia(parsed, defaultVal);
+      return parsed;
+    }
   } catch (e) {
     console.error(`Error loading ${key} from localStorage`, e);
   }
   return JSON.parse(JSON.stringify(defaultVal));
+}
+
+function migrateLegacyMedia<T>(saved: T, defaults: T): T {
+  if (!Array.isArray(saved) || !Array.isArray(defaults)) return saved;
+  const current = new Map(defaults.map((item) => [item.id, item]));
+  const isLegacyImage = (value: unknown) => typeof value === 'string' && /^\/images\/photo_2026-09-22_/.test(value);
+  return saved.map((item) => {
+    const replacement = current.get(item.id);
+    if (!replacement) return item;
+    const updated = { ...item };
+    if (isLegacyImage(updated.coverImage)) updated.coverImage = replacement.coverImage;
+    if (isLegacyImage(updated.image)) updated.image = replacement.image;
+    if (updated.videoUrl === 'https://www.youtube.com/embed/dQw4w9WgXcQ') updated.videoUrl = replacement.videoUrl;
+    if (Array.isArray(updated.gallery) && updated.gallery.length) {
+      const usesOldPreviewSet = updated.gallery.length < replacement.gallery.length
+        && updated.gallery.every((image: string, index: number) => image === `/images/project-${item.id}-${index + 1}.svg`);
+      if (updated.gallery.every(isLegacyImage) || usesOldPreviewSet) updated.gallery = replacement.gallery;
+    }
+    return updated;
+  }) as T;
+}
+
+function mergeMissingCopy<T>(defaults: T, saved: unknown): T {
+  if (!defaults || typeof defaults !== 'object' || Array.isArray(defaults) || !saved || typeof saved !== 'object' || Array.isArray(saved)) {
+    return (saved ?? defaults) as T;
+  }
+  const merged: Record<string, unknown> = { ...(defaults as Record<string, unknown>) };
+  for (const [key, value] of Object.entries(saved)) {
+    if (key in merged) merged[key] = mergeMissingCopy(merged[key], value);
+  }
+  return merged as T;
 }
 
 export const companyState = reactive<CompanyData>(loadInitial('company', initialCompany as CompanyData));

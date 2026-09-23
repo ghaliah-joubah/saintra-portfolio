@@ -125,8 +125,12 @@ export interface SiteCopy {
     title: LocalizedString;
     subtitle: LocalizedString;
     storyTitle: LocalizedString;
+    missionTitle: LocalizedString;
+    visionTitle: LocalizedString;
     statsTitle: LocalizedString;
     establishedLabel: LocalizedString;
+    teamImageAlt: LocalizedString;
+    imageCaption: LocalizedString;
   };
   servicesPage: {
     title: LocalizedString;
@@ -134,6 +138,9 @@ export interface SiteCopy {
     emptyState: LocalizedString;
   };
   serviceDetailsPage: {
+    overviewTitle: LocalizedString;
+    relatedProjectsDescription: LocalizedString;
+    processDescription: LocalizedString;
     whatsIncludedTitle: LocalizedString;
     ourProcessTitle: LocalizedString;
     relatedProjectsTitle: LocalizedString;
@@ -146,6 +153,12 @@ export interface SiteCopy {
     emptyState: LocalizedString;
   };
   projectDetailsPage: {
+    typeLabel: LocalizedString;
+    previousImage: LocalizedString;
+    nextImage: LocalizedString;
+    galleryImage: LocalizedString;
+    galleryCaption: LocalizedString;
+    selectImage: LocalizedString;
     galleryTitle: LocalizedString;
     infoTitle: LocalizedString;
     techTitle: LocalizedString;
@@ -159,6 +172,14 @@ export interface SiteCopy {
     title: LocalizedString;
     subtitle: LocalizedString;
     formTitle: LocalizedString;
+    validationMsg: LocalizedString;
+    labels: {
+      name: LocalizedString;
+      email: LocalizedString;
+      phone: LocalizedString;
+      service: LocalizedString;
+      message: LocalizedString;
+    };
     placeholders: {
       name: LocalizedString;
       email: LocalizedString;
@@ -180,6 +201,12 @@ export interface SiteCopy {
     contactInfo: LocalizedString;
   };
   common: {
+    notFoundTitle: LocalizedString;
+    notFoundDescription: LocalizedString;
+    mainNavigation: LocalizedString;
+    mobileMenu: LocalizedString;
+    previousPage: LocalizedString;
+    nextPage: LocalizedString;
     backToTop: LocalizedString;
     languageSwitch: LocalizedString;
   };

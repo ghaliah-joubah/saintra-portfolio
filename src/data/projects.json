@@ -6,7 +6,7 @@
       "en": "SAINTRA Pay Fintech Gateway"
     },
     "type": {
-      "ar": "تكنولوجيا مالية (Fintech)",
+      "ar": "التقنية المالية",
       "en": "Fintech"
     },
     "shortDescription": {
@@ -14,18 +14,27 @@
       "en": "A secure cloud payment gateway enabling fast processing and instant digital e-invoicing."
     },
     "fullDescription": {
-      "ar": "منصة سينترا باي هي حل مالي شامل تم تطويره للمنشآت التجارية والمنصات. توفر المنصة تكاملاً سهلاً عبر REST APIs مع دعم أعلى معايير التشفير (PCI-DSS) وتتبع المبيعات والتقارير المالية في وقتها الفعلي.",
-      "en": "SAINTRA Pay is an all-in-one financial gateway built for enterprises and marketplaces. Offering seamless REST API integrations, PCI-DSS security compliance, and real-time transaction reporting."
+      "ar": "تقدّم منصة سينترا باي تصورًا لرحلة دفع رقمية تبدأ من إنشاء طلب الدفع وتنتهي بعرض نتيجة العملية بوضوح للتاجر والعميل. صُممت الواجهة لتجمع المدفوعات والفواتير وسجل العمليات في مساحة واحدة، بحيث يستطيع فريق العمل الوصول سريعًا إلى حالة كل عملية والبحث عنها بحسب التاريخ أو المرجع. ويساعد عرض المؤشرات الأساسية على متابعة النشاط اليومي دون التنقل بين شاشات كثيرة.\n\nيشمل نطاق المشروع تنظيم تجربة التاجر، وتصميم خطوات دفع قصيرة وواضحة، وبناء صفحات لإدارة الفواتير والإشعارات والتقارير. وقد روعي في تصور الواجهات إبراز مبالغ العمليات وحالاتها، ومعالجة السيناريوهات المتوقعة مثل العملية المعلّقة أو المرفوضة، وتقديم رسائل مفهومة تساعد المستخدم على اتخاذ الإجراء التالي. كما تتكيف المكونات مع أحجام الشاشات المختلفة لتبقى المهام الأساسية متاحة على الحاسوب والهاتف.\n\nيعرض هذا النموذج أيضًا كيف يمكن ربط المنصة بأنظمة المتجر عبر واجهات برمجة التطبيقات، مع فصل واضح بين بيانات العميل وأدوات الإدارة. تركز بنية العرض على سهولة المراجعة والتوسع لاحقًا بإضافة وسائل دفع أو تقارير جديدة، مع الحفاظ على تسلسل ثابت للعمليات. الصور في المعرض تصورات توضيحية لشاشات المنتج وليست لقطات تشغيل فعلية.",
+      "en": "SAINTRA Pay presents a complete digital payment journey, from creating a payment request to showing a clear result for both the merchant and the customer. The proposed workspace brings payments, invoices, and transaction history together so a team can find an operation by date or reference and understand its current status quickly. Key figures are surfaced near the top of the interface to make daily activity easier to review without moving between several screens.\n\nThe project scope covers the merchant experience, a short and understandable checkout flow, and pages for invoices, notifications, and reporting. The interface concept gives amounts and transaction states a clear visual hierarchy. It also considers common outcomes such as pending or declined payments, with plain feedback that points users toward the next step. Components adapt to desktop and mobile widths so essential tasks remain available on either device.\n\nThe concept shows how a payment platform can connect with a storefront through application interfaces while keeping customer-facing steps separate from administration tools. Its layout leaves room for additional payment methods and reports as the product grows, without changing the basic transaction flow. The gallery contains illustrative interface concepts rather than captures of a live deployment."
     },
-    "coverImage": "/images/photo_2026-09-22_14-40-58.jpg",
+    "coverImage": "/images/project-fintech-pay-1.svg",
     "gallery": [
-      "/images/photo_2026-09-22_14-40-58.jpg",
-      "/images/photo_2026-09-22_14-41-07.jpg",
-      "/images/photo_2026-09-22_14-41-15.jpg"
+      "/images/project-fintech-pay-1.svg",
+      "/images/project-fintech-pay-2.svg",
+      "/images/project-fintech-pay-3.svg",
+      "/images/project-fintech-pay-4.svg",
+      "/images/project-fintech-pay-5.svg"
     ],
-    "technologies": ["Vue.js 3", "Node.js", "TypeScript", "PostgreSQL", "Docker", "AWS"],
+    "technologies": [
+      "Vue.js 3",
+      "Node.js",
+      "TypeScript",
+      "PostgreSQL",
+      "Docker",
+      "AWS"
+    ],
     "platform": {
-      "ar": "منصة ويب + APIs",
+      "ar": "منصة ويب + واجهات برمجة التطبيقات",
       "en": "Web Platform + APIs"
     },
     "year": "2024",
@@ -38,12 +47,15 @@
       "en": "8 Engineers"
     },
     "liveUrl": "https://saintra.sa",
-    "serviceIds": ["web-development", "cloud-devops"]
+    "serviceIds": [
+      "web-development",
+      "cloud-devops"
+    ]
   },
   {
     "id": "ehealth-care",
     "title": {
-      "ar": "منصة الرعاية الصحية الاستشارية (CarePortal)",
+      "ar": "منصة الرعاية الصحية الاستشارية (كير بورتال)",
       "en": "CarePortal Telehealth System"
     },
     "type": {
@@ -55,15 +67,24 @@
       "en": "An integrated telehealth platform for online doctor appointments and encrypted video calls."
     },
     "fullDescription": {
-      "ar": "نظام طبابة عن بعد يتيح للمرضى البحث عن الأطباء الاستشاريين، حجز المواعيد، إجراء الاستشارات المرئية عبر كود مشفر، واستلام الوصفات الطبية الإلكترونية بسلاسة.",
-      "en": "Comprehensive digital healthcare solution enabling online doctor consultation, encrypted HD video streams, patient medical history management, and e-prescriptions."
+      "ar": "تجمع منصة كير بورتال رحلة المريض من البحث عن الطبيب إلى متابعة الاستشارة في تجربة رقمية مترابطة. يستطيع المستخدم استعراض التخصصات والأوقات المتاحة، اختيار موعد مناسب، ثم مراجعة تفاصيل الحجز من صفحة واضحة على الهاتف أو الحاسوب. وفي جهة مقدم الخدمة، يوضح تصور لوحة التحكم كيف يمكن متابعة المواعيد الجديدة والقادمة وتنظيم بيانات الزيارة دون ازدحام بصري.\n\nيشمل نطاق المشروع صفحات المرضى والأطباء، وجدولة المواعيد، وغرفة استشارة مرئية، وملخصًا للزيارة والوصفة الإلكترونية. تم ترتيب الخطوات بحيث يعرف المريض ما الذي سيحدث قبل الاستشارة وأثناءها وبعدها، مع إبراز وقت الموعد وطريقة الانضمام وتعليمات المتابعة. وتساعد حالات الواجهة المختلفة على توضيح الموعد المؤكد أو المعاد جدولته أو الملغى، بدل ترك المستخدم أمام رسالة عامة لا تشرح السبب.\n\nيراعي هذا التصور حساسية المعلومات الصحية، لذلك تظهر بيانات السجل الطبي في سياقها المناسب مع واجهات تسهل القراءة والمراجعة. ويهدف توزيع المحتوى إلى تقليل الوقت اللازم للوصول إلى الطبيب أو تفاصيل الزيارة، وإلى مساعدة الفريق الطبي على التركيز على الإجراءات اليومية المهمة. صور المعرض أمثلة توضيحية لتصميم الواجهات وليست سجلات مرضى أو صورًا من نظام منشور.",
+      "en": "CarePortal brings the patient journey together, from finding a clinician to following up after a consultation. Patients can explore specialties and available times, choose an appointment, and review their booking in a clear layout on desktop or mobile. On the provider side, the dashboard concept shows how upcoming visits and new requests can be organized without crowding the screen or hiding the actions clinicians use most often.\n\nThe project scope includes patient and clinician views, appointment scheduling, a video consultation room, visit summaries, and electronic prescriptions. The flow is arranged so patients understand what happens before, during, and after a session. Appointment time, joining instructions, and follow-up steps receive clear emphasis. Separate interface states explain confirmed, rescheduled, and cancelled appointments instead of relying on generic messages that leave people uncertain about what to do next.\n\nBecause healthcare information is sensitive, the concept places medical history in an appropriate context and favors readable, reviewable records. The layout aims to reduce the time needed to reach a clinician or find visit details while helping the care team focus on daily tasks. Gallery visuals are illustrative interface concepts; they are not patient records or screenshots from a deployed medical system."
     },
-    "coverImage": "/images/photo_2026-09-22_14-41-07.jpg",
+    "coverImage": "/images/project-ehealth-care-1.svg",
     "gallery": [
-      "/images/photo_2026-09-22_14-41-07.jpg",
-      "/images/photo_2026-09-22_14-41-21.jpg"
+      "/images/project-ehealth-care-1.svg",
+      "/images/project-ehealth-care-2.svg",
+      "/images/project-ehealth-care-3.svg",
+      "/images/project-ehealth-care-4.svg",
+      "/images/project-ehealth-care-5.svg"
     ],
-    "technologies": ["Flutter", "Vue.js", "Python", "WebRTC", "MongoDB"],
+    "technologies": [
+      "Flutter",
+      "Vue.js",
+      "Python",
+      "WebRTC",
+      "MongoDB"
+    ],
     "platform": {
       "ar": "تطبيق جوال + لوحة ويب",
       "en": "iOS/Android + Web Admin"
@@ -78,7 +99,11 @@
       "en": "6 Engineers"
     },
     "liveUrl": "https://saintra.sa",
-    "serviceIds": ["mobile-apps", "web-development", "ui-ux-design"]
+    "serviceIds": [
+      "mobile-apps",
+      "web-development",
+      "ui-ux-design"
+    ]
   },
   {
     "id": "logistics-hub",
@@ -91,19 +116,28 @@
       "en": "Logistics & Supply Chain"
     },
     "shortDescription": {
-      "ar": "منظومة سحابية لتتبع المركبات، تحسين مسارات الت توصيل، والتوزيع الذكي للشحنات في الوقت الفعلي.",
+      "ar": "منظومة سحابية لتتبع المركبات، تحسين مسارات التوصيل، والتوزيع الذكي للشحنات في الوقت الفعلي.",
       "en": "Real-time GPS fleet tracking, automated dispatching, and route optimization platform."
     },
     "fullDescription": {
-      "ar": "تم تطوير هذا النظام لشركات الشحن والتوصيل الكبرى لتتبع مئات الشاحنات آنياً، وتقليل استهلاك الوقود بواسطة خوارزميات المسار الأمثل، وتحديث حالة الطلبات أوتوماتيكياً.",
-      "en": "Engineered for logistics operators to track fleet vehicles live, automate route assignment algorithms, reduce fuel waste, and provide automatic SMS notifications to end clients."
+      "ar": "يعرض نظام إدارة الأسطول تصورًا لمساحة تشغيل تجمع المركبات والشحنات والمهام اليومية في لوحة واحدة. يستطيع فريق العمليات معرفة حالة الرحلات الجارية، ومراجعة الشحنات التي تحتاج إلى متابعة، والانتقال من الملخص العام إلى تفاصيل مركبة أو طلب محدد. وقد صُمم تسلسل المعلومات ليكون مناسبًا لبيئة عمل تتغير فيها الأولويات خلال اليوم، حيث ينبغي الوصول إلى المؤشرات المهمة بسرعة.\n\nيشمل نطاق المشروع واجهات لتوزيع المهام، وتتبع تقدم الرحلات، ومقارنة المسارات، ومراجعة أوقات التسليم. تظهر الحالة الحالية لكل شحنة بشكل واضح، مع فصل الرحلات المكتملة عن المهام التي تنتظر إجراءً من الموظف. كما يبين تصور صفحات التفاصيل موقع المعلومات المرتبطة بالسائق والمركبة والوجهة والجدول الزمني في مكان واحد، مما يسهل مراجعة السياق قبل اتخاذ قرار تشغيلي.\n\nيركز التصميم على عرض البيانات الكثيفة دون تحويل الصفحة إلى قائمة مرهقة؛ لذلك تُستخدم بطاقات الملخص والجداول والمرشحات في المواضع التي تخدم القرار. وتتدرج الواجهة من نظرة شاملة للأسطول إلى التفاصيل الدقيقة لكل رحلة. الصور المصاحبة تمثل أفكارًا بصرية لشاشات النظام، ولا تعرض مواقع مركبات حقيقية أو بيانات تشغيل فعلية.",
+      "en": "The fleet management concept brings vehicles, shipments, and daily assignments into one operational workspace. A dispatch team can see the state of active journeys, spot shipments requiring attention, and move from a high-level summary to a specific vehicle or order. Information is prioritized for a working day in which conditions and decisions change quickly, so the most useful signals are visible before the user opens a detailed record.\n\nThe scope includes task assignment, journey progress, route comparison, and delivery-time review. Each shipment has an understandable state, with completed trips separated from work that still needs an operator's decision. Detail views place driver, vehicle, destination, and timeline information together, allowing staff to understand the context before making a change. The proposed flow also considers delays and exceptions, which need to be distinguished from routine progress.\n\nThe design aims to handle dense operational data without turning the page into a long, difficult list. Summary cards, tables, and filters are used where they support a decision, while navigation moves from the entire fleet down to one journey. The gallery contains visual concepts for the product and does not show real vehicle locations or live operational data."
     },
-    "coverImage": "/images/photo_2026-09-22_14-41-15.jpg",
+    "coverImage": "/images/project-logistics-hub-1.svg",
     "gallery": [
-      "/images/photo_2026-09-22_14-41-15.jpg",
-      "/images/photo_2026-09-22_14-41-27.jpg"
+      "/images/project-logistics-hub-1.svg",
+      "/images/project-logistics-hub-2.svg",
+      "/images/project-logistics-hub-3.svg",
+      "/images/project-logistics-hub-4.svg",
+      "/images/project-logistics-hub-5.svg"
     ],
-    "technologies": ["Vue 3", "Node.js", "Google Maps API", "Redis", "WebSockets"],
+    "technologies": [
+      "Vue 3",
+      "Node.js",
+      "Google Maps API",
+      "Redis",
+      "WebSockets"
+    ],
     "platform": {
       "ar": "تطبيق سحابي متكامل",
       "en": "Cloud Enterprise App"
@@ -118,7 +152,10 @@
       "en": "7 Engineers"
     },
     "liveUrl": "https://saintra.sa",
-    "serviceIds": ["custom-systems", "cloud-devops"]
+    "serviceIds": [
+      "custom-systems",
+      "cloud-devops"
+    ]
   },
   {
     "id": "real-estate-sa",
@@ -131,19 +168,28 @@
       "en": "Real Estate"
     },
     "shortDescription": {
-      "ar": "منصة فاخرة لعرض العقارات، الجولات الافتراضية 3D، وحجز المعاينات وتوثيق العقود الإلكترونية.",
+      "ar": "منصة فاخرة لعرض العقارات، الجولات الافتراضية ثلاثية الأبعاد، وحجز المعاينات وتوثيق العقود الإلكترونية.",
       "en": "Premium real estate marketplace supporting 3D virtual tours and instant viewing scheduling."
     },
     "fullDescription": {
-      "ar": "منصة عقارية متقدمة توفر تجربة تصفح بصرية فاخرة للمجمعات والفلل السكنية، مع خرائط تفاعلية للخدمات المحيطة وإمكانية طلب استشارة عقارية بنقرة واحدة.",
-      "en": "Modern real estate showcase featuring interactive map search, high-resolution photo galleries, 3D property tours, and online contract documentation."
+      "ar": "تقدم منصة أملاك تصورًا لتجربة بحث عقاري تبدأ من استكشاف الوحدات المناسبة وتنتهي بطلب المعاينة. يستطيع الزائر مقارنة العقارات بحسب الموقع والمساحة والسعر، ثم الانتقال إلى صفحة عرض تمنح الصور والمعلومات الأساسية مساحة واضحة. يساعد تنظيم المحتوى على فهم الفروق بين الخيارات دون الحاجة إلى فتح عدد كبير من الصفحات أو إعادة إدخال شروط البحث في كل مرة.\n\nيشمل نطاق المشروع صفحات القوائم والتصفية، وتفاصيل الوحدة، ومعرض الصور، وجدولة المعاينات، ونماذج الاستفسار. تظهر معلومات العقار المهمة مثل نوع الوحدة والمساحة والمزايا بجانب الصور، بينما تُعرض المعلومات التفصيلية تدريجيًا حتى لا تطغى على المشهد البصري. ويراعي تصور الواجهة كيفية تقديم الجولات الافتراضية عندما تتوفر، مع إبقاء تجربة التصفح مفهومة عند غيابها أو عند استخدام شاشة صغيرة.\n\nيوضح التصميم أيضًا احتياجات فريق إدارة المحتوى من إضافة العقارات وتحديث حالتها وتنظيم الصور والمعلومات المرتبطة بها. والهدف هو الحفاظ على اتساق العرض بين الوحدات المختلفة، وتسهيل انتقال الزائر من الاهتمام الأولي إلى التواصل أو الحجز. الصور المستخدمة في المعرض تصورات توضيحية لشكل المنصة وليست صورًا لعقارات معروضة فعليًا.",
+      "en": "Amlak presents a property discovery journey that begins with exploring suitable listings and ends with a viewing request. Visitors can compare properties by location, size, and price, then open a detail page where imagery and essential facts receive clear space. The content hierarchy helps people understand the differences between options without opening many pages or repeatedly entering their search criteria.\n\nThe scope includes listing and filter views, property details, image galleries, viewing schedules, and inquiry forms. Important facts such as property type, area, and features sit close to the visual content, while longer information is revealed in a measured sequence. The interface concept also considers how a virtual tour can be offered when one is available, while keeping the experience understandable if that media is absent or the visitor uses a small screen.\n\nThe design considers content editors who need to add listings, update availability, and manage the related images and facts. Its goal is to keep presentation consistent across properties and make the path from initial interest to an inquiry or appointment easy to follow. Gallery images are illustrative platform concepts rather than photographs of actual properties offered for sale."
     },
-    "coverImage": "/images/photo_2026-09-22_14-41-21.jpg",
+    "coverImage": "/images/project-real-estate-sa-1.svg",
     "gallery": [
-      "/images/photo_2026-09-22_14-41-21.jpg",
-      "/images/photo_2026-09-22_14-40-58.jpg"
+      "/images/project-real-estate-sa-1.svg",
+      "/images/project-real-estate-sa-2.svg",
+      "/images/project-real-estate-sa-3.svg",
+      "/images/project-real-estate-sa-4.svg",
+      "/images/project-real-estate-sa-5.svg"
     ],
-    "technologies": ["Vue.js", "Tailwind CSS", "Three.js", "Express", "MySQL"],
+    "technologies": [
+      "Vue.js",
+      "Tailwind CSS",
+      "Three.js",
+      "Express",
+      "MySQL"
+    ],
     "platform": {
       "ar": "موقع ويب متجاوب",
       "en": "Responsive Web"
@@ -158,7 +204,10 @@
       "en": "5 Engineers"
     },
     "liveUrl": "https://saintra.sa",
-    "serviceIds": ["web-development", "ui-ux-design"]
+    "serviceIds": [
+      "web-development",
+      "ui-ux-design"
+    ]
   },
   {
     "id": "edu-learn",
@@ -175,15 +224,24 @@
       "en": "Cloud LMS supporting live interactive classes, automated grading, and digital certificates."
     },
     "fullDescription": {
-      "ar": "نظام إدارة تعلم (LMS) يتيح للمؤسسات الأكاديمية إنشاء الدورات التدريبية، إدارة الطلاب، إجراء الامتحانات الإلكترونية وتتبع نسب الانجاز ومستوى الفهم بذكاء.",
-      "en": "Scalable EdTech engine empowering training academies to stream live video lectures, manage course materials, conduct automated quizzes, and generate verified digital credentials."
+      "ar": "تجمع منصة أكاديميا أنشطة التعلم الرقمي في تجربة واحدة للطالب والمدرب والإدارة. يبدأ الطالب من لوحة تعرض الدورات الحالية وما يجب متابعته، ثم ينتقل إلى محتوى الدرس والأنشطة والتقييمات دون فقدان موقعه في المسار التعليمي. ويوضح تصور الواجهة كيف يمكن إبراز التقدم والموعد التالي والمهام المطلوبة بطريقة تساعد على التركيز بدل تشتيت الانتباه بين أدوات منفصلة.\n\nيشمل نطاق المشروع صفحات الدورات والدروس المباشرة، والاختبارات، وتسليم الواجبات، ومتابعة النتائج، وإدارة الشهادات. وتظهر أدوات المدرب في سياق مختلف يناسب إعداد المحتوى ومراجعة أداء المجموعة، بينما تتيح لوحة الإدارة رؤية إجمالية لعدد الدورات والمشاركين ومستوى التفاعل. يعتمد ترتيب العناصر على المهام اليومية لكل دور، مع المحافظة على لغة بصرية مشتركة تسهل الانتقال داخل المنصة.\n\nيأخذ التصميم في الاعتبار اختلاف الأجهزة وسرعات الاتصال، لذلك تبقى المعلومات الأساسية قابلة للقراءة حتى عندما لا يكون المحتوى المرئي متاحًا فورًا. كما يوضح حالات النشاط غير المكتمل، والاختبار القادم، والإنجاز المحقق برسائل واضحة. صور المعرض تمثل تصورات لواجهات تعليمية، ولا تحتوي على بيانات طلاب أو نتائج حقيقية.",
+      "en": "Academia brings digital learning tasks into one experience for students, instructors, and administrators. A student starts on a dashboard showing current courses and upcoming work, then moves into lesson content, activities, and assessments without losing their place in the learning path. Progress, the next session, and required tasks are emphasized so learners can focus rather than switch between unrelated tools.\n\nThe scope includes course and live-lesson pages, assessments, assignment submission, results review, and certificate management. Instructor tools are organized around preparing material and reviewing a group's work, while administration views provide an overview of courses, participation, and engagement. Each role sees the tasks most relevant to their day, but shared visual patterns keep navigation across the platform familiar and easy to learn.\n\nThe concept considers different devices and connection conditions. Essential information remains readable even if rich media does not load immediately, and interface states explain unfinished activities, upcoming assessments, and completed milestones. The gallery illustrates possible education-platform screens; it contains no actual student information or real examination results."
     },
-    "coverImage": "/images/photo_2026-09-22_14-41-27.jpg",
+    "coverImage": "/images/project-edu-learn-1.svg",
     "gallery": [
-      "/images/photo_2026-09-22_14-41-27.jpg",
-      "/images/photo_2026-09-22_14-41-07.jpg"
+      "/images/project-edu-learn-1.svg",
+      "/images/project-edu-learn-2.svg",
+      "/images/project-edu-learn-3.svg",
+      "/images/project-edu-learn-4.svg",
+      "/images/project-edu-learn-5.svg"
     ],
-    "technologies": ["Vue 3", "Python/Django", "PostgreSQL", "Docker", "AWS S3"],
+    "technologies": [
+      "Vue 3",
+      "Python/Django",
+      "PostgreSQL",
+      "Docker",
+      "AWS S3"
+    ],
     "platform": {
       "ar": "منصة ويب + تطبيقات جوال",
       "en": "Web LMS + Mobile Apps"
@@ -198,12 +256,15 @@
       "en": "6 Engineers"
     },
     "liveUrl": "https://saintra.sa",
-    "serviceIds": ["web-development", "mobile-apps"]
+    "serviceIds": [
+      "web-development",
+      "mobile-apps"
+    ]
   },
   {
     "id": "saas-analytics",
     "title": {
-      "ar": "مساعد الأعمال الذكي (SAINTRA AI Insight)",
+      "ar": "مساعد الأعمال الذكي (سينترا إنسايت)",
       "en": "SAINTRA AI Business Intelligence SaaS"
     },
     "type": {
@@ -215,17 +276,26 @@
       "en": "AI-driven executive dashboard summarizing business KPIs and forecasting growth."
     },
     "fullDescription": {
-      "ar": "أداة SaaS برمجية تتيح للقيادات التنفيذية ربط مصادر البيانات الخاصة بهم (المبيعات، المخزون، التسويق) واستئناس مساعد ذكاء اصطناعي للإجابة على الأسئلة واستخراج التوصيات.",
-      "en": "An enterprise SaaS analytics dashboard integrating LLM agents with company SQL databases to answer natural language queries and plot predictive revenue charts."
+      "ar": "يقدم مساعد الأعمال الذكي تصورًا للوحة تجمع مؤشرات المؤسسة في موضع واحد بدل توزيعها على تقارير منفصلة. يمكن للمدير متابعة المبيعات والمخزون واتجاهات الأداء من نظرة عامة، ثم فتح كل مؤشر لفهم الفترة الزمنية ومصدر الرقم والعوامل المؤثرة فيه. يراعي العرض أن تكون الأرقام والرسوم قابلة للمقارنة، وأن تقود الملاحظات المهمة إلى البيانات التي تدعمها.\n\nيشمل نطاق المشروع لوحات المؤشرات، ومقارنات الفترات، واستكشاف البيانات، وواجهة للمساعد الذكي تساعد على صياغة الأسئلة والعودة إلى النتائج السابقة. ولا يفترض التصميم أن كل المستخدمين متخصصون في التحليل؛ لذلك تظهر المصطلحات التوضيحية بجانب الرسوم، وتستخدم الحالات الفارغة أو غير المكتملة لتفسير غياب البيانات بدل عرض مساحة بيضاء مبهمة. كما يتيح توزيع المكونات إضافة مصادر جديدة دون تغيير طريقة قراءة اللوحة بالكامل.\n\nالهدف هو مساعدة الفرق على تحويل الأرقام اليومية إلى قرارات مفهومة، مع إبقاء السياق الأصلي متاحًا للمراجعة. تُفصل الاقتراحات الآلية عن البيانات الأساسية بصريًا حتى يعرف المستخدم ما هو رقم مسجل وما هو تفسير أو توصية. الصور المعروضة أمثلة تصميمية ولا تمثل بيانات شركة حقيقية أو توقعات تشغيل فعلية.",
+      "en": "The business intelligence concept gathers organizational indicators in one place instead of spreading them across separate reports. Leaders can review sales, inventory, and performance trends from an overview, then open an indicator to understand its time period, source, and surrounding context. Figures and charts are arranged for comparison, and noteworthy observations lead back to the underlying data rather than standing alone as unsupported statements.\n\nThe scope covers metric dashboards, period comparisons, data exploration, and an assistant interface for asking questions and revisiting previous results. The design assumes that many users are not analytics specialists. Explanatory labels sit near visualizations, while empty or incomplete states explain missing data instead of leaving a blank area with no guidance. Components are organized so new data sources can be introduced without forcing users to relearn the entire dashboard.\n\nThe goal is to help teams turn daily numbers into understandable decisions while keeping the original context available for review. Automated suggestions are visually distinct from recorded figures, making it easier to tell a measured value from an interpretation or recommendation. The gallery shows design examples, not data from a real company or live forecasts."
     },
-    "coverImage": "/images/photo_2026-09-22_14-40-58.jpg",
+    "coverImage": "/images/project-saas-analytics-1.svg",
     "gallery": [
-      "/images/photo_2026-09-22_14-40-58.jpg",
-      "/images/photo_2026-09-22_14-41-15.jpg"
+      "/images/project-saas-analytics-1.svg",
+      "/images/project-saas-analytics-2.svg",
+      "/images/project-saas-analytics-3.svg",
+      "/images/project-saas-analytics-4.svg",
+      "/images/project-saas-analytics-5.svg"
     ],
-    "technologies": ["Vue 3", "TypeScript", "FastAPI", "OpenAI API", "Chart.js"],
+    "technologies": [
+      "Vue 3",
+      "TypeScript",
+      "FastAPI",
+      "OpenAI API",
+      "Chart.js"
+    ],
     "platform": {
-      "ar": "منصة سحابية SaaS",
+      "ar": "منصة سحابية البرمجيات الخدمية",
       "en": "Cloud SaaS Web"
     },
     "year": "2024",
@@ -238,7 +308,11 @@
       "en": "4 Engineers"
     },
     "liveUrl": "https://saintra.sa",
-    "serviceIds": ["ai-integration", "web-development", "cloud-devops"]
+    "serviceIds": [
+      "ai-integration",
+      "web-development",
+      "cloud-devops"
+    ]
   },
   {
     "id": "smart-store",
@@ -255,16 +329,25 @@
       "en": "Ultra-fast retail mobile store with one-click checkout, digital wallet, and instant deals."
     },
     "fullDescription": {
-      "ar": "متجر إلكتروني متكامل للعلامات التجارية الفاخرة يضمن تجربة شراء سريعة بدون تعقيدات، مع دعم كامل للغة العربية والدفع بواسطة Apple Pay ومدى.",
-      "en": "Custom e-commerce app built for luxury retail brands, optimized for high conversion rates, Apple Pay integration, and instant order tracking."
+      "ar": "يقدم متجر فخامة تصورًا لتجربة تسوق رقمية تضع المنتجات والصور والمعلومات الأساسية في مقدمة المشهد. يستطيع الزائر استكشاف الفئات، حفظ العناصر التي تهمه، ومراجعة تفاصيل المنتج قبل إضافته إلى السلة. وقد صُممت خطوات الشراء لتبقى واضحة من اختيار المنتج إلى مراجعة الطلب، مع تقليل الحقول غير الضرورية وإظهار التكلفة والحالة الحالية بصورة مفهومة.\n\nيشمل نطاق المشروع واجهات الصفحة الرئيسية والفئات والمنتجات، والبحث، والسلة، وإتمام الطلب، ومتابعة حالته. تظهر تفاصيل المنتج مثل المقاسات أو الخيارات المتاحة في موضع يسهل ملاحظته، مع صور متعددة ومساحة مناسبة للوصف. وتراعي البنية إمكان تصفح المنتجات على الهاتف بلمسات قليلة، كما تحافظ على اتساق المعلومات بين قائمة المنتجات وصفحة التفاصيل حتى لا يجد المستخدم بيانات متعارضة.\n\nتوضح تصورات الواجهة أيضًا جانب إدارة المحتوى، مثل تحديث الصور والأسعار وتوفر المخزون بطريقة منظمة. والهدف هو بناء مسار شراء بسيط يحافظ على طابع العلامة التجارية ويمنح المستخدم ثقة في الخطوة التالية. صور المعرض رسومات توضيحية لتجربة المتجر، ولا تمثل طلبات أو منتجات منشورة بالفعل.",
+      "en": "The Fakhamah store concept puts products, imagery, and essential facts at the center of a digital shopping experience. Visitors can explore categories, save items of interest, and review product details before adding an item to the cart. Checkout steps are designed to remain clear from selection to order review, with unnecessary fields reduced and the current cost and order state easy to understand.\n\nThe scope includes home, category, and product views, search, cart, checkout, and order tracking. Product options such as sizes or available variants are placed where customers can notice them quickly, supported by multiple images and a useful description. The structure also considers browsing on a phone with a small number of taps. Key facts remain consistent between product lists and detail pages so shoppers do not encounter conflicting information as they move through the store.\n\nThe interface concepts also consider the content team, which needs to update images, prices, and availability in an organized way. The goal is a straightforward path to purchase that supports the brand's visual character while making the next action predictable. Gallery visuals are illustrative shopping-interface concepts, not captures of real orders or live product listings."
     },
-    "coverImage": "/images/photo_2026-09-22_14-41-07.jpg",
+    "coverImage": "/images/project-smart-store-1.svg",
     "gallery": [
-      "/images/photo_2026-09-22_14-41-07.jpg"
+      "/images/project-smart-store-1.svg",
+      "/images/project-smart-store-2.svg",
+      "/images/project-smart-store-3.svg",
+      "/images/project-smart-store-4.svg",
+      "/images/project-smart-store-5.svg"
     ],
-    "technologies": ["Flutter", "Node.js", "PostgreSQL", "Redis"],
+    "technologies": [
+      "Flutter",
+      "Node.js",
+      "PostgreSQL",
+      "Redis"
+    ],
     "platform": {
-      "ar": "تطبيق جوال (iOS & Android)",
+      "ar": "تطبيق جوال (آي أو إس & أندرويد)",
       "en": "iOS & Android App"
     },
     "year": "2023",
@@ -277,6 +360,9 @@
       "en": "5 Engineers"
     },
     "liveUrl": "https://saintra.sa",
-    "serviceIds": ["mobile-apps", "ui-ux-design"]
+    "serviceIds": [
+      "mobile-apps",
+      "ui-ux-design"
+    ]
   }
 ]

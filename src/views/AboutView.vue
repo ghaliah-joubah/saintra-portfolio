@@ -26,20 +26,10 @@
             {{ t(companyState.aboutStory) }}
           </p>
 
-          <div class="grid grid-cols-2 gap-4 pt-6 border-t border-slate-100">
+          <div class="pt-6 border-t border-slate-100">
             <div>
               <div class="text-xs text-slate-500 font-bold uppercase tracking-wider">{{ t(siteCopyState.about.establishedLabel) }}</div>
               <div class="text-2xl font-extrabold text-navy-900 mt-1">{{ companyState.establishedYear }}</div>
-            </div>
-            <!-- Re-integrated HQ Location -->
-            <div>
-              <div class="text-xs text-slate-500 font-bold uppercase tracking-wider">
-                {{ t(siteCopyState.contactPage.addressLabel) }}
-              </div>
-              <div class="text-2xl font-extrabold text-navy-900 mt-1 flex items-center gap-2">
-                <MapPin class="w-5 h-5 text-sky-500" />
-                <span>{{ t(companyState.headquarters) }}</span>
-              </div>
             </div>
           </div>
         </div>
@@ -47,10 +37,12 @@
         <div class="lg:col-span-5 relative">
           <div class="relative rounded-3xl overflow-hidden border border-slate-200 shadow-lg">
             <img
-              src="/images/photo_2026-09-22_14-40-58.jpg"
-              alt="SAINTRA Headquarters"
+              src="/images/software-team.webp"
+              :alt="t(siteCopyState.about.teamImageAlt)"
+              loading="lazy"
               class="w-full h-96 object-cover"
             />
+            <span class="absolute bottom-3 end-3 rounded-full bg-navy-900/80 px-3 py-1 text-xs text-white">{{ t(siteCopyState.about.imageCaption) }}</span>
           </div>
         </div>
       </div>
@@ -128,7 +120,7 @@
 </template>
 
 <script setup lang="ts">
-import { Sparkles, Target, Eye, MapPin, ArrowRight, ArrowLeft } from 'lucide-vue-next';
+import { Sparkles, Target, Eye, ArrowRight, ArrowLeft } from 'lucide-vue-next';
 import { useI18n } from '@/composables/useI18n';
 import { siteCopyState, companyState } from '@/services/dataService';
 import StatCard from '@/components/ui/StatCard.vue';

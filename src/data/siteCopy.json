@@ -36,8 +36,12 @@
     "title": { "ar": "عن سينترا لتقنية المعلومات", "en": "About SAINTRA Technology" },
     "subtitle": { "ar": "شريكك الاستراتيجي في الهندسة البرمجية والتحول الرقمي", "en": "Your Strategic Software Engineering & Digital Partner" },
     "storyTitle": { "ar": "قصتنا ونشأتنا", "en": "Our Journey" },
+    "missionTitle": { "ar": "رسالتنا", "en": "Our Mission" },
+    "visionTitle": { "ar": "رؤيتنا", "en": "Our Vision" },
     "statsTitle": { "ar": "أرقام وإنجازات", "en": "Metrics & Impact" },
-    "establishedLabel": { "ar": "سنة التأسيس", "en": "Established" }
+    "establishedLabel": { "ar": "سنة التأسيس", "en": "Established" },
+    "teamImageAlt": { "ar": "فريق يعمل على حلول برمجية", "en": "Team collaborating on software solutions" },
+    "imageCaption": { "ar": "صورة توضيحية", "en": "Illustrative image" }
   },
   "servicesPage": {
     "title": { "ar": "خدماتنا وحلولنا البرمجية", "en": "Services & Engineering Solutions" },
@@ -45,6 +49,9 @@
     "emptyState": { "ar": "لا توجد خدمات متاحة ضمن هذه الفئة حالياً.", "en": "No services found under this category." }
   },
   "serviceDetailsPage": {
+    "overviewTitle": { "ar": "نظرة عامة", "en": "Overview" },
+    "relatedProjectsDescription": { "ar": "أمثلة لمشاريع طُبقت فيها هذه الخدمة", "en": "Examples of projects using this service" },
+    "processDescription": { "ar": "خطوات مدروسة تضمن جودة المخرجات", "en": "A considered process for reliable delivery" },
     "whatsIncludedTitle": { "ar": "ماذا تتضمن الخدمة؟", "en": "What's Included" },
     "ourProcessTitle": { "ar": "خطتنا للتنفيذ", "en": "Execution Methodology" },
     "relatedProjectsTitle": { "ar": "مشاريع منفذة بهذه الخدمة", "en": "Projects Built with this Service" },
@@ -57,6 +64,12 @@
     "emptyState": { "ar": "لا توجد مشاريع مطابقة للتصنيف المختار.", "en": "No projects match the selected filter." }
   },
   "projectDetailsPage": {
+    "typeLabel": { "ar": "نوع المشروع", "en": "Project Type" },
+    "previousImage": { "ar": "الصورة السابقة", "en": "Previous image" },
+    "nextImage": { "ar": "الصورة التالية", "en": "Next image" },
+    "galleryImage": { "ar": "رسم توضيحي لواجهة المشروع", "en": "Illustrative project interface" },
+    "galleryCaption": { "ar": "تصور توضيحي للواجهة", "en": "Illustrative interface concept" },
+    "selectImage": { "ar": "عرض الصورة", "en": "Show image" },
     "galleryTitle": { "ar": "معرض صور المشروع", "en": "Project Gallery" },
     "infoTitle": { "ar": "معلومات المشروع", "en": "Project Information" },
     "techTitle": { "ar": "التقنيات وأطر العمل", "en": "Technologies" },
@@ -70,6 +83,14 @@
     "title": { "ar": "تواصل معنا", "en": "Contact Us" },
     "subtitle": { "ar": "يسعدنا مناقشة فكرة مشروعك والرد على كافة استفساراتك", "en": "We would love to discuss your project ideas and engineering needs" },
     "formTitle": { "ar": "نموذج التواصل المباشر", "en": "Inquiry Form" },
+    "validationMsg": { "ar": "تم التحقق من الحقول محليًا؛ لم تُرسل الرسالة.", "en": "Fields validated locally; the message was not sent." },
+    "labels": {
+      "name": { "ar": "الاسم الكامل", "en": "Full name" },
+      "email": { "ar": "البريد الإلكتروني", "en": "Email address" },
+      "phone": { "ar": "رقم الهاتف", "en": "Phone number" },
+      "service": { "ar": "الخدمة المطلوبة", "en": "Service" },
+      "message": { "ar": "الرسالة", "en": "Message" }
+    },
     "placeholders": {
       "name": { "ar": "أدخل اسمك الكامل", "en": "Enter your full name" },
       "email": { "ar": "أدخل بريدك الإلكتروني", "en": "Enter your email address" },
@@ -91,6 +112,12 @@
     "contactInfo": { "ar": "معلومات التواصل", "en": "Contact Info" }
   },
   "common": {
+    "notFoundTitle": { "ar": "الصفحة غير موجودة", "en": "Page Not Found" },
+    "notFoundDescription": { "ar": "الصفحة التي تبحث عنها غير موجودة أو نُقلت.", "en": "The page you are looking for does not exist or has moved." },
+    "mainNavigation": { "ar": "التنقل الرئيسي", "en": "Main navigation" },
+    "mobileMenu": { "ar": "تبديل قائمة الهاتف", "en": "Toggle mobile menu" },
+    "previousPage": { "ar": "الصفحة السابقة", "en": "Previous page" },
+    "nextPage": { "ar": "الصفحة التالية", "en": "Next page" },
     "backToTop": { "ar": "العودة للأعلى", "en": "Back to Top" },
     "languageSwitch": { "ar": "EN", "en": "AR" }
   }

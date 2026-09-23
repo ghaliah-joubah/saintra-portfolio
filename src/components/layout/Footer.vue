@@ -7,11 +7,11 @@
         <div class="lg:col-span-2 space-y-4">
           <router-link to="/" class="flex items-center gap-3">
             <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-sky-500 to-indigo-600 flex items-center justify-center text-white font-extrabold text-xl shadow-lg shadow-sky-500/20">
-              S
+              {{ currentLang === 'ar' ? 'س' : 'S' }}
             </div>
             <div class="flex flex-col">
               <span class="font-bold text-xl tracking-wider text-white">{{ t(companyState.shortName) }}</span>
-              <span class="text-[10px] text-slate-400">سيقما تكنولوجي</span>
+              <span class="text-[10px] text-slate-400">{{ t(companyState.name) }}</span>
             </div>
           </router-link>
 
@@ -48,7 +48,7 @@
               </a>
             </div>
             <div v-if="companyState.contact.whatsapp" class="flex items-center gap-2.5">
-              <MessageCircle class="w-4 h-4 text-emerald-400 shrink-0" />
+              <svg class="w-4 h-4 text-emerald-400 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.5 3.5A11.8 11.8 0 0 0 12.1 0C5.6 0 .3 5.3.3 11.8c0 2.1.6 4.2 1.7 6L.2 24l6.4-1.7a11.8 11.8 0 0 0 5.5 1.4h.1c6.5 0 11.8-5.3 11.8-11.8 0-3.2-1.3-6.2-3.5-8.4ZM12.1 21.7a9.8 9.8 0 0 1-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4a9.8 9.8 0 1 1 8.3 4.6Zm5.4-7.3c-.3-.2-1.8-.9-2.1-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.2-.7l.5-.6.3-.5c.1-.2 0-.4 0-.6l-1-2.3c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4s-1.2 1.2-1.2 2.8 1.2 3.1 1.4 3.3c.2.2 2.4 3.7 5.9 5.2.8.3 1.4.5 1.9.6.8.1 1.5.1 2.1 0 .6-.1 1.8-.8 2.1-1.5.3-.7.3-1.3.2-1.5-.1-.1-.3-.2-.6-.4Z"/></svg>
               <a :href="`https://wa.me/${companyState.contact.whatsapp.replace(/[^0-9]/g, '')}`" target="_blank" rel="noopener noreferrer" class="hover:text-emerald-400 transition-colors dir-ltr">
                 {{ companyState.contact.whatsapp }}
               </a>
@@ -63,7 +63,7 @@
               target="_blank"
               rel="noopener noreferrer"
               class="w-9 h-9 rounded-lg bg-navy-800 border border-navy-700 flex items-center justify-center text-slate-300 hover:text-sky-400 hover:border-sky-500/50 transition-colors focus:outline-none focus:ring-2 focus:ring-sky-500"
-              aria-label="LinkedIn"
+              :aria-label="currentLang === 'ar' ? 'لينكدإن' : 'LinkedIn'"
             >
               <Linkedin class="w-4 h-4" />
             </a>
@@ -73,7 +73,7 @@
               target="_blank"
               rel="noopener noreferrer"
               class="w-9 h-9 rounded-lg bg-navy-800 border border-navy-700 flex items-center justify-center text-slate-300 hover:text-sky-400 hover:border-sky-500/50 transition-colors focus:outline-none focus:ring-2 focus:ring-sky-500"
-              aria-label="GitHub"
+              :aria-label="currentLang === 'ar' ? 'غيت هب' : 'GitHub'"
             >
               <Github class="w-4 h-4" />
             </a>
@@ -83,7 +83,7 @@
               target="_blank"
               rel="noopener noreferrer"
               class="w-9 h-9 rounded-lg bg-navy-800 border border-navy-700 flex items-center justify-center text-slate-300 hover:text-sky-400 hover:border-sky-500/50 transition-colors focus:outline-none focus:ring-2 focus:ring-sky-500"
-              aria-label="X (Twitter)"
+              :aria-label="currentLang === 'ar' ? 'إكس' : 'X'"
             >
               <Twitter class="w-4 h-4" />
             </a>
@@ -93,7 +93,7 @@
               target="_blank"
               rel="noopener noreferrer"
               class="w-9 h-9 rounded-lg bg-navy-800 border border-navy-700 flex items-center justify-center text-slate-300 hover:text-sky-400 hover:border-sky-500/50 transition-colors focus:outline-none focus:ring-2 focus:ring-sky-500"
-              aria-label="Facebook"
+              :aria-label="currentLang === 'ar' ? 'فيسبوك' : 'Facebook'"
             >
               <Facebook class="w-4 h-4" />
             </a>
@@ -122,27 +122,15 @@
     </div>
   </footer>
 
-  <!-- Global Floating Back To Top Button -->
-  <button
-    @click="scrollToTop"
-    class="fixed bottom-6 z-40 p-3 rounded-full bg-navy-900 text-white shadow-xl hover:bg-sky-600 hover:-translate-y-1 transition-all focus:outline-none focus:ring-2 focus:ring-sky-500"
-    :class="[
-      isRtl ? 'left-6' : 'right-6',
-      showBackToTop ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10 pointer-events-none'
-    ]"
-    aria-label="Back to top"
-  >
-    <ArrowUp class="w-5 h-5" />
-  </button>
 </template>
 
 <script setup lang="ts">
-import { computed, ref, onMounted, onUnmounted } from 'vue';
-import { Linkedin, Github, Twitter, Facebook, MapPin, Mail, MessageCircle, Globe, ArrowUp } from 'lucide-vue-next';
+import { computed } from 'vue';
+import { Linkedin, Github, Twitter, Facebook, MapPin, Mail, Globe } from 'lucide-vue-next';
 import { useI18n } from '@/composables/useI18n';
 import { siteCopyState, companyState } from '@/services/dataService';
 
-const { currentLang, toggleLanguage, t, isRtl } = useI18n();
+const { currentLang, toggleLanguage, t } = useI18n();
 
 const navLinks = computed(() => [
   { path: '/', label: t(siteCopyState.nav.home) },
@@ -152,21 +140,4 @@ const navLinks = computed(() => [
   { path: '/contact', label: t(siteCopyState.nav.contact) }
 ]);
 
-const showBackToTop = ref(false);
-
-function handleScroll() {
-  showBackToTop.value = window.scrollY > 300;
-}
-
-function scrollToTop() {
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-}
-
-onMounted(() => {
-  window.addEventListener('scroll', handleScroll);
-});
-
-onUnmounted(() => {
-  window.removeEventListener('scroll', handleScroll);
-});
 </script>
