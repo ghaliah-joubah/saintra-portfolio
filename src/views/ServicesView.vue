@@ -1,89 +1,127 @@
 <template>
   <div class="space-y-12 py-12 pb-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-    <div class="text-center space-y-4 max-w-3xl mx-auto">
-      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-card border border-sky-500/30 text-sky-300 text-xs font-semibold">
-        <Layers class="w-4 h-4 text-sky-400" />
+    <div class="text-center space-y-4 max-w-3xl mx-auto pt-10">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-sky-100 border border-sky-200 text-sky-700 text-xs font-bold shadow-sm">
+        <Layers class="w-4 h-4 text-sky-500" />
         <span>{{ t(siteCopyState.nav.services) }}</span>
       </div>
-      <h1 class="text-4xl sm:text-5xl font-extrabold text-white">
+      <h1 class="text-4xl sm:text-5xl font-extrabold text-navy-900 tracking-tight">
         {{ t(siteCopyState.servicesPage.title) }}
       </h1>
-      <p class="text-slate-300 text-base leading-relaxed">
+      <p class="text-slate-600 text-base leading-relaxed font-medium">
         {{ t(siteCopyState.servicesPage.subtitle) }}
       </p>
     </div>
 
-    <div class="flex flex-wrap items-center justify-center gap-2 pt-4">
-      <button
-        @click="selectedCategory = 'ALL'"
-        class="px-5 py-2.5 rounded-xl text-sm font-semibold transition-all focus:outline-none focus:ring-2 focus:ring-sky-500"
-        :class="selectedCategory === 'ALL' ? 'bg-sky-500 text-white shadow-lg shadow-sky-500/25' : 'bg-slate-900 border border-slate-800 text-slate-300 hover:text-white hover:border-slate-700'"
-      >
-        {{ t(siteCopyState.buttons.filterAll) }}
-      </button>
-
-      <button
-        v-for="cat in categories"
-        :key="cat.en"
-        @click="selectedCategory = cat.en"
-        class="px-5 py-2.5 rounded-xl text-sm font-semibold transition-all focus:outline-none focus:ring-2 focus:ring-sky-500"
-        :class="selectedCategory === cat.en ? 'bg-sky-500 text-white shadow-lg shadow-sky-500/25' : 'bg-slate-900 border border-slate-800 text-slate-300 hover:text-white hover:border-slate-700'"
-      >
-        {{ t(cat) }}
-      </button>
-    </div>
-
-    <div v-if="filteredServices.length > 0" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pt-6">
-      <div
-        v-for="service in filteredServices"
-        :key="service.id"
-        class="glass-card glass-card-hover p-6 rounded-2xl border border-slate-800 flex flex-col justify-between space-y-6"
-      >
-        <div class="space-y-4">
-          <div class="w-12 h-12 rounded-xl bg-sky-500/10 border border-sky-500/20 flex items-center justify-center text-sky-400">
-            <component :is="getIcon(service.icon)" class="w-6 h-6" />
-          </div>
-
-          <div class="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-slate-800 text-sky-300 border border-slate-700">
-            {{ t(service.category) }}
-          </div>
-
-          <h2 class="text-xl font-bold text-white">
-            {{ t(service.title) }}
-          </h2>
-
-          <p class="text-sm text-slate-300 leading-relaxed line-clamp-3">
-            {{ t(service.shortDescription) }}
-          </p>
-
-          <ul class="space-y-2 pt-2 border-t border-slate-800/80 text-xs text-slate-300">
-            <li v-for="(inc, idx) in service.whatsIncluded.slice(0, 3)" :key="idx" class="flex items-center gap-2">
-              <CheckCircle2 class="w-3.5 h-3.5 text-sky-400 shrink-0" />
-              <span class="line-clamp-1">{{ t(inc) }}</span>
-            </li>
-          </ul>
-        </div>
-
-        <router-link
-          :to="`/services/${service.id}`"
-          class="inline-flex items-center gap-2 text-sm font-bold text-sky-400 hover:text-sky-300 transition-colors pt-3 border-t border-slate-800"
+    <!-- Dropdown Filter -->
+    <div class="flex items-center justify-center pt-4">
+      <div class="relative w-full max-w-xs">
+        <select
+          v-model="selectedCategory"
+          @change="currentPage = 1"
+          class="w-full appearance-none px-5 py-3 rounded-xl bg-white border border-slate-200 text-navy-900 text-sm font-bold shadow-sm focus:outline-none focus:ring-2 focus:ring-sky-500 cursor-pointer"
+          aria-label="Filter services by category"
         >
-          <span>{{ t(siteCopyState.buttons.details) }}</span>
-          <ArrowRight v-if="!isRtl" class="w-4 h-4" />
-          <ArrowLeft v-else class="w-4 h-4" />
-        </router-link>
+          <option value="ALL">{{ t(siteCopyState.buttons.filterAll) }}</option>
+          <option v-for="cat in categories" :key="cat.en" :value="cat.en">
+            {{ t(cat) }}
+          </option>
+        </select>
+        <ChevronDown class="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400 pointer-events-none" />
       </div>
     </div>
 
-    <div v-else class="glass-card p-12 rounded-3xl border border-slate-800 text-center space-y-4">
-      <AlertCircle class="w-12 h-12 text-slate-500 mx-auto" />
-      <p class="text-slate-300 font-semibold text-lg">
+    <div v-if="paginatedServices.length > 0" class="space-y-12">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pt-2">
+        <div
+          v-for="service in paginatedServices"
+          :key="service.id"
+          class="bg-white p-6 rounded-2xl border border-slate-200 hover:border-sky-300 hover:shadow-lg hover:-translate-y-1 transition-all flex flex-col justify-between space-y-6"
+        >
+          <div class="space-y-4">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-xl bg-sky-100 flex items-center justify-center text-sky-600 shrink-0">
+                <component :is="getIcon(service.icon)" class="w-5 h-5" />
+              </div>
+              <span class="text-xs font-bold text-slate-500 uppercase tracking-wider">
+                {{ t(service.category) }}
+              </span>
+            </div>
+
+            <h2 class="text-xl font-bold text-navy-900">
+              {{ t(service.title) }}
+            </h2>
+
+            <p class="text-sm text-slate-600 leading-relaxed line-clamp-3">
+              {{ t(service.shortDescription) }}
+            </p>
+
+            <ul class="space-y-2 pt-3 border-t border-slate-100 text-xs text-slate-600 font-medium">
+              <li v-for="(inc, idx) in service.whatsIncluded.slice(0, 3)" :key="idx" class="flex items-start gap-2">
+                <CheckCircle2 class="w-4 h-4 text-sky-500 shrink-0 mt-0.5" />
+                <span class="line-clamp-1">{{ t(inc) }}</span>
+              </li>
+            </ul>
+          </div>
+
+          <router-link
+            :to="`/services/${service.id}`"
+            class="inline-flex items-center gap-2 text-sm font-bold text-sky-600 hover:text-sky-700 transition-colors pt-4 border-t border-slate-100"
+          >
+            <span>{{ t(siteCopyState.buttons.details) }}</span>
+            <ArrowRight v-if="!isRtl" class="w-4 h-4" />
+            <ArrowLeft v-else class="w-4 h-4" />
+          </router-link>
+        </div>
+      </div>
+
+      <!-- Arrow + Number Pagination -->
+      <div v-if="totalPages > 1" class="flex items-center justify-center gap-6 pt-6 border-t border-slate-200">
+        <button
+          @click="currentPage--"
+          :disabled="currentPage === 1"
+          class="p-2 rounded-full bg-white border border-slate-200 text-slate-500 disabled:opacity-40 hover:text-sky-600 hover:border-sky-200 hover:shadow-sm transition-all"
+          aria-label="Previous page"
+        >
+          <ChevronLeft v-if="!isRtl" class="w-5 h-5" />
+          <ChevronRight v-else class="w-5 h-5" />
+        </button>
+
+        <div class="flex items-center gap-2">
+          <span
+            v-for="page in totalPages"
+            :key="page"
+            class="text-sm font-bold w-8 h-8 flex items-center justify-center rounded-full transition-colors"
+            :class="currentPage === page ? 'bg-sky-100 text-sky-700' : 'text-slate-500'"
+          >
+            {{ page }}
+          </span>
+        </div>
+
+        <button
+          @click="currentPage++"
+          :disabled="currentPage === totalPages"
+          class="p-2 rounded-full bg-white border border-slate-200 text-slate-500 disabled:opacity-40 hover:text-sky-600 hover:border-sky-200 hover:shadow-sm transition-all"
+          aria-label="Next page"
+        >
+          <ChevronRight v-if="!isRtl" class="w-5 h-5" />
+          <ChevronLeft v-else class="w-5 h-5" />
+        </button>
+      </div>
+    </div>
+
+    <!-- Empty State -->
+    <div v-else class="bg-white p-12 rounded-[2rem] border border-slate-200 text-center space-y-4 shadow-sm">
+      <div class="w-16 h-16 rounded-full bg-slate-50 flex items-center justify-center mx-auto mb-2">
+        <AlertCircle class="w-8 h-8 text-slate-400" />
+      </div>
+      <p class="text-slate-600 font-bold text-lg">
         {{ t(siteCopyState.servicesPage.emptyState) }}
       </p>
       <button
-        @click="selectedCategory = 'ALL'"
-        class="px-5 py-2 rounded-xl bg-sky-500 text-white font-semibold text-sm"
+        @click="selectFilter('ALL')"
+        class="inline-flex items-center px-6 py-2.5 rounded-xl bg-sky-500 text-white font-bold text-sm shadow-md hover:bg-sky-600 transition-colors"
       >
         {{ t(siteCopyState.buttons.filterAll) }}
       </button>
@@ -98,6 +136,9 @@ import {
   Layers,
   ArrowRight,
   ArrowLeft,
+  ChevronLeft,
+  ChevronRight,
+  ChevronDown,
   Globe,
   Smartphone,
   Database,
@@ -113,6 +154,8 @@ import { siteCopyState, servicesState } from '@/services/dataService';
 
 const { isRtl, t } = useI18n();
 const selectedCategory = ref('ALL');
+const currentPage = ref(1);
+const itemsPerPage = 9;
 
 const categories = computed(() => {
   const map = new Map();
@@ -128,6 +171,20 @@ const filteredServices = computed(() => {
   if (selectedCategory.value === 'ALL') return servicesState;
   return servicesState.filter((s) => s.category.en === selectedCategory.value);
 });
+
+const totalPages = computed(() => {
+  return Math.ceil(filteredServices.value.length / itemsPerPage);
+});
+
+const paginatedServices = computed(() => {
+  const start = (currentPage.value - 1) * itemsPerPage;
+  return filteredServices.value.slice(start, start + itemsPerPage);
+});
+
+function selectFilter(typeEn: string) {
+  selectedCategory.value = typeEn;
+  currentPage.value = 1;
+}
 
 function getIcon(name: string) {
   switch (name) {

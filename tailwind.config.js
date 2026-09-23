@@ -4,33 +4,30 @@ export default {
     "./index.html",
     "./src/**/*.{vue,js,ts,jsx,tsx}",
   ],
-  darkMode: 'class',
   theme: {
     extend: {
       colors: {
-        brand: {
-          50: '#f0f4ff',
-          100: '#e0e9fe',
-          200: '#bae0fd',
-          300: '#7cc8fc',
-          400: '#36a9f7',
-          500: '#0c8de4',
-          600: '#006ec2',
-          700: '#00589f',
-          800: '#054a83',
-          900: '#0a3f6e',
-          950: '#062849',
-        },
-        dark: {
-          bg: '#0B0F17',
-          surface: '#131A27',
-          card: '#1A2333',
-          border: '#2A364F'
+        navy: {
+          50: '#f0f4f8',
+          100: '#d9e2ec',
+          200: '#bcccdc',
+          300: '#9fb3c8',
+          400: '#829ab1',
+          500: '#627d98',
+          600: '#486581',
+          700: '#334e68',
+          800: '#243b53',
+          900: '#102a43', // Main deep navy
+          950: '#0a192f',
         }
       },
       fontFamily: {
         sans: ['Alexandria', 'Tajawal', 'Inter', 'sans-serif'],
       },
+      boxShadow: {
+        'glass': '0 4px 30px rgba(0, 0, 0, 0.05)',
+        'glass-hover': '0 10px 40px rgba(0, 0, 0, 0.08)',
+      }
     },
   },
   plugins: [],

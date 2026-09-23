@@ -1,5 +1,10 @@
 <template>
-  <header class="sticky top-0 z-50 glass-card border-b border-slate-800/80 bg-slate-950/80 backdrop-blur-md transition-all duration-300">
+  <header
+    class="fixed top-0 inset-x-0 z-50 transition-all duration-300"
+    :class="[
+      isScrolled ? 'bg-white shadow-md border-b border-slate-200' : 'bg-white/80 backdrop-blur-md border-b border-white/50'
+    ]"
+  >
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
 
       <!-- Logo -->
@@ -8,61 +13,65 @@
           S
         </div>
         <div class="flex flex-col">
-          <span class="font-bold text-xl tracking-wider text-white group-hover:text-sky-400 transition-colors">{{ t(companyState.shortName) }}</span>
-          <span class="text-[10px] text-slate-400 font-normal">سيقما تكنولوجي</span>
+          <span class="font-bold text-xl tracking-wider text-navy-900 group-hover:text-sky-500 transition-colors">{{ t(companyState.shortName) }}</span>
+          <span class="text-[10px] text-slate-500 font-normal">سيقما تكنولوجي</span>
         </div>
       </router-link>
 
       <!-- Desktop Nav -->
-      <nav class="hidden md:flex items-center gap-1 bg-slate-900/60 p-1.5 rounded-full border border-slate-800/80" aria-label="Main Navigation">
+      <nav class="hidden md:flex items-center gap-6" aria-label="Main Navigation">
         <router-link
           v-for="link in navLinks"
           :key="link.path"
           :to="link.path"
-          class="px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-sky-500"
-          :class="$route.path === link.path ? 'bg-sky-500 text-white shadow-md shadow-sky-500/20' : 'text-slate-300 hover:text-white hover:bg-slate-800/50'"
+          class="text-sm font-semibold transition-colors duration-200 focus:outline-none py-2 relative group"
+          :class="$route.path === link.path ? 'text-sky-500' : 'text-navy-900 hover:text-sky-500'"
         >
           {{ link.label }}
+          <span
+            class="absolute bottom-0 left-0 w-full h-0.5 bg-sky-500 transition-transform duration-300 origin-left"
+            :class="$route.path === link.path ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'"
+          ></span>
         </router-link>
       </nav>
 
       <!-- Right Controls: Language Switch & CTA -->
-      <div class="hidden md:flex items-center gap-3">
+      <div class="hidden md:flex items-center gap-4">
         <!-- Language Switcher -->
         <button
           @click="toggleLanguage"
-          class="flex items-center gap-2 px-3.5 py-2 rounded-xl text-sm font-semibold bg-slate-900 border border-slate-800 text-slate-200 hover:text-sky-400 hover:border-sky-500/50 transition-all focus:outline-none focus:ring-2 focus:ring-sky-500"
+          class="flex items-center gap-2 text-sm font-bold text-navy-900 hover:text-sky-500 transition-colors focus:outline-none"
           :aria-label="siteCopyState.common.languageSwitch[currentLang === 'ar' ? 'en' : 'ar']"
         >
-          <Globe class="w-4 h-4 text-sky-400" />
-          <span>{{ currentLang === 'ar' ? 'English' : 'العربية' }}</span>
+          <Globe class="w-4 h-4" />
+          <span>{{ currentLang === 'ar' ? 'EN' : 'AR' }}</span>
         </button>
 
         <router-link
           to="/contact"
-          class="px-5 py-2.5 rounded-xl text-sm font-semibold bg-gradient-to-r from-sky-500 to-indigo-600 text-white shadow-lg shadow-sky-500/25 hover:shadow-sky-500/40 hover:scale-[1.02] active:scale-[0.98] transition-all focus:outline-none focus:ring-2 focus:ring-sky-400"
+          class="px-5 py-2.5 rounded-xl text-sm font-bold bg-sky-500 text-white shadow-lg shadow-sky-500/20 hover:shadow-sky-500/40 hover:-translate-y-0.5 active:translate-y-0 transition-all focus:outline-none focus:ring-2 focus:ring-sky-400"
         >
           {{ t(siteCopyState.buttons.contactUs) }}
         </router-link>
       </div>
 
       <!-- Mobile Menu Button -->
-      <div class="flex items-center gap-2 md:hidden">
+      <div class="flex items-center gap-3 md:hidden">
         <button
           @click="toggleLanguage"
-          class="p-2 rounded-lg bg-slate-900 border border-slate-800 text-slate-300 text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-sky-500"
+          class="p-2 text-navy-900 font-bold text-xs focus:outline-none"
         >
           {{ currentLang === 'ar' ? 'EN' : 'AR' }}
         </button>
 
         <button
           @click="isMobileMenuOpen = !isMobileMenuOpen"
-          class="p-2.5 rounded-xl bg-slate-900 border border-slate-800 text-slate-300 hover:text-white focus:outline-none focus:ring-2 focus:ring-sky-500"
+          class="p-2 text-navy-900 hover:text-sky-500 focus:outline-none"
           :aria-expanded="isMobileMenuOpen"
           aria-label="Toggle mobile menu"
         >
           <Menu v-if="!isMobileMenuOpen" class="w-6 h-6" />
-          <X v-else class="w-6 h-6 text-sky-400" />
+          <X v-else class="w-6 h-6" />
         </button>
       </div>
     </div>
@@ -76,31 +85,23 @@
       leave-from-class="opacity-100 translate-y-0"
       leave-to-class="opacity-0 -translate-y-4"
     >
-      <div v-if="isMobileMenuOpen" class="md:hidden glass-card border-b border-slate-800 px-4 pt-2 pb-6 space-y-3">
+      <div v-if="isMobileMenuOpen" class="md:hidden bg-white border-b border-slate-200 px-4 pt-2 pb-6 space-y-3 absolute top-full w-full shadow-lg">
         <router-link
           v-for="link in navLinks"
           :key="link.path"
           :to="link.path"
           @click="isMobileMenuOpen = false"
-          class="block px-4 py-3 rounded-xl text-base font-medium transition-colors"
-          :class="$route.path === link.path ? 'bg-sky-500/20 text-sky-400 font-bold border border-sky-500/30' : 'text-slate-300 hover:bg-slate-900'"
+          class="block px-4 py-3 rounded-xl text-base font-bold transition-colors"
+          :class="$route.path === link.path ? 'bg-sky-50 text-sky-500 border border-sky-100' : 'text-navy-900 hover:bg-slate-50'"
         >
           {{ link.label }}
         </router-link>
 
-        <div class="pt-4 border-t border-slate-800/80 flex flex-col gap-3">
-          <button
-            @click="toggleLanguage(); isMobileMenuOpen = false"
-            class="w-full flex items-center justify-center gap-2 py-3 rounded-xl bg-slate-900 border border-slate-800 text-slate-200 font-semibold"
-          >
-            <Globe class="w-5 h-5 text-sky-400" />
-            <span>{{ currentLang === 'ar' ? 'English' : 'العربية' }}</span>
-          </button>
-
+        <div class="pt-4 border-t border-slate-100 flex flex-col gap-3">
           <router-link
             to="/contact"
             @click="isMobileMenuOpen = false"
-            class="w-full text-center py-3 rounded-xl bg-gradient-to-r from-sky-500 to-indigo-600 text-white font-semibold"
+            class="w-full text-center py-3 rounded-xl bg-sky-500 text-white font-bold"
           >
             {{ t(siteCopyState.buttons.contactUs) }}
           </router-link>
@@ -111,13 +112,14 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue';
+import { ref, computed, onMounted, onUnmounted } from 'vue';
 import { Globe, Menu, X } from 'lucide-vue-next';
 import { useI18n } from '@/composables/useI18n';
 import { siteCopyState, companyState } from '@/services/dataService';
 
 const { currentLang, toggleLanguage, t } = useI18n();
 const isMobileMenuOpen = ref(false);
+const isScrolled = ref(false);
 
 const navLinks = computed(() => [
   { path: '/', label: t(siteCopyState.nav.home) },
@@ -126,4 +128,17 @@ const navLinks = computed(() => [
   { path: '/projects', label: t(siteCopyState.nav.projects) },
   { path: '/contact', label: t(siteCopyState.nav.contact) }
 ]);
+
+function handleScroll() {
+  isScrolled.value = window.scrollY > 50;
+}
+
+onMounted(() => {
+  window.addEventListener('scroll', handleScroll);
+  handleScroll();
+});
+
+onUnmounted(() => {
+  window.removeEventListener('scroll', handleScroll);
+});
 </script>
