@@ -103,7 +103,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue';
+import { ref, computed, watch } from 'vue';
 import {
   ArrowRight,
   ArrowLeft,
@@ -121,18 +121,23 @@ import {
 } from 'lucide-vue-next';
 import { useI18n } from '@/composables/useI18n';
 import { siteCopyState, servicesState } from '@/services/dataService';
+import { useResponsivePageCapacity } from '@/composables/useResponsivePageCapacity';
 
 const { isRtl, t } = useI18n();
 const currentPage = ref(1);
-const itemsPerPage = 9;
+const { itemsPerPage } = useResponsivePageCapacity();
 
 const totalPages = computed(() => {
-  return Math.ceil(servicesState.length / itemsPerPage);
+  return Math.ceil(servicesState.length / itemsPerPage.value);
 });
 
 const paginatedServices = computed(() => {
-  const start = (currentPage.value - 1) * itemsPerPage;
-  return servicesState.slice(start, start + itemsPerPage);
+  const start = (currentPage.value - 1) * itemsPerPage.value;
+  return servicesState.slice(start, start + itemsPerPage.value);
+});
+
+watch(totalPages, (pages) => {
+  currentPage.value = Math.min(currentPage.value, Math.max(1, pages));
 });
 
 function getIcon(name: string) {

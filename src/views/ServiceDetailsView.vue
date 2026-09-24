@@ -113,8 +113,19 @@
         <p class="text-slate-500 text-base">{{ t(siteCopyState.serviceDetailsPage.relatedProjectsDescription) }}</p>
       </div>
 
-      <div class="project-card-grid">
-        <ProjectCard v-for="project in relatedProjects" :key="project.id" :project="project" />
+      <div class="project-card-grid related-projects-grid">
+        <ProjectCard v-for="project in paginatedRelatedProjects" :key="project.id" :project="project" />
+      </div>
+      <div v-if="relatedTotalPages > 1" class="flex items-center justify-center gap-6 pt-6 border-t border-slate-200">
+        <button type="button" :disabled="relatedPage === 1" :aria-label="t(siteCopyState.common.previousPage)" class="p-2 rounded-full bg-white border border-slate-200 text-slate-500 disabled:opacity-40 hover:text-sky-600 hover:border-sky-200 hover:shadow-sm transition-all" @click="relatedPage--">
+          <ArrowLeft v-if="!isRtl" class="w-5 h-5" /><ArrowRight v-else class="w-5 h-5" />
+        </button>
+        <div class="flex items-center gap-2">
+          <span v-for="page in relatedTotalPages" :key="page" class="text-sm font-bold w-8 h-8 flex items-center justify-center rounded-full transition-colors" :class="relatedPage === page ? 'bg-sky-100 text-sky-700' : 'text-slate-500'">{{ page }}</span>
+        </div>
+        <button type="button" :disabled="relatedPage === relatedTotalPages" :aria-label="t(siteCopyState.common.nextPage)" class="p-2 rounded-full bg-white border border-slate-200 text-slate-500 disabled:opacity-40 hover:text-sky-600 hover:border-sky-200 hover:shadow-sm transition-all" @click="relatedPage++">
+          <ArrowRight v-if="!isRtl" class="w-5 h-5" /><ArrowLeft v-else class="w-5 h-5" />
+        </button>
       </div>
     </div>
 
@@ -135,15 +146,18 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed, ref, watch } from 'vue';
 import { useRoute } from 'vue-router';
 import { ArrowRight, ArrowLeft, CheckCircle2, Video, AlertCircle } from 'lucide-vue-next';
 import { useI18n } from '@/composables/useI18n';
 import { siteCopyState, servicesState, projectsState } from '@/services/dataService';
 import ProjectCard from '@/components/ui/ProjectCard.vue';
+import { useResponsivePageCapacity } from '@/composables/useResponsivePageCapacity';
 
 const route = useRoute();
 const { isRtl, t } = useI18n();
+const relatedPage = ref(1);
+const { itemsPerPage } = useResponsivePageCapacity();
 
 const service = computed(() => {
   return servicesState.find((s) => s.id === route.params.id);
@@ -153,4 +167,13 @@ const relatedProjects = computed(() => {
   if (!service.value) return [];
   return projectsState.filter((p) => p.serviceIds.includes(service.value!.id));
 });
+const relatedTotalPages = computed(() => Math.ceil(relatedProjects.value.length / itemsPerPage.value));
+const paginatedRelatedProjects = computed(() => {
+  const start = (relatedPage.value - 1) * itemsPerPage.value;
+  return relatedProjects.value.slice(start, start + itemsPerPage.value);
+});
+watch(relatedTotalPages, (pages) => {
+  relatedPage.value = Math.min(relatedPage.value, Math.max(1, pages));
+});
+watch(() => service.value?.id, () => { relatedPage.value = 1; });
 </script>

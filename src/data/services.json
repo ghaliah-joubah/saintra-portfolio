@@ -14,7 +14,7 @@
       "en": "Engineering blazing-fast, secure, scalable web applications and enterprise platforms."
     },
     "fullDescription": {
-      "ar": "نقدم خدمات تطوير مواقع الويب والمنصات السحابية المتكاملة باستخدام أحدث أطر العمل مثل فيو ونود وتايب سكريبت. نركز على معمارية الكود النظيف، الأمان المرتفع، متطلبات محركات البحث (محركات البحث)، والقدرة على استيعاب ملايين الزيارات اليومية.",
+      "ar": "نقدم خدمات تطوير مواقع الويب والمنصات السحابية المتكاملة باستخدام أحدث أطر العمل مثل Vue.js وNode.js وTypeScript. نركز على معمارية الكود النظيف، الأمان المرتفع، متطلبات محركات البحث (محركات البحث)، والقدرة على استيعاب ملايين الزيارات اليومية.",
       "en": "We build enterprise web platforms leveraging cutting-edge stacks (Vue.js, Node.js, TypeScript). Our approach emphasizes clean architecture, robust security, SEO optimization, and seamless horizontal scaling."
     },
     "icon": "Globe",
@@ -92,7 +92,7 @@
   {
     "id": "mobile-apps",
     "title": {
-      "ar": "تطوير تطبيقات الجوال لآيفون وأندرويد",
+      "ar": "تطوير تطبيقات الجوال لـ iPhone وAndroid",
       "en": "Mobile App Development (iOS & Android)"
     },
     "category": {
@@ -104,14 +104,14 @@
       "en": "Building high-performance native and cross-platform mobile apps for iOS & Android."
     },
     "fullDescription": {
-      "ar": "نحول أفكارك إلى تطبيقات جوال ممتازة تعمل بسلاسة على نظامي آي أو إس و أندرويد باستخدام فلاتر و رياكت نيتف أو واجهات النظام الأصلية. نركز على سرعة الاستجابة، الإشعارات الفورية، والتجربة اللمسية المريحة.",
+      "ar": "نحول أفكارك إلى تطبيقات جوال ممتازة تعمل بسلاسة على نظامي iOS وAndroid باستخدام Flutter وReact Native أو واجهات النظام الأصلية. نركز على سرعة الاستجابة، الإشعارات الفورية، والتجربة اللمسية المريحة.",
       "en": "Transforming ideas into polished iOS & Android mobile applications using Flutter and Native technologies, focused on fluid animations, push notifications, and offline capabilities."
     },
     "icon": "Smartphone",
     "image": "/images/service-mobile-apps.svg",
     "whatsIncluded": [
       {
-        "ar": "تطبيقات متوافقة مع أجهزة آي أو إس و أندرويد",
+        "ar": "تطبيقات متوافقة مع أجهزة iOS وAndroid",
         "en": "Cross-platform iOS & Android compatibility"
       },
       {
@@ -451,7 +451,7 @@
     "image": "/images/service-ai-integration.svg",
     "whatsIncluded": [
       {
-        "ar": "دمج نماذج الذكاء الاصطناعي (أوبن إيه آي, كلود، والنماذج المخصصة)",
+        "ar": "دمج نماذج الذكاء الاصطناعي (OpenAI، Claude، والنماذج المخصصة)",
         "en": "AI LLM API integrations (OpenAI, Claude, Custom models)"
       },
       {

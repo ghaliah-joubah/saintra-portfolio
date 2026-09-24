@@ -104,7 +104,7 @@
             type="button"
             class="drawer-language items-center gap-2 min-h-11 px-4 font-bold text-navy-900"
             :aria-label="siteCopyState.common.languageSwitch[currentLang === 'ar' ? 'en' : 'ar']"
-            @click="toggleLanguage"
+            @click="switchDrawerLanguage"
           >
             <Globe class="w-4 h-4" />
             <span>{{ currentLang === 'ar' ? 'EN' : 'AR' }}</span>
@@ -134,6 +134,11 @@ const route = useRoute();
 const isHome = computed(() => route.path === '/');
 const isMobileMenuOpen = ref(false);
 const isScrolled = ref(false);
+
+function switchDrawerLanguage() {
+  toggleLanguage();
+  isMobileMenuOpen.value = false;
+}
 
 const navLinks = computed(() => [
   { path: '/', label: t(siteCopyState.nav.home) },

@@ -75,9 +75,10 @@
               <span
                 v-for="tech in project.technologies"
                 :key="tech"
+                dir="ltr"
                 class="px-3.5 py-1.5 rounded-lg text-xs font-bold bg-slate-50 border border-slate-200 text-sky-700"
               >
-                {{ displayTechnology(tech) }}
+                {{ canonicalTechnologyName(tech) }}
               </span>
             </div>
             </div>
@@ -107,9 +108,9 @@
     <section v-if="galleryImages.length" class="py-14" :aria-label="t(siteCopyState.projectDetailsPage.galleryTitle)">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-7 gallery-header">
         <h2 class="text-2xl sm:text-3xl font-bold text-navy-900">{{ t(siteCopyState.projectDetailsPage.galleryTitle) }}</h2>
-        <div v-if="galleryImages.length > 1" class="flex items-center gap-2" dir="ltr">
-          <button type="button" :disabled="activeIndex === 0" :aria-label="t(siteCopyState.projectDetailsPage.previousImage)" class="gallery-arrow" @click="activateImage(activeIndex - 1)"><ArrowLeft class="w-5 h-5" /></button>
-          <button type="button" :disabled="activeIndex === galleryImages.length - 1" :aria-label="t(siteCopyState.projectDetailsPage.nextImage)" class="gallery-arrow" @click="activateImage(activeIndex + 1)"><ArrowRight class="w-5 h-5" /></button>
+        <div v-if="galleryImages.length > 1" class="flex items-center gap-1.5 sm:gap-2" :dir="isRtl ? 'rtl' : 'ltr'">
+          <button type="button" :disabled="activeIndex === 0" :aria-label="t(siteCopyState.projectDetailsPage.previousImage)" class="gallery-arrow" @click="activateImage(activeIndex - 1)"><ArrowRight v-if="isRtl" class="w-5 h-5" /><ArrowLeft v-else class="w-5 h-5" /></button>
+          <button type="button" :disabled="activeIndex === galleryImages.length - 1" :aria-label="t(siteCopyState.projectDetailsPage.nextImage)" class="gallery-arrow" @click="activateImage(activeIndex + 1)"><ArrowLeft v-if="isRtl" class="w-5 h-5" /><ArrowRight v-else class="w-5 h-5" /></button>
         </div>
       </div>
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -156,24 +157,10 @@ import { useRoute } from 'vue-router';
 import { ArrowRight, ArrowLeft, ExternalLink, AlertCircle } from 'lucide-vue-next';
 import { useI18n } from '@/composables/useI18n';
 import { siteCopyState, projectsState, servicesState } from '@/services/dataService';
+import { canonicalTechnologyName } from '@/utils/technologyNames';
 
 const route = useRoute();
-const { isRtl, currentLang, t } = useI18n();
-
-const arabicTechnologyNames: Record<string, string> = {
-  'Vue.js 3': 'فيو ٣', 'Vue.js': 'فيو', 'Vue 3': 'فيو ٣',
-  'Node.js': 'نود', 'TypeScript': 'تايب سكريبت', 'PostgreSQL': 'بوستغرس',
-  'Docker': 'دوكر', 'AWS': 'أمازون السحابية', 'AWS S3': 'تخزين أمازون السحابي',
-  'Flutter': 'فلاتر', 'Python': 'بايثون', 'Python/Django': 'بايثون وجانغو',
-  'WebRTC': 'اتصالات الويب الفورية', 'MongoDB': 'مونغو',
-  'Google Maps API': 'خرائط غوغل', 'Redis': 'ريديس', 'WebSockets': 'مقابس الويب',
-  'Tailwind CSS': 'تايلويند', 'Three.js': 'ثري جي إس', 'Express': 'إكسبرس',
-  'MySQL': 'ماي إس كيو إل', 'FastAPI': 'فاست إيه بي آي',
-  'OpenAI API': 'واجهة أوبن إيه آي', 'Chart.js': 'تشارت جي إس'
-};
-function displayTechnology(name: string) {
-  return currentLang.value === 'ar' ? (arabicTechnologyNames[name] || name) : name;
-}
+const { isRtl, t } = useI18n();
 
 const project = computed(() => {
   return projectsState.find((p) => p.id === route.params.id);

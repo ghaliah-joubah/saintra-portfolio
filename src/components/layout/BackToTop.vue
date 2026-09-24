@@ -3,7 +3,7 @@
     v-show="visible"
     ref="buttonRef"
     type="button"
-    class="fixed z-40 rounded-full bg-navy-900 p-3 min-w-11 min-h-11 text-white shadow-xl transition-[background-color,bottom] duration-200 hover:bg-sky-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-500"
+    class="fixed z-40 rounded-full bg-navy-700 p-3 min-w-11 min-h-11 text-white shadow-xl ring-1 ring-white/60 transition-[background-color,bottom] duration-200 hover:bg-sky-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-500"
     :style="{ insetInlineEnd: '20px', bottom: `${safeBottom}px` }"
     :aria-label="t(siteCopyState.common.backToTop)"
     @click="scrollToTop"

@@ -180,7 +180,7 @@
             <!-- Submit Button -->
             <button
               type="submit"
-              class="w-full sm:w-auto sm:min-w-44 px-8 py-4 rounded-xl font-bold bg-sky-500 text-white shadow-lg shadow-sky-500/20 hover:-translate-y-0.5 active:translate-y-0 transition-transform inline-flex items-center justify-center gap-2"
+              class="w-fit max-w-full min-h-11 px-5 sm:px-8 py-3.5 rounded-xl font-bold bg-sky-500 text-white shadow-lg shadow-sky-500/20 hover:-translate-y-0.5 active:translate-y-0 transition-transform flex items-center justify-center gap-2 whitespace-nowrap mx-auto sm:mx-0"
             >
               <Send class="w-5 h-5" />
               <span>{{ t(siteCopyState.buttons.sendMessage) }}</span>

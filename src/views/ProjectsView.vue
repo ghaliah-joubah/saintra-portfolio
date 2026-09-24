@@ -30,7 +30,7 @@
     </div>
 
     <div v-if="paginatedProjects.length > 0" class="space-y-12">
-      <div class="project-card-grid pt-4">
+      <div class="project-card-grid projects-page-grid pt-4">
         <ProjectCard v-for="project in paginatedProjects" :key="project.id" :project="project" />
       </div>
 
@@ -88,7 +88,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue';
+import { ref, computed, watch } from 'vue';
 import {
   ChevronLeft,
   ChevronRight,
@@ -98,11 +98,12 @@ import {
 import { useI18n } from '@/composables/useI18n';
 import { siteCopyState, projectsState } from '@/services/dataService';
 import ProjectCard from '@/components/ui/ProjectCard.vue';
+import { useResponsivePageCapacity } from '@/composables/useResponsivePageCapacity';
 
 const { isRtl, t } = useI18n();
 const selectedType = ref('ALL');
 const currentPage = ref(1);
-const itemsPerPage = 6;
+const { itemsPerPage } = useResponsivePageCapacity();
 
 const types = computed(() => {
   const map = new Map();
@@ -120,12 +121,16 @@ const filteredProjects = computed(() => {
 });
 
 const totalPages = computed(() => {
-  return Math.ceil(filteredProjects.value.length / itemsPerPage);
+  return Math.ceil(filteredProjects.value.length / itemsPerPage.value);
 });
 
 const paginatedProjects = computed(() => {
-  const start = (currentPage.value - 1) * itemsPerPage;
-  return filteredProjects.value.slice(start, start + itemsPerPage);
+  const start = (currentPage.value - 1) * itemsPerPage.value;
+  return filteredProjects.value.slice(start, start + itemsPerPage.value);
+});
+
+watch(totalPages, (pages) => {
+  currentPage.value = Math.min(currentPage.value, Math.max(1, pages));
 });
 
 function selectFilter(typeEn: string) {
