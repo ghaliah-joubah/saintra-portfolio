@@ -42,7 +42,7 @@
               <button @click="activeEditIdx = activeEditIdx === idx ? null : idx" class="px-3 py-1 rounded-lg bg-slate-800 text-xs text-sky-400">
                 {{ activeEditIdx === idx ? 'إغلاق التعديل' : 'تعديل التفاصيل' }}
               </button>
-              <button @click="removeService(idx)" class="px-3 py-1 rounded-lg bg-rose-500/10 text-xs text-rose-400 hover:bg-rose-500/20">
+              <button @click="removeService(idx)" class="px-3 py-1 rounded-lg bg-brand-coral/10 text-xs text-brand-coral hover:bg-brand-coral/20">
                 حذف
               </button>
             </div>
@@ -121,7 +121,7 @@
                 <input v-model="inc.ar" placeholder="بند بالعربي" class="p-2 rounded-lg bg-slate-950 border border-slate-800 text-xs text-white" />
                 <div class="flex items-center gap-2">
                   <input v-model="inc.en" placeholder="Item in English" class="flex-1 p-2 rounded-lg bg-slate-950 border border-slate-800 text-xs text-white" />
-                  <button @click="service.whatsIncluded.splice(incIdx, 1)" class="text-rose-400 text-xs p-1">حذف</button>
+                  <button @click="service.whatsIncluded.splice(incIdx, 1)" class="text-brand-coral text-xs p-1">حذف</button>
                 </div>
               </div>
             </div>

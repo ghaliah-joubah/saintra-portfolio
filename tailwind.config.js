@@ -7,22 +7,31 @@ export default {
   theme: {
     extend: {
       colors: {
+        sky: {
+          50: '#f0f7ff', 100: '#dceaf9', 200: '#bbd6f2', 300: '#8bbbe9',
+          400: '#4a90e2', 500: '#2a709c', 600: '#22537f', 700: '#193661',
+          800: '#193661', 900: '#142b4e', 950: '#0d1f39',
+        },
+        brand: {
+          blue: '#4a90e2', coral: '#f04e37', navy: '#193661',
+          taupe: '#c0b0a3', warm: '#e2dddb', cyan: '#44c8f5',
+        },
         navy: {
-          50: '#f0f4f8',
-          100: '#d9e2ec',
-          200: '#bcccdc',
-          300: '#9fb3c8',
-          400: '#829ab1',
-          500: '#627d98',
-          600: '#486581',
-          700: '#334e68',
-          800: '#243b53',
-          900: '#102a43', // Main deep navy
-          950: '#0a192f',
+          50: '#f0f7ff',
+          100: '#dceaf9',
+          200: '#bbd6f2',
+          300: '#8bbbe9',
+          400: '#4a90e2',
+          500: '#2a709c',
+          600: '#22537f',
+          700: '#22537f',
+          800: '#193661',
+          900: '#193661',
+          950: '#142b4e',
         }
       },
       fontFamily: {
-        sans: ['Alexandria', 'Tajawal', 'Inter', 'sans-serif'],
+        sans: ['Calibri Brand', 'Arial', 'sans-serif'],
       },
       boxShadow: {
         'glass': '0 4px 30px rgba(0, 0, 0, 0.05)',

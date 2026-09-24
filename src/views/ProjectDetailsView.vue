@@ -138,7 +138,7 @@
   </div>
 
   <div v-else class="py-24 text-center space-y-6 max-w-md mx-auto px-4">
-    <AlertCircle class="w-16 h-16 text-rose-500 mx-auto" />
+    <AlertCircle class="w-16 h-16 text-brand-coral mx-auto" />
     <h1 class="text-2xl font-bold text-navy-900">
       {{ t(siteCopyState.projectDetailsPage.notFound) }}
     </h1>
@@ -223,10 +223,10 @@ const relatedServices = computed(() => {
 <style scoped>
 .gallery-track, .gallery-slide { transition: transform 560ms cubic-bezier(.22, 1, .36, 1), width 560ms cubic-bezier(.22, 1, .36, 1), border-color 300ms, box-shadow 300ms; }
 .gallery-viewport { touch-action: pan-y; }
-.gallery-arrow { width: 44px; height: 44px; display: grid; place-items: center; border: 1px solid #dbe4ef; border-radius: 14px; background: white; color: #0f679d; transition: background-color 200ms, box-shadow 200ms; }
-.gallery-arrow:not(:disabled):hover { background: #eff8ff; box-shadow: 0 3px 10px #16406719; }
+.gallery-arrow { width: 44px; height: 44px; display: grid; place-items: center; border: 1px solid #bbd6f2; border-radius: 14px; background: white; color: #22537f; transition: background-color 200ms, box-shadow 200ms; }
+.gallery-arrow:not(:disabled):hover { background: #f0f7ff; box-shadow: 0 3px 10px #19366119; }
 .gallery-arrow:disabled { opacity: .4; cursor: not-allowed; }
-.gallery-arrow:focus-visible { outline: 2px solid #0ea5e9; outline-offset: 2px; }
+.gallery-arrow:focus-visible { outline: 2px solid #4a90e2; outline-offset: 2px; }
 @media (prefers-reduced-motion: reduce) {
   .gallery-track, .gallery-slide { transition: none; }
 }

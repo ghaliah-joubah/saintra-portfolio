@@ -106,7 +106,7 @@
               <label class="text-[10px] text-slate-400 block">Label (English)</label>
               <input v-model="st.label.en" class="w-full p-2 rounded-lg bg-slate-950 border border-slate-800 text-xs text-white" />
             </div>
-            <button @click="removeStat(idx)" class="p-2 text-rose-400 hover:bg-rose-500/10 rounded-lg mt-3 text-xs">حذف</button>
+            <button @click="removeStat(idx)" class="p-2 text-brand-coral hover:bg-brand-coral/10 rounded-lg mt-3 text-xs">حذف</button>
           </div>
         </div>
       </div>

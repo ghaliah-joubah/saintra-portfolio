@@ -5,14 +5,8 @@
 
         <!-- Company Info -->
         <div class="site-footer-company space-y-4 min-w-0">
-          <router-link to="/" class="flex items-center gap-3">
-            <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-sky-500 to-indigo-600 flex items-center justify-center text-white font-extrabold text-xl shadow-lg shadow-sky-500/20">
-              {{ currentLang === 'ar' ? 'س' : 'S' }}
-            </div>
-            <div class="flex flex-col">
-              <span class="font-bold text-xl tracking-wider text-white">{{ t(companyState.shortName) }}</span>
-              <span class="text-[10px] text-slate-400">{{ t(companyState.name) }}</span>
-            </div>
+          <router-link to="/" class="inline-flex items-center rounded-2xl bg-white px-3 py-1 shadow-sm focus:outline-none focus:ring-2 focus:ring-sky-400">
+            <BrandLogo />
           </router-link>
 
           <p class="text-sm leading-relaxed text-slate-300 max-w-sm">
@@ -48,8 +42,8 @@
               </a>
             </div>
             <div v-if="companyState.contact.whatsapp" class="flex items-center gap-2.5">
-              <svg class="w-4 h-4 text-emerald-400 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.5 3.5A11.8 11.8 0 0 0 12.1 0C5.6 0 .3 5.3.3 11.8c0 2.1.6 4.2 1.7 6L.2 24l6.4-1.7a11.8 11.8 0 0 0 5.5 1.4h.1c6.5 0 11.8-5.3 11.8-11.8 0-3.2-1.3-6.2-3.5-8.4ZM12.1 21.7a9.8 9.8 0 0 1-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4a9.8 9.8 0 1 1 8.3 4.6Zm5.4-7.3c-.3-.2-1.8-.9-2.1-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.2-.7l.5-.6.3-.5c.1-.2 0-.4 0-.6l-1-2.3c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4s-1.2 1.2-1.2 2.8 1.2 3.1 1.4 3.3c.2.2 2.4 3.7 5.9 5.2.8.3 1.4.5 1.9.6.8.1 1.5.1 2.1 0 .6-.1 1.8-.8 2.1-1.5.3-.7.3-1.3.2-1.5-.1-.1-.3-.2-.6-.4Z"/></svg>
-              <a :href="`https://wa.me/${companyState.contact.whatsapp.replace(/[^0-9]/g, '')}`" target="_blank" rel="noopener noreferrer" class="hover:text-emerald-400 transition-colors dir-ltr">
+              <svg class="w-4 h-4 text-brand-cyan shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.5 3.5A11.8 11.8 0 0 0 12.1 0C5.6 0 .3 5.3.3 11.8c0 2.1.6 4.2 1.7 6L.2 24l6.4-1.7a11.8 11.8 0 0 0 5.5 1.4h.1c6.5 0 11.8-5.3 11.8-11.8 0-3.2-1.3-6.2-3.5-8.4ZM12.1 21.7a9.8 9.8 0 0 1-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4a9.8 9.8 0 1 1 8.3 4.6Zm5.4-7.3c-.3-.2-1.8-.9-2.1-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.2-.7l.5-.6.3-.5c.1-.2 0-.4 0-.6l-1-2.3c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4s-1.2 1.2-1.2 2.8 1.2 3.1 1.4 3.3c.2.2 2.4 3.7 5.9 5.2.8.3 1.4.5 1.9.6.8.1 1.5.1 2.1 0 .6-.1 1.8-.8 2.1-1.5.3-.7.3-1.3.2-1.5-.1-.1-.3-.2-.6-.4Z"/></svg>
+              <a :href="`https://wa.me/${companyState.contact.whatsapp.replace(/[^0-9]/g, '')}`" target="_blank" rel="noopener noreferrer" class="hover:text-brand-cyan transition-colors dir-ltr">
                 {{ companyState.contact.whatsapp }}
               </a>
             </div>
@@ -127,6 +121,7 @@ import { computed } from 'vue';
 import { Linkedin, Github, Twitter, Facebook, MapPin, Mail, Globe } from 'lucide-vue-next';
 import { useI18n } from '@/composables/useI18n';
 import { siteCopyState, companyState } from '@/services/dataService';
+import BrandLogo from '@/components/ui/BrandLogo.vue';
 
 const { currentLang, toggleLanguage, t } = useI18n();
 

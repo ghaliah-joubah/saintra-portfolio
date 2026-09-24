@@ -34,7 +34,7 @@
         >
           <div class="flex items-center justify-between gap-4 border-b border-slate-800 pb-3">
             <div class="flex items-center gap-3">
-              <span class="px-2.5 py-1 rounded-lg bg-indigo-500/10 text-indigo-400 font-mono text-xs font-bold">{{ project.id }}</span>
+              <span class="px-2.5 py-1 rounded-lg bg-sky-500/10 text-brand-blue font-mono text-xs font-bold">{{ project.id }}</span>
               <h3 class="text-base font-bold text-white">{{ project.title.ar }} / {{ project.title.en }}</h3>
             </div>
 
@@ -42,7 +42,7 @@
               <button @click="activeEditIdx = activeEditIdx === idx ? null : idx" class="px-3 py-1 rounded-lg bg-slate-800 text-xs text-sky-400">
                 {{ activeEditIdx === idx ? 'إغلاق التعديل' : 'تعديل التفاصيل' }}
               </button>
-              <button @click="removeProject(idx)" class="px-3 py-1 rounded-lg bg-rose-500/10 text-xs text-rose-400 hover:bg-rose-500/20">
+              <button @click="removeProject(idx)" class="px-3 py-1 rounded-lg bg-brand-coral/10 text-xs text-brand-coral hover:bg-brand-coral/20">
                 حذف
               </button>
             </div>
@@ -128,7 +128,7 @@
 
               <div v-for="(img, imgIdx) in project.gallery" :key="imgIdx" class="flex items-center gap-2">
                 <input v-model="project.gallery[imgIdx]" class="flex-1 p-2 rounded-lg bg-slate-950 border border-slate-800 text-xs text-white" />
-                <button @click="project.gallery.splice(imgIdx, 1)" class="text-rose-400 text-xs p-1">حذف</button>
+                <button @click="project.gallery.splice(imgIdx, 1)" class="text-brand-coral text-xs p-1">حذف</button>
               </div>
             </div>
 

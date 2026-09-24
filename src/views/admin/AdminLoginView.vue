@@ -1,10 +1,8 @@
 <template>
-  <div class="min-h-[80vh] flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-    <div class="max-w-md w-full glass-card p-8 rounded-3xl border border-slate-800 space-y-6 text-center">
+  <div class="min-h-screen bg-navy-950 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-md w-full glass-card bg-navy-900 p-8 rounded-3xl border border-sky-600/40 space-y-6 text-center shadow-xl">
 
-      <div class="w-16 h-16 rounded-2xl bg-gradient-to-tr from-sky-500 to-indigo-600 flex items-center justify-center text-white font-extrabold text-2xl shadow-lg shadow-sky-500/20 mx-auto">
-        S
-      </div>
+      <div class="inline-flex rounded-2xl bg-white px-3 shadow-lg mx-auto"><BrandLogo /></div>
 
       <div class="space-y-2">
         <h1 class="text-2xl font-bold text-white">
@@ -29,13 +27,13 @@
           />
         </div>
 
-        <div v-if="errorMsg" class="p-3 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-400 text-xs font-semibold">
+        <div v-if="errorMsg" class="p-3 rounded-xl bg-brand-coral/10 border border-brand-coral/30 text-brand-coral text-xs font-semibold">
           {{ errorMsg }}
         </div>
 
         <button
           type="submit"
-          class="w-full py-3.5 rounded-xl font-bold bg-gradient-to-r from-sky-500 to-indigo-600 text-white shadow-lg shadow-sky-500/25 hover:scale-[1.01] active:scale-[0.99] transition-transform flex items-center justify-center gap-2"
+          class="w-full py-3.5 rounded-xl font-bold bg-sky-600 hover:bg-sky-700 text-white shadow-lg shadow-sky-500/25 hover:scale-[1.01] active:scale-[0.99] transition-all flex items-center justify-center gap-2"
         >
           <Lock class="w-4 h-4" />
           <span>دخول لوحة التحكم / Login</span>
@@ -56,6 +54,7 @@ import { useRouter } from 'vue-router';
 import { Lock } from 'lucide-vue-next';
 import { authState } from '@/services/dataService';
 import { useI18n } from '@/composables/useI18n';
+import BrandLogo from '@/components/ui/BrandLogo.vue';
 
 const router = useRouter();
 const { t } = useI18n();

@@ -6,14 +6,9 @@
       <div class="space-y-6">
 
         <!-- Header / Brand -->
-        <div class="flex items-center gap-3 px-2 pt-2">
-          <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-sky-500 to-indigo-600 flex items-center justify-center text-white font-extrabold text-lg shadow-md shadow-sky-500/20">
-            S
-          </div>
-          <div>
-            <div class="font-bold text-base text-white">لوحة الإدارة</div>
-            <div class="text-[11px] text-sky-400 font-semibold">SAINTRA Admin CMS</div>
-          </div>
+        <div class="space-y-2 px-2 pt-2">
+          <div class="inline-flex rounded-xl bg-white px-2 shadow-sm"><BrandLogo style="width: 184px; height: 65px" /></div>
+          <div class="text-xs font-semibold text-sky-400">لوحة الإدارة / Admin CMS</div>
         </div>
 
         <!-- Navigation Links -->
@@ -45,7 +40,7 @@
 
         <button
           @click="logout"
-          class="w-full flex items-center justify-center gap-2 py-2 rounded-xl text-rose-400 hover:bg-rose-500/10 text-xs font-semibold transition-colors"
+          class="w-full flex items-center justify-center gap-2 py-2 rounded-xl text-brand-coral hover:bg-brand-coral/10 text-xs font-semibold transition-colors"
         >
           <LogOut class="w-3.5 h-3.5" />
           <span>تسجيل الخروج / Logout</span>
@@ -63,7 +58,7 @@
           <h1 class="text-lg font-bold text-white">
             {{ currentTitle }}
           </h1>
-          <span v-if="saveStatusMsg" class="px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-semibold animate-pulse">
+          <span v-if="saveStatusMsg" class="px-3 py-1 rounded-full bg-brand-blue/10 border border-brand-blue/30 text-brand-cyan text-xs font-semibold animate-pulse">
             {{ saveStatusMsg }}
           </span>
         </div>
@@ -118,6 +113,7 @@ import {
 } from 'lucide-vue-next';
 
 import { saveStatusMsg, exportFullBackup, importFullBackup } from '@/services/dataService';
+import BrandLogo from '@/components/ui/BrandLogo.vue';
 
 const router = useRouter();
 const route = useRoute();

@@ -35,8 +35,8 @@
               </div>
             </div>
 
-            <div v-if="companyState.contact.whatsapp" class="p-3 sm:p-5 rounded-2xl bg-slate-50 border border-slate-100 flex items-center gap-3 sm:gap-4 min-w-0 hover:border-emerald-200 transition-colors">
-              <div class="w-9 h-9 sm:w-12 sm:h-12 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-600 shrink-0">
+            <div v-if="companyState.contact.whatsapp" class="p-3 sm:p-5 rounded-2xl bg-slate-50 border border-slate-100 flex items-center gap-3 sm:gap-4 min-w-0 hover:border-sky-200 transition-colors">
+              <div class="w-9 h-9 sm:w-12 sm:h-12 rounded-full bg-sky-100 flex items-center justify-center text-sky-600 shrink-0">
                 <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.5 3.5A11.8 11.8 0 0 0 12.1 0C5.6 0 .3 5.3.3 11.8c0 2.1.6 4.2 1.7 6L.2 24l6.4-1.7a11.8 11.8 0 0 0 5.5 1.4h.1c6.5 0 11.8-5.3 11.8-11.8 0-3.2-1.3-6.2-3.5-8.4ZM12.1 21.7a9.8 9.8 0 0 1-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4a9.8 9.8 0 1 1 8.3 4.6Zm5.4-7.3c-.3-.2-1.8-.9-2.1-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.2-.7l.5-.6.3-.5c.1-.2 0-.4 0-.6l-1-2.3c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4s-1.2 1.2-1.2 2.8 1.2 3.1 1.4 3.3c.2.2 2.4 3.7 5.9 5.2.8.3 1.4.5 1.9.6.8.1 1.5.1 2.1 0 .6-.1 1.8-.8 2.1-1.5.3-.7.3-1.3.2-1.5-.1-.1-.3-.2-.6-.4Z"/></svg>
               </div>
               <div class="space-y-1 min-w-0">
@@ -45,15 +45,15 @@
                   :href="`https://wa.me/${companyState.contact.whatsapp.replace(/[^0-9]/g, '')}`"
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="contact-value text-base font-bold text-navy-900 hover:text-emerald-600 transition-colors block dir-ltr"
+                  class="contact-value text-base font-bold text-navy-900 hover:text-sky-600 transition-colors block dir-ltr"
                 >
                   {{ companyState.contact.whatsapp }}
                 </a>
               </div>
             </div>
 
-            <div v-if="companyState.contact.address" class="p-3 sm:p-5 rounded-2xl bg-slate-50 border border-slate-100 flex items-start gap-3 sm:gap-4 min-w-0 hover:border-indigo-200 transition-colors">
-              <div class="w-9 h-9 sm:w-12 sm:h-12 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600 shrink-0 mt-0.5">
+            <div v-if="companyState.contact.address" class="p-3 sm:p-5 rounded-2xl bg-slate-50 border border-slate-100 flex items-start gap-3 sm:gap-4 min-w-0 hover:border-sky-200 transition-colors">
+              <div class="w-9 h-9 sm:w-12 sm:h-12 rounded-full bg-sky-100 flex items-center justify-center text-sky-600 shrink-0 mt-0.5">
                 <MapPin class="w-5 h-5 sm:w-6 sm:h-6" />
               </div>
               <div class="space-y-1 min-w-0">
@@ -64,8 +64,8 @@
               </div>
             </div>
 
-            <div v-if="companyState.contact.workingHours" class="p-3 sm:p-5 rounded-2xl bg-slate-50 border border-slate-100 flex items-center gap-3 sm:gap-4 min-w-0 hover:border-amber-200 transition-colors">
-              <div class="w-9 h-9 sm:w-12 sm:h-12 rounded-full bg-amber-100 flex items-center justify-center text-amber-600 shrink-0">
+            <div v-if="companyState.contact.workingHours" class="p-3 sm:p-5 rounded-2xl bg-slate-50 border border-slate-100 flex items-center gap-3 sm:gap-4 min-w-0 hover:border-brand-coral/30 transition-colors">
+              <div class="w-9 h-9 sm:w-12 sm:h-12 rounded-full bg-brand-coral/10 flex items-center justify-center text-brand-coral shrink-0">
                 <Clock class="w-5 h-5 sm:w-6 sm:h-6" />
               </div>
               <div class="space-y-1 min-w-0">
@@ -171,9 +171,9 @@
             <!-- Validation Feedback -->
             <div
               v-if="isValidated"
-              class="p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-700 text-sm font-bold flex items-center gap-3"
+              class="p-4 rounded-xl bg-sky-50 border border-sky-200 text-sky-700 text-sm font-bold flex items-center gap-3"
             >
-              <CheckCircle2 class="w-5 h-5 text-emerald-500 shrink-0" />
+              <CheckCircle2 class="w-5 h-5 text-brand-blue shrink-0" />
               <span>{{ t(siteCopyState.contactPage.validationMsg) }}</span>
             </div>
 

@@ -8,14 +8,8 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
 
       <!-- Logo -->
-      <router-link to="/" class="flex items-center gap-3 min-w-0 group focus:outline-none focus:ring-2 focus:ring-sky-500 rounded-lg p-1">
-        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-sky-500 to-indigo-600 flex items-center justify-center text-white font-extrabold text-xl shadow-lg shadow-sky-500/20 group-hover:scale-105 transition-transform">
-          {{ currentLang === 'ar' ? 'س' : 'S' }}
-        </div>
-        <div class="flex flex-col min-w-0">
-          <span class="font-bold text-xl tracking-wider text-navy-900 group-hover:text-sky-500 transition-colors">{{ t(companyState.shortName) }}</span>
-          <span class="text-[10px] text-slate-500 font-normal truncate max-w-[180px]">{{ t(companyState.name) }}</span>
-        </div>
+      <router-link to="/" class="flex items-center min-w-0 group focus:outline-none focus:ring-2 focus:ring-sky-500 rounded-lg p-1">
+        <BrandLogo class="transition-transform duration-300 group-hover:scale-[1.03]" />
       </router-link>
 
       <!-- Desktop Nav -->
@@ -29,7 +23,7 @@
         >
           {{ link.label }}
           <span
-            class="absolute bottom-0 left-0 w-full h-0.5 bg-sky-500 transition-transform duration-300 origin-left"
+            class="absolute bottom-0 left-0 w-full h-0.5 bg-brand-coral transition-transform duration-300 origin-left"
             :class="$route.path === link.path ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'"
           ></span>
         </router-link>
@@ -127,7 +121,8 @@ import { ref, computed, onMounted, onUnmounted } from 'vue';
 import { Globe, Menu, X } from 'lucide-vue-next';
 import { useRoute } from 'vue-router';
 import { useI18n } from '@/composables/useI18n';
-import { siteCopyState, companyState } from '@/services/dataService';
+import { siteCopyState } from '@/services/dataService';
+import BrandLogo from '@/components/ui/BrandLogo.vue';
 
 const { currentLang, toggleLanguage, t } = useI18n();
 const route = useRoute();

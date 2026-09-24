@@ -2,10 +2,59 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'Calibri Brand';
+  src: url('/brand/fonts/calibri-regular.ttf') format('truetype');
+  font-weight: 400 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Calibri Brand';
+  src: url('/brand/fonts/calibri-bold.ttf') format('truetype');
+  font-weight: 700 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Calibri Brand';
+  src: url('/brand/fonts/calibri-italic.ttf') format('truetype');
+  font-weight: 400 600;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'British Council Arabic';
+  src: url('/brand/fonts/british-council-light.ttf') format('truetype');
+  font-weight: 300;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'British Council Arabic';
+  src: url('/brand/fonts/british-council-regular.ttf') format('truetype');
+  font-weight: 400 600;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'British Council Arabic';
+  src: url('/brand/fonts/british-council-bold.ttf') format('truetype');
+  font-weight: 700 800;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'British Council Arabic';
+  src: url('/brand/fonts/british-council-black.ttf') format('truetype');
+  font-weight: 900;
+  font-display: swap;
+}
+
 :root {
   --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   --section-radius: 20px;
   --section-radius-inner: 16px;
+  --brand-blue: #4a90e2;
+  --brand-coral: #f04e37;
+  --brand-navy: #193661;
 }
 
 @media (min-width: 600px) {
@@ -17,7 +66,10 @@
 
 @layer base {
   html {
-    font-family: 'Alexandria', 'Tajawal', sans-serif;
+    font-family: 'Calibri Brand', Arial, sans-serif;
+  }
+  html[lang='ar'], html[lang='ar'] body, html[lang='ar'] .font-sans {
+    font-family: 'British Council Arabic', Tahoma, sans-serif;
   }
 }
 
@@ -27,14 +79,14 @@
   height: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #f8fafc;
+  background: #e2dddb;
 }
 ::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
+  background: #c0b0a3;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #94a3b8;
+  background: #9e836c;
 }
 
 /* Project/Service Card Standard Elevation & Boundaries */
@@ -46,7 +98,7 @@
 }
 
 .gradient-text {
-  @apply bg-clip-text text-transparent bg-gradient-to-r from-sky-600 via-blue-600 to-indigo-600;
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-brand-blue via-sky-600 to-brand-coral;
 }
 
 .hero-glow {

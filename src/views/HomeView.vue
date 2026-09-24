@@ -2,8 +2,8 @@
   <div class="space-y-20 pb-20">
 
     <!-- Hero Section -->
-    <section class="relative min-h-[90vh] flex items-center overflow-hidden pt-28 pb-20 bg-gradient-to-br from-white via-sky-50 to-[#dceffc]">
-      <div class="absolute inset-0 bg-[linear-gradient(to_right,#cbd5e122_1px,transparent_1px),linear-gradient(to_bottom,#cbd5e122_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_65%_65%_at_70%_50%,#000_45%,transparent_100%)] pointer-events-none"></div>
+    <section class="relative min-h-[90vh] flex items-center overflow-hidden pt-28 pb-20 bg-gradient-to-br from-white via-sky-50 to-sky-100">
+      <div class="absolute inset-0 bg-[linear-gradient(to_right,#4a90e211_1px,transparent_1px),linear-gradient(to_bottom,#4a90e211_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_65%_65%_at_70%_50%,#000_45%,transparent_100%)] pointer-events-none"></div>
       <HeroNetwork class="hero-visual" aria-hidden="true" />
 
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">

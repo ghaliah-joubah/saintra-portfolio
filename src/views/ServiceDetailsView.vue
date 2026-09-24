@@ -132,7 +132,7 @@
   </div>
 
   <div v-else class="py-24 text-center space-y-6 max-w-md mx-auto px-4">
-    <AlertCircle class="w-16 h-16 text-rose-500 mx-auto" />
+    <AlertCircle class="w-16 h-16 text-brand-coral mx-auto" />
     <h1 class="text-2xl font-bold text-navy-900">
       {{ t(siteCopyState.serviceDetailsPage.notFound) }}
     </h1>
