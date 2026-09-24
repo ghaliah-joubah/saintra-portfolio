@@ -1,10 +1,10 @@
 <template>
   <footer class="bg-navy-900 border-t border-navy-800 text-slate-400 pt-16 pb-8 relative overflow-hidden mt-auto">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-navy-800">
+      <div class="site-footer-grid pb-12 border-b border-navy-800">
 
         <!-- Company Info -->
-        <div class="lg:col-span-2 space-y-4">
+        <div class="site-footer-company space-y-4 min-w-0">
           <router-link to="/" class="flex items-center gap-3">
             <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-sky-500 to-indigo-600 flex items-center justify-center text-white font-extrabold text-xl shadow-lg shadow-sky-500/20">
               {{ currentLang === 'ar' ? 'س' : 'S' }}
@@ -21,7 +21,7 @@
         </div>
 
         <!-- Quick Links -->
-        <div class="space-y-4">
+        <div class="space-y-4 min-w-0">
           <h3 class="text-white font-semibold text-base">{{ t(siteCopyState.footer.quickLinks) }}</h3>
           <ul class="space-y-2.5 text-sm">
             <li v-for="link in navLinks" :key="link.path">
@@ -33,7 +33,7 @@
         </div>
 
         <!-- Contact Info & Social -->
-        <div class="space-y-4">
+        <div class="space-y-4 min-w-0">
           <h3 class="text-white font-semibold text-base">{{ t(siteCopyState.footer.contactInfo) }}</h3>
 
           <div class="space-y-3 text-sm text-slate-300">
@@ -99,25 +99,23 @@
             </a>
           </div>
 
-        </div>
-
-      </div>
-
-      <!-- Bottom Bar -->
-      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
-        <p>{{ t(siteCopyState.footer.rights) }}</p>
-
-        <div class="flex items-center gap-4">
-          <!-- Footer Language Switcher -->
           <button
+            type="button"
             @click="toggleLanguage"
-            class="flex items-center gap-1.5 font-bold hover:text-sky-400 transition-colors focus:outline-none"
+            class="inline-flex items-center gap-2 min-h-11 px-1 font-bold text-sm text-slate-300 hover:text-sky-400 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-sky-500"
             :aria-label="siteCopyState.common.languageSwitch[currentLang === 'ar' ? 'en' : 'ar']"
           >
             <Globe class="w-4 h-4" />
             <span>{{ currentLang === 'ar' ? 'EN' : 'AR' }}</span>
           </button>
+
         </div>
+
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="pt-8 text-xs text-slate-400">
+        <p>{{ t(siteCopyState.footer.rights) }}</p>
       </div>
     </div>
   </footer>

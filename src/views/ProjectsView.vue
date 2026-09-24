@@ -30,7 +30,7 @@
     </div>
 
     <div v-if="paginatedProjects.length > 0" class="space-y-12">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pt-4">
+      <div class="project-card-grid pt-4">
         <ProjectCard v-for="project in paginatedProjects" :key="project.id" :project="project" />
       </div>
 

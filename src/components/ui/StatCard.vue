@@ -1,12 +1,12 @@
 <template>
   <div
     ref="cardRef"
-    class="bg-white p-8 rounded-3xl border border-slate-200 text-center space-y-3 shadow-sm hover:shadow-md hover:border-sky-200 hover:-translate-y-1 transition-all relative overflow-hidden"
+    class="stat-card bg-white section-radius-inner border border-slate-200 text-center space-y-3 shadow-sm hover:shadow-md hover:border-sky-200 hover:-translate-y-1 transition-all relative"
   >
-    <div class="text-4xl sm:text-5xl font-extrabold text-navy-900 tracking-tight">
+    <div class="stat-value font-extrabold text-navy-900 tracking-tight">
       {{ animatedValue }}<span class="text-sky-500">{{ stat.suffix }}</span>
     </div>
-    <div class="text-sm font-bold text-slate-500 uppercase tracking-wide">
+    <div class="stat-label font-bold text-slate-500 uppercase tracking-wide">
       {{ t(stat.label) }}
     </div>
   </div>

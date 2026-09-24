@@ -11,11 +11,11 @@
     </div>
 
     <div v-if="paginatedServices.length > 0" class="space-y-12">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pt-2">
+      <div class="services-page-grid pt-2">
         <div
           v-for="service in paginatedServices"
           :key="service.id"
-          class="bg-white p-6 rounded-2xl border border-slate-200 hover:border-sky-300 hover:shadow-lg hover:-translate-y-1 transition-all flex flex-col justify-between space-y-6"
+          class="bg-white p-5 lg:p-6 section-radius-inner border border-slate-200 hover:border-sky-300 hover:shadow-lg hover:-translate-y-1 transition-all flex flex-col justify-between space-y-6 min-w-0 h-full"
         >
           <div class="space-y-4">
             <div class="flex items-center gap-3">

@@ -8,18 +8,18 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
 
       <!-- Logo -->
-      <router-link to="/" class="flex items-center gap-3 group focus:outline-none focus:ring-2 focus:ring-sky-500 rounded-lg p-1">
+      <router-link to="/" class="flex items-center gap-3 min-w-0 group focus:outline-none focus:ring-2 focus:ring-sky-500 rounded-lg p-1">
         <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-sky-500 to-indigo-600 flex items-center justify-center text-white font-extrabold text-xl shadow-lg shadow-sky-500/20 group-hover:scale-105 transition-transform">
           {{ currentLang === 'ar' ? 'س' : 'S' }}
         </div>
-        <div class="flex flex-col">
+        <div class="flex flex-col min-w-0">
           <span class="font-bold text-xl tracking-wider text-navy-900 group-hover:text-sky-500 transition-colors">{{ t(companyState.shortName) }}</span>
-          <span class="text-[10px] text-slate-500 font-normal">{{ t(companyState.name) }}</span>
+          <span class="text-[10px] text-slate-500 font-normal truncate max-w-[180px]">{{ t(companyState.name) }}</span>
         </div>
       </router-link>
 
       <!-- Desktop Nav -->
-      <nav class="hidden md:flex items-center gap-6" :aria-label="t(siteCopyState.common.mainNavigation)">
+      <nav class="desktop-navigation items-center gap-6" :aria-label="t(siteCopyState.common.mainNavigation)">
         <router-link
           v-for="link in navLinks"
           :key="link.path"
@@ -36,7 +36,7 @@
       </nav>
 
       <!-- Right Controls: Language Switch & CTA -->
-      <div class="hidden md:flex items-center gap-4">
+      <div class="desktop-controls items-center gap-4">
         <!-- Language Switcher -->
         <button
           @click="toggleLanguage"
@@ -56,17 +56,19 @@
       </div>
 
       <!-- Mobile Menu Button -->
-      <div class="flex items-center gap-3 md:hidden">
+      <div class="mobile-controls items-center gap-2 shrink-0">
         <button
           @click="toggleLanguage"
-          class="p-2 text-navy-900 font-bold text-xs focus:outline-none"
+          class="nav-language-inline items-center gap-1.5 min-h-11 px-2 text-navy-900 font-bold text-sm focus:outline-none"
+          :aria-label="siteCopyState.common.languageSwitch[currentLang === 'ar' ? 'en' : 'ar']"
         >
-          {{ currentLang === 'ar' ? 'EN' : 'AR' }}
+          <Globe class="w-4 h-4" />
+          <span>{{ currentLang === 'ar' ? 'EN' : 'AR' }}</span>
         </button>
 
         <button
           @click="isMobileMenuOpen = !isMobileMenuOpen"
-          class="p-2 text-navy-900 hover:text-sky-500 focus:outline-none"
+          class="p-2 min-h-11 min-w-11 flex items-center justify-center text-navy-900 hover:text-sky-500 focus:outline-none"
           :aria-expanded="isMobileMenuOpen"
           :aria-label="t(siteCopyState.common.mobileMenu)"
         >
@@ -85,7 +87,7 @@
       leave-from-class="opacity-100 translate-y-0"
       leave-to-class="opacity-0 -translate-y-4"
     >
-      <div v-if="isMobileMenuOpen" class="md:hidden bg-white border-b border-slate-200 px-4 pt-2 pb-6 space-y-3 absolute top-full w-full shadow-lg">
+      <div v-if="isMobileMenuOpen" class="mobile-drawer bg-white border-b border-slate-200 px-4 pt-2 pb-6 space-y-3 absolute top-full w-full shadow-lg">
         <router-link
           v-for="link in navLinks"
           :key="link.path"
@@ -98,6 +100,15 @@
         </router-link>
 
         <div class="pt-4 border-t border-slate-100 flex flex-col gap-3">
+          <button
+            type="button"
+            class="drawer-language items-center gap-2 min-h-11 px-4 font-bold text-navy-900"
+            :aria-label="siteCopyState.common.languageSwitch[currentLang === 'ar' ? 'en' : 'ar']"
+            @click="toggleLanguage"
+          >
+            <Globe class="w-4 h-4" />
+            <span>{{ currentLang === 'ar' ? 'EN' : 'AR' }}</span>
+          </button>
           <router-link
             to="/contact"
             @click="isMobileMenuOpen = false"

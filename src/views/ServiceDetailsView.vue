@@ -1,7 +1,7 @@
 <template>
   <div v-if="service" class="space-y-16 pt-28 pb-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-    <section class="rounded-[2.5rem] border border-sky-100 bg-gradient-to-br from-white via-sky-50 to-white p-6 sm:p-10 lg:p-12 shadow-sm space-y-8">
+    <section class="section-radius border border-sky-100 bg-gradient-to-br from-white via-sky-50 to-white p-6 sm:p-10 lg:p-12 shadow-sm space-y-8">
       <router-link
         to="/services"
         class="inline-flex items-center gap-2 text-sm text-sky-600 font-bold hover:underline"
@@ -34,14 +34,14 @@
           </router-link>
         </div>
 
-        <div v-if="service.image" class="rounded-3xl overflow-hidden border border-sky-100 bg-white shadow-md">
+        <div v-if="service.image" class="section-radius-inner overflow-hidden border border-sky-100 bg-white shadow-md">
           <img :src="service.image" :alt="t(service.title)" class="w-full h-64 sm:h-80 lg:h-[360px] object-contain" />
         </div>
       </div>
     </section>
 
     <!-- Reordered Section 2: What's Included (2 Columns) -->
-    <div class="bg-white p-10 sm:p-16 rounded-[3rem] border border-slate-200 shadow-sm space-y-8">
+    <div class="bg-white p-6 sm:p-10 lg:p-16 section-radius border border-slate-200 shadow-sm space-y-8">
       <h2 class="text-3xl font-extrabold text-navy-900 flex items-center gap-3">
         <CheckCircle2 class="w-8 h-8 text-sky-500" />
         <span>{{ t(siteCopyState.serviceDetailsPage.whatsIncludedTitle) }}</span>
@@ -60,13 +60,13 @@
     </div>
 
     <!-- Reordered Section 3: YouTube Video -->
-    <div v-if="service.videoUrl" class="bg-white p-6 sm:p-10 rounded-[3rem] border border-slate-200 shadow-sm space-y-6 max-w-4xl mx-auto w-full">
+    <div v-if="service.videoUrl" class="bg-white p-6 sm:p-10 section-radius border border-slate-200 shadow-sm space-y-6 max-w-4xl mx-auto w-full">
       <h3 class="text-2xl font-bold text-navy-900 flex items-center gap-3 px-4">
         <Video class="w-7 h-7 text-sky-500" />
         <span>{{ t(siteCopyState.serviceDetailsPage.videoTitle) }}</span>
       </h3>
 
-      <div class="relative w-full aspect-video rounded-3xl overflow-hidden border border-slate-200 bg-slate-100 shadow-inner">
+      <div class="relative w-full aspect-video section-radius-inner overflow-hidden border border-slate-200 bg-slate-100 shadow-inner">
         <iframe
           :src="service.videoUrl"
           class="absolute inset-0 w-full h-full"
@@ -88,11 +88,11 @@
         <p class="text-slate-500 text-base">{{ t(siteCopyState.serviceDetailsPage.processDescription) }}</p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div class="methodology-grid">
         <div
           v-for="step in service.ourProcess"
           :key="step.stepNumber"
-          class="bg-white p-8 rounded-3xl border border-slate-200 space-y-4 shadow-sm hover:shadow-md hover:border-sky-200 hover:-translate-y-1 transition-all"
+          class="bg-white p-6 lg:p-8 section-radius-inner border border-slate-200 space-y-4 shadow-sm hover:shadow-md hover:border-sky-200 hover:-translate-y-1 transition-all h-full min-w-0"
         >
           <h3 class="text-xl font-bold text-navy-900">
             {{ t(step.title) }}
@@ -113,7 +113,7 @@
         <p class="text-slate-500 text-base">{{ t(siteCopyState.serviceDetailsPage.relatedProjectsDescription) }}</p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div class="project-card-grid">
         <ProjectCard v-for="project in relatedProjects" :key="project.id" :project="project" />
       </div>
     </div>

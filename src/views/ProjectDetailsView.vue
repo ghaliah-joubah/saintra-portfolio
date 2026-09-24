@@ -38,7 +38,7 @@
 
         <!-- Info Column -->
         <div class="md:col-span-5 space-y-6">
-          <div class="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm space-y-6">
+          <div class="bg-white p-6 sm:p-8 section-radius-inner border border-slate-200 shadow-sm space-y-6">
             <h3 class="text-xl font-bold text-navy-900 border-b border-slate-100 pb-3">
               {{ t(siteCopyState.projectDetailsPage.infoTitle) }}
             </h3>
@@ -105,7 +105,7 @@
     </div>
 
     <section v-if="galleryImages.length" class="py-14" :aria-label="t(siteCopyState.projectDetailsPage.galleryTitle)">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-7 flex items-center justify-between gap-4">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-7 gallery-header">
         <h2 class="text-2xl sm:text-3xl font-bold text-navy-900">{{ t(siteCopyState.projectDetailsPage.galleryTitle) }}</h2>
         <div v-if="galleryImages.length > 1" class="flex items-center gap-2" dir="ltr">
           <button type="button" :disabled="activeIndex === 0" :aria-label="t(siteCopyState.projectDetailsPage.previousImage)" class="gallery-arrow" @click="activateImage(activeIndex - 1)"><ArrowLeft class="w-5 h-5" /></button>
@@ -122,7 +122,7 @@
               :disabled="galleryImages.length === 1"
               :aria-current="activeIndex === index ? 'true' : undefined"
               :aria-label="`${t(siteCopyState.projectDetailsPage.selectImage)} ${index + 1}`"
-              class="gallery-slide relative flex-none h-72 sm:h-[440px] lg:h-[500px] overflow-hidden rounded-3xl border bg-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-500"
+              class="gallery-slide relative flex-none h-72 sm:h-[440px] lg:h-[500px] overflow-hidden section-radius-inner border bg-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-500"
               :class="activeIndex === index ? 'border-sky-300 shadow-lg cursor-default' : 'border-slate-200 hover:border-sky-300 cursor-pointer'"
               :style="{ width: `${activeIndex === index ? expandedWidth : collapsedWidth}px` }"
               @click="activateImage(index)"

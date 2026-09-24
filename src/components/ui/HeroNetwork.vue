@@ -50,10 +50,10 @@ const featuredNodes = nodes.filter((node) => node.depth > .4 && node.id % 11 ===
 </script>
 
 <style scoped>
-.network-shape { transform-origin: 50% 50%; animation: network-drift 18s ease-in-out infinite alternate; }
+.network-shape { transform-origin: 50% 50%; animation: network-drift 7s linear infinite alternate; will-change: transform; }
 @keyframes network-drift {
-  from { transform: translate3d(-9px, 5px, 0) rotate(-3deg) scale(.98); }
-  to { transform: translate3d(11px, -10px, 0) rotate(3deg) scale(1.025); }
+  from { transform: translate3d(-14px, 9px, 0) rotate(-5deg) scale(.98); }
+  to { transform: translate3d(16px, -13px, 0) rotate(5deg) scale(1.03); }
 }
 @media (prefers-reduced-motion: reduce) { .network-shape { animation: none; } }
 </style>
