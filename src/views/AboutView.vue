@@ -12,7 +12,7 @@
     </section>
 
     <!-- Company Story Section -->
-    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="story" class="scroll-mt-28 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="bg-white section-radius p-5 sm:p-8 lg:p-12 border border-slate-200 shadow-sm grid grid-cols-1 lg:grid-cols-12 gap-7 lg:gap-12 items-center">
         <div class="lg:col-span-7 space-y-6">
           <div class="inline-flex items-center gap-2 text-sky-600 font-bold text-sm">
@@ -56,7 +56,7 @@
     <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="mission-grid">
 
-        <div class="bg-white p-6 lg:p-10 section-radius-inner border border-slate-200 space-y-4 shadow-sm group hover:border-sky-300 transition-colors h-full">
+        <div id="mission" class="scroll-mt-28 bg-white p-6 lg:p-10 section-radius-inner border border-slate-200 space-y-4 shadow-sm group hover:border-sky-300 transition-colors h-full">
           <h3 class="text-2xl font-bold text-navy-900 flex items-center gap-3">
             <Target class="w-8 h-8 text-sky-500 group-hover:scale-110 transition-transform" />
             <span>{{ t(siteCopyState.about.missionTitle) }}</span>
@@ -66,7 +66,7 @@
           </p>
         </div>
 
-        <div class="bg-white p-6 lg:p-10 section-radius-inner border border-slate-200 space-y-4 shadow-sm group hover:border-sky-300 transition-colors h-full">
+        <div id="vision" class="scroll-mt-28 bg-white p-6 lg:p-10 section-radius-inner border border-slate-200 space-y-4 shadow-sm group hover:border-sky-300 transition-colors h-full">
           <h3 class="text-2xl font-bold text-navy-900 flex items-center gap-3">
             <Eye class="w-8 h-8 text-sky-500 group-hover:scale-110 transition-transform" />
             <span>{{ t(siteCopyState.about.visionTitle) }}</span>

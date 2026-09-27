@@ -1,7 +1,6 @@
 <template>
   <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="contact-cta section-radius bg-navy-900 text-center relative overflow-hidden shadow-xl">
-      <div class="absolute inset-0 opacity-[0.07] bg-[url('/brand/pattern.png')] bg-[length:380px_380px] pointer-events-none" aria-hidden="true"></div>
+    <div class="contact-cta contact-cta-gradient section-radius text-center relative overflow-hidden shadow-xl">
       <div class="absolute w-[400px] h-[400px] bg-sky-500/20 rounded-full blur-[80px] -bottom-20 -left-20 pointer-events-none"></div>
       <div class="contact-cta-content relative z-10">
         <h2 class="contact-cta-heading font-extrabold text-white max-w-3xl mx-auto">{{ t(siteCopyState.home.ctaTitle) }}</h2>

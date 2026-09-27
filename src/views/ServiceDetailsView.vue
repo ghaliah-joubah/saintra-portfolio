@@ -53,7 +53,7 @@
           :key="idx"
           class="p-5 rounded-2xl bg-slate-50 border border-slate-200 hover:bg-sky-50 hover:border-sky-200 transition-colors flex items-start gap-4"
         >
-          <div class="w-3 h-3 rounded-full bg-sky-500 shrink-0 mt-1"></div>
+          <div class="service-included-bullet w-3 h-3 rounded-full bg-sky-500 shrink-0 mt-1"></div>
           <span class="text-base font-bold text-navy-900 leading-relaxed">{{ t(item) }}</span>
         </div>
       </div>

@@ -2,7 +2,9 @@
   <div v-if="project" class="pb-20">
 
     <!-- 1. Introduction Section -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-12 space-y-8">
+    <section class="project-details-hero relative overflow-hidden">
+      <div class="project-details-pattern absolute inset-0 pointer-events-none" aria-hidden="true"></div>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-12 space-y-8 relative z-10">
 
       <div class="space-y-4 max-w-4xl">
         <router-link
@@ -25,7 +27,8 @@
         </div>
       </div>
 
-    </div>
+      </div>
+    </section>
 
     <!-- Details, scope, and structured information -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">

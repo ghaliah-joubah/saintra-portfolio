@@ -102,14 +102,207 @@
     "addressLabel": { "ar": "المقر الرئيسي", "en": "Headquarters" },
     "workingHoursLabel": { "ar": "ساعات العمل الرسمية", "en": "Working Hours" },
     "emailLabel": { "ar": "البريد الإلكتروني", "en": "Email Address" },
-    "whatsappLabel": { "ar": "تواصل عبر الواتساب", "en": "WhatsApp" }
+    "whatsappLabel": { "ar": "تواصل عبر الواتساب", "en": "WhatsApp" },
+    "privacyNoticeBefore": { "ar": "بإرسال هذا النموذج، فإنك تقر باطلاعك على", "en": "By submitting this form, you acknowledge our" },
+    "privacyNoticeLink": { "ar": "سياسة الخصوصية", "en": "Privacy Policy" },
+    "privacyNoticeAfter": { "ar": ".", "en": "." }
   },
   "footer": {
     "rights": { "ar": "جميع الحقوق محفوظة © سينترا لتقنية المعلومات", "en": "All Rights Reserved © SAINTRA Technology" },
     "tagline": { "ar": "بيت الخبرة البرمجية والهندسة الرقمية", "en": "Premier Software Engineering & Cloud Solutions" },
     "quickLinks": { "ar": "روابط سريعة", "en": "Quick Links" },
     "services": { "ar": "الخدمات", "en": "Services" },
-    "contactInfo": { "ar": "معلومات التواصل", "en": "Contact Info" }
+    "contactInfo": { "ar": "معلومات التواصل", "en": "Contact Info" },
+    "privacyPolicy": { "ar": "سياسة الخصوصية", "en": "Privacy Policy" },
+    "terms": { "ar": "الشروط والأحكام", "en": "Terms & Conditions" }
+  },
+  "theme": {
+    "lightMode": { "ar": "الوضع الفاتح", "en": "Light mode" },
+    "darkMode": { "ar": "الوضع الداكن", "en": "Dark mode" },
+    "switchToLight": { "ar": "التبديل إلى الوضع الفاتح", "en": "Switch to light mode" },
+    "switchToDark": { "ar": "التبديل إلى الوضع الداكن", "en": "Switch to dark mode" }
+  },
+  "search": {
+    "open": { "ar": "فتح البحث", "en": "Open search" },
+    "close": { "ar": "إغلاق البحث", "en": "Close search" },
+    "title": { "ar": "البحث في الموقع", "en": "Search the portfolio" },
+    "placeholder": { "ar": "ابحث عن خدمة أو مشروع أو تقنية...", "en": "Search services, projects, or technologies..." },
+    "hint": { "ar": "اكتب حرفين على الأقل. استخدم الأسهم للتنقل وEnter للاختيار.", "en": "Type at least two characters. Use arrow keys to navigate and Enter to select." },
+    "noResults": { "ar": "لا توجد نتائج مطابقة.", "en": "No results found." },
+    "groups": {
+      "pages": { "ar": "الصفحات والأقسام", "en": "Pages & Sections" },
+      "services": { "ar": "الخدمات", "en": "Services" },
+      "projects": { "ar": "المشاريع", "en": "Projects" },
+      "technologies": { "ar": "التقنيات", "en": "Technologies" }
+    }
+  },
+  "legal": {
+    "lastUpdatedLabel": { "ar": "آخر تحديث", "en": "Last updated" },
+    "contactLink": { "ar": "تواصل معنا للاستفسار", "en": "Contact us with a question" },
+    "privacyPolicy": {
+      "title": { "ar": "سياسة الخصوصية", "en": "Privacy Policy" },
+      "introduction": {
+        "ar": "توضح هذه السياسة ما يفعله موقع سينترا الحالي بالمعلومات أثناء استخدامك لصفحات معرض الأعمال العامة.",
+        "en": "This policy explains what the current SAINTRA website does with information while you use its public portfolio pages."
+      },
+      "lastUpdated": { "ar": "26 سبتمبر 2026", "en": "September 26, 2026" },
+      "sections": [
+        {
+          "id": "information-we-collect",
+          "title": { "ar": "المعلومات التي يجري التعامل معها", "en": "Information We Handle" },
+          "paragraphs": [
+            {
+              "ar": "يتيح نموذج التواصل إدخال الاسم والبريد الإلكتروني ورقم الهاتف والخدمة والرسالة. في التطبيق الحالي، يجري التحقق من الحقول المطلوبة داخل المتصفح فقط، ولا يرسل الموقع هذه البيانات أو يحفظها عند الضغط على زر الإرسال.",
+              "en": "The contact form allows you to enter a name, email address, phone number, service, and message. In the current implementation, required fields are validated only in your browser; pressing the submit button does not transmit or save this information."
+            }
+          ]
+        },
+        {
+          "id": "how-information-is-used",
+          "title": { "ar": "كيفية استخدام المعلومات", "en": "How Information Is Used" },
+          "paragraphs": [
+            {
+              "ar": "يستخدم الموقع اختيار اللغة والوضع اللوني لتقديم الواجهة التي اخترتها. وبما أن نموذج التواصل لا يرسل البيانات حاليًا، فلا يستخدم الموقع محتوى النموذج بعد التحقق المحلي.",
+              "en": "The site uses your language and theme choices to present the interface you selected. Because the contact form does not currently send data, the site does not use form content after local validation."
+            }
+          ]
+        },
+        {
+          "id": "local-storage",
+          "title": { "ar": "التخزين المحلي", "en": "Local Storage" },
+          "paragraphs": [
+            {
+              "ar": "يحفظ الموقع اختيار اللغة واختيار الوضع الفاتح أو الداكن في التخزين المحلي للمتصفح كي يستعيدهما في الزيارات اللاحقة. هذه التفضيلات ليست ملفات تعريف ارتباط، ويمكن حذفها بمسح بيانات الموقع من المتصفح.",
+              "en": "The site saves your language choice and Light or Dark theme choice in browser local storage so they can be restored on later visits. These preferences are not cookies and can be removed by clearing this site's browser data."
+            },
+            {
+              "ar": "لم يُعثر في التطبيق الحالي على تحليلات أو أدوات تتبع أو ملفات تعريف ارتباط خاصة بالموقع.",
+              "en": "The current application does not implement first-party analytics, tracking tools, or cookies."
+            }
+          ]
+        },
+        {
+          "id": "third-party-services",
+          "title": { "ar": "خدمات وروابط الجهات الخارجية", "en": "Third-Party Services and Links" },
+          "paragraphs": [
+            {
+              "ar": "قد تعرض بعض صفحات الخدمات فيديو مضمّنًا من YouTube عندما يكون رابط فيديو متاحًا. كما قد تنقلك روابط واتساب والشبكات الاجتماعية والمشاريع المباشرة إلى مواقع خارجية. تخضع تلك المواقع لممارساتها وسياساتها الخاصة.",
+              "en": "Some service pages may display an embedded YouTube video when a video URL is available. WhatsApp, social-media, and live-project links may also take you to external sites. Those sites operate under their own practices and policies."
+            }
+          ]
+        },
+        {
+          "id": "data-retention",
+          "title": { "ar": "الاحتفاظ بالبيانات", "en": "Data Retention" },
+          "paragraphs": [
+            {
+              "ar": "لا يحتفظ الموقع حاليًا بإرسالات نموذج التواصل على خادم. تبقى تفضيلات اللغة والوضع اللوني في التخزين المحلي حتى تغيّر الاختيار أو تمسح بيانات الموقع من المتصفح.",
+              "en": "The site does not currently retain contact-form submissions on a server. Language and theme preferences remain in local storage until you change the selection or clear the site's browser data."
+            }
+          ]
+        },
+        {
+          "id": "visitor-rights",
+          "title": { "ar": "خيارات الزائر", "en": "Visitor Choices" },
+          "paragraphs": [
+            {
+              "ar": "يمكنك تغيير اللغة أو الوضع اللوني في أي وقت، أو حذف التفضيلات المحفوظة بمسح بيانات الموقع. لا توجد في التطبيق الحالي إرسالات نموذج محفوظة لدى الموقع لطلب استرجاعها أو حذفها.",
+              "en": "You can change the language or theme at any time, or remove saved preferences by clearing site data. In the current implementation, there are no contact-form submissions stored by the site to retrieve or delete."
+            }
+          ]
+        },
+        {
+          "id": "contact-information",
+          "title": { "ar": "معلومات التواصل", "en": "Contact Information" },
+          "paragraphs": [
+            {
+              "ar": "للاستفسار عن هذه السياسة، استخدم البريد الإلكتروني أو قنوات التواصل المعروضة في صفحة التواصل.",
+              "en": "For questions about this policy, use the email address or communication channels displayed on the Contact page."
+            }
+          ]
+        }
+      ]
+    },
+    "terms": {
+      "title": { "ar": "الشروط والأحكام", "en": "Terms & Conditions" },
+      "introduction": {
+        "ar": "تنظم هذه الشروط استخدام صفحات معرض أعمال سينترا العامة كما هي مطبقة حاليًا.",
+        "en": "These terms govern use of SAINTRA's public portfolio pages as they are currently implemented."
+      },
+      "lastUpdated": { "ar": "26 سبتمبر 2026", "en": "September 26, 2026" },
+      "sections": [
+        {
+          "id": "acceptance",
+          "title": { "ar": "قبول الشروط", "en": "Acceptance of Terms" },
+          "paragraphs": [
+            {
+              "ar": "باستخدام هذا الموقع، فإنك توافق على استخدامه وفق هذه الشروط. إذا لم توافق عليها، يمكنك التوقف عن استخدام الموقع.",
+              "en": "By using this website, you agree to use it under these terms. If you do not agree, you may stop using the site."
+            }
+          ]
+        },
+        {
+          "id": "website-use",
+          "title": { "ar": "استخدام الموقع", "en": "Use of the Website" },
+          "paragraphs": [
+            {
+              "ar": "يقدم الموقع معلومات عن سينترا وخدماتها ونماذج توضيحية للمشاريع ووسائل التواصل. لا ينشئ تصفح الموقع أو التحقق المحلي من نموذج التواصل اتفاقية خدمات، ولا يرسل نموذج التواصل رسالة في التطبيق الحالي.",
+              "en": "The site presents information about SAINTRA, its services, illustrative project examples, and communication channels. Browsing the site or locally validating the contact form does not create a service agreement, and the current contact form does not send a message."
+            }
+          ]
+        },
+        {
+          "id": "intellectual-property",
+          "title": { "ar": "المحتوى والملكية الفكرية", "en": "Content and Intellectual Property" },
+          "paragraphs": [
+            {
+              "ar": "تُعرض الهوية البصرية والنصوص والصور والنماذج التوضيحية بوصفها محتوى لمعرض أعمال سينترا. إتاحة هذا المحتوى للعرض لا تمنح ترخيصًا لإعادة استخدامه أو تقديمه على أنه عملك.",
+              "en": "The visual identity, text, images, and illustrative examples are presented as SAINTRA portfolio content. Making this content viewable does not grant a license to reuse it or present it as your own work."
+            }
+          ]
+        },
+        {
+          "id": "user-responsibilities",
+          "title": { "ar": "مسؤوليات المستخدم", "en": "User Responsibilities" },
+          "paragraphs": [
+            {
+              "ar": "استخدم الموقع بصورة قانونية، ولا تحاول تعطيل صفحاته أو تجاوز وظائفه أو إساءة استخدام الروابط وقنوات التواصل المعروضة فيه.",
+              "en": "Use the site lawfully and do not attempt to disrupt its pages, bypass its functions, or misuse the links and communication channels it displays."
+            }
+          ]
+        },
+        {
+          "id": "third-party-links",
+          "title": { "ar": "روابط الجهات الخارجية", "en": "Third-Party Links" },
+          "paragraphs": [
+            {
+              "ar": "قد يحتوي الموقع على فيديوهات YouTube مضمّنة وروابط إلى واتساب والشبكات الاجتماعية ومواقع المشاريع. سينقلك فتح هذه الروابط إلى خدمات مستقلة لها شروطها وممارساتها الخاصة.",
+              "en": "The site may contain embedded YouTube videos and links to WhatsApp, social networks, and project websites. Opening them takes you to independent services with their own terms and practices."
+            }
+          ]
+        },
+        {
+          "id": "information-limitations",
+          "title": { "ar": "حدود معلومات الموقع", "en": "Website Information Limitations" },
+          "paragraphs": [
+            {
+              "ar": "محتوى الموقع معلومات عامة عن معرض الأعمال والخدمات. بعض صور ومعارض المشاريع تصورات توضيحية كما هو مبيّن في أوصافها، وتُحدد أي التزامات خاصة بمشروع أو خدمة في اتفاق مستقل.",
+              "en": "Site content provides general portfolio and service information. Some project images and galleries are illustrative concepts as identified in their descriptions, and any specific project or service commitments are established separately."
+            }
+          ]
+        },
+        {
+          "id": "changes-and-contact",
+          "title": { "ar": "التغييرات والتواصل", "en": "Changes and Contact" },
+          "paragraphs": [
+            {
+              "ar": "قد تُحدّث هذه الشروط عندما تتغير وظائف الموقع، وسيظهر تاريخ آخر تحديث في أعلى الصفحة. للاستفسار، استخدم قنوات التواصل المعروضة في صفحة التواصل.",
+              "en": "These terms may be updated when site functionality changes, and the latest update date will appear at the top of this page. For questions, use the channels displayed on the Contact page."
+            }
+          ]
+        }
+      ]
+    }
   },
   "common": {
     "notFoundTitle": { "ar": "الصفحة غير موجودة", "en": "Page Not Found" },

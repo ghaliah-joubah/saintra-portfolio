@@ -3,6 +3,19 @@ export interface LocalizedString {
   en: string;
 }
 
+export interface LegalSection {
+  id: string;
+  title: LocalizedString;
+  paragraphs: LocalizedString[];
+}
+
+export interface LegalDocumentContent {
+  title: LocalizedString;
+  introduction: LocalizedString;
+  lastUpdated: LocalizedString;
+  sections: LegalSection[];
+}
+
 export interface ValueItem {
   id?: string;
   title: LocalizedString;
@@ -192,6 +205,9 @@ export interface SiteCopy {
     workingHoursLabel: LocalizedString;
     emailLabel: LocalizedString;
     whatsappLabel: LocalizedString;
+    privacyNoticeBefore: LocalizedString;
+    privacyNoticeLink: LocalizedString;
+    privacyNoticeAfter: LocalizedString;
   };
   footer: {
     rights: LocalizedString;
@@ -199,6 +215,34 @@ export interface SiteCopy {
     quickLinks: LocalizedString;
     services: LocalizedString;
     contactInfo: LocalizedString;
+    privacyPolicy: LocalizedString;
+    terms: LocalizedString;
+  };
+  theme: {
+    lightMode: LocalizedString;
+    darkMode: LocalizedString;
+    switchToLight: LocalizedString;
+    switchToDark: LocalizedString;
+  };
+  search: {
+    open: LocalizedString;
+    close: LocalizedString;
+    title: LocalizedString;
+    placeholder: LocalizedString;
+    hint: LocalizedString;
+    noResults: LocalizedString;
+    groups: {
+      pages: LocalizedString;
+      services: LocalizedString;
+      projects: LocalizedString;
+      technologies: LocalizedString;
+    };
+  };
+  legal: {
+    lastUpdatedLabel: LocalizedString;
+    contactLink: LocalizedString;
+    privacyPolicy: LegalDocumentContent;
+    terms: LegalDocumentContent;
   };
   common: {
     notFoundTitle: LocalizedString;

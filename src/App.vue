@@ -1,5 +1,9 @@
 <template>
-  <div class="min-h-screen flex flex-col bg-slate-50 text-navy-900">
+  <div
+    class="min-h-screen flex flex-col bg-slate-50 text-navy-900"
+    :class="{ 'portfolio-shell': !isAdminRoute }"
+    :data-theme="isAdminRoute ? undefined : currentTheme"
+  >
     <Navbar v-if="!isAdminRoute" />
     <main class="flex-1">
       <router-view v-slot="{ Component }">
@@ -19,8 +23,11 @@ import { useRoute } from 'vue-router';
 import Navbar from '@/components/layout/Navbar.vue';
 import Footer from '@/components/layout/Footer.vue';
 import BackToTop from '@/components/layout/BackToTop.vue';
+import { useTheme } from '@/composables/useTheme';
 
 const route = useRoute();
+const { currentTheme, initializeTheme } = useTheme();
+initializeTheme();
 
 const isAdminRoute = computed(() => {
   return route.path.startsWith('/admin');

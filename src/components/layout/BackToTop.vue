@@ -3,11 +3,11 @@
     v-show="visible"
     ref="buttonRef"
     type="button"
-    class="fixed z-40 rounded-full bg-navy-700 p-3 min-w-11 min-h-11 text-white shadow-xl ring-1 ring-white/60 transition-[background-color,bottom] duration-200 hover:bg-sky-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-500"
+    class="group fixed z-40 rounded-full border border-white/50 bg-navy-700 p-3 min-w-11 min-h-11 text-white shadow-xl transition-[background-color,border-color,box-shadow,bottom] duration-200 hover:border-sky-300 hover:bg-sky-500 hover:shadow-2xl focus-visible:border-sky-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-400"
     :style="{ insetInlineEnd: '20px', bottom: `${safeBottom}px` }"
     :aria-label="t(siteCopyState.common.backToTop)"
     @click="scrollToTop"
-  ><ArrowUp class="h-5 w-5" /></button>
+  ><ArrowUp class="h-5 w-5 transition-transform duration-200 group-hover:-translate-y-0.5 group-focus-visible:-translate-y-0.5" /></button>
 </template>
 
 <script setup lang="ts">

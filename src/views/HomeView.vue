@@ -2,7 +2,7 @@
   <div class="space-y-20 pb-20">
 
     <!-- Hero Section -->
-    <section class="relative min-h-[90vh] flex items-center overflow-hidden pt-28 pb-20 bg-gradient-to-br from-white via-sky-50 to-sky-100">
+    <section id="home" class="home-hero relative min-h-[90vh] flex items-center overflow-hidden pt-28 pb-20 bg-gradient-to-br from-white via-sky-50 to-sky-100">
       <div class="absolute inset-0 bg-[linear-gradient(to_right,#4a90e211_1px,transparent_1px),linear-gradient(to_bottom,#4a90e211_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_65%_65%_at_70%_50%,#000_45%,transparent_100%)] pointer-events-none"></div>
       <HeroNetwork class="hero-visual" aria-hidden="true" />
 
@@ -71,7 +71,7 @@
     </section>
 
     <!-- Services Preview Section -->
-    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="services" class="scroll-mt-28 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="services-preview-heading mb-10">
         <div class="space-y-2">
           <h2 class="text-3xl sm:text-4xl font-extrabold text-navy-900">
@@ -127,7 +127,7 @@
     </section>
 
     <!-- Projects Preview Section (Up to 6) -->
-    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="featured-projects" class="scroll-mt-28 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12">
         <div class="space-y-2">
           <h2 class="text-3xl sm:text-4xl font-extrabold text-navy-900">
@@ -140,7 +140,7 @@
 
         <router-link
           to="/projects"
-          class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white border border-slate-200 text-sky-600 font-bold hover:bg-sky-50 hover:border-sky-200 shadow-sm hover:shadow transition-all text-sm shrink-0"
+          class="inline-flex self-start items-center gap-2 px-5 py-2.5 min-h-[44px] w-fit whitespace-nowrap rounded-xl bg-white border border-slate-200 text-sky-600 font-bold hover:bg-sky-50 hover:border-sky-200 shadow-sm hover:shadow transition-all text-sm shrink-0"
         >
           <span>{{ t(siteCopyState.buttons.viewAllProjects) }}</span>
           <ArrowRight v-if="!isRtl" class="w-4 h-4" />

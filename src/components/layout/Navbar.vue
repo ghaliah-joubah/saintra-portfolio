@@ -1,14 +1,14 @@
 <template>
   <header
-    class="fixed top-0 inset-x-0 z-50 transition-[background-color,box-shadow,border-color,backdrop-filter] duration-500 ease-out"
+    class="site-navbar fixed top-0 inset-x-0 z-50 transition-[background-color,box-shadow,border-color,backdrop-filter] duration-500 ease-out"
     :class="[
-      isScrolled || !isHome || isMobileMenuOpen ? 'bg-white/95 backdrop-blur-md shadow-md border-b border-slate-200/80' : 'bg-transparent border-b border-transparent'
+      isScrolled || !isHome || isMobileMenuOpen ? 'navbar-solid bg-white/95 backdrop-blur-md shadow-md border-b border-slate-200/80' : 'bg-transparent border-b border-transparent'
     ]"
   >
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
 
       <!-- Logo -->
-      <router-link to="/" class="flex items-center min-w-0 group focus:outline-none focus:ring-2 focus:ring-sky-500 rounded-lg p-1">
+      <router-link to="/" class="flex items-center min-w-0 group focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 rounded-lg p-1">
         <BrandLogo class="transition-transform duration-300 group-hover:scale-[1.03]" />
       </router-link>
 
@@ -31,6 +31,19 @@
 
       <!-- Right Controls: Language Switch & CTA -->
       <div class="desktop-controls items-center gap-4">
+        <button
+          type="button"
+          class="nav-search-trigger nav-icon-control grid min-h-11 min-w-11 place-items-center rounded-xl text-navy-900 transition-colors hover:text-sky-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-500"
+          :aria-label="t(siteCopyState.search.open)"
+          :title="t(siteCopyState.search.open)"
+          @pointerdown.stop
+          @click="toggleSearch"
+        >
+          <SearchIcon class="h-5 w-5" />
+        </button>
+
+        <ThemeToggle />
+
         <!-- Language Switcher -->
         <button
           @click="toggleLanguage"
@@ -61,6 +74,19 @@
         </button>
 
         <button
+          type="button"
+          class="nav-search-trigger nav-icon-control min-h-11 min-w-11 items-center justify-center rounded-xl text-navy-900 transition-colors hover:text-sky-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-500"
+          :aria-label="t(siteCopyState.search.open)"
+          :title="t(siteCopyState.search.open)"
+          @pointerdown.stop
+          @click="toggleSearch"
+        >
+          <SearchIcon class="h-5 w-5" />
+        </button>
+
+        <ThemeToggle class="nav-utility-inline" />
+
+        <button
           @click="isMobileMenuOpen = !isMobileMenuOpen"
           class="p-2 min-h-11 min-w-11 flex items-center justify-center text-navy-900 hover:text-sky-500 focus:outline-none"
           :aria-expanded="isMobileMenuOpen"
@@ -81,7 +107,7 @@
       leave-from-class="opacity-100 translate-y-0"
       leave-to-class="opacity-0 -translate-y-4"
     >
-      <div v-if="isMobileMenuOpen" class="mobile-drawer bg-white border-b border-slate-200 px-4 pt-2 pb-6 space-y-3 absolute top-full w-full shadow-lg">
+      <div v-if="isMobileMenuOpen" class="mobile-drawer navbar-drawer bg-white border-b border-slate-200 px-4 pt-2 pb-6 space-y-3 absolute top-full w-full shadow-lg">
         <router-link
           v-for="link in navLinks"
           :key="link.path"
@@ -94,6 +120,9 @@
         </router-link>
 
         <div class="pt-4 border-t border-slate-100 flex flex-col gap-3">
+          <div class="drawer-utilities gap-2">
+            <ThemeToggle show-label />
+          </div>
           <button
             type="button"
             class="drawer-language items-center gap-2 min-h-11 px-4 font-bold text-navy-900"
@@ -113,22 +142,38 @@
         </div>
       </div>
     </transition>
+
+    <SearchOverlay :open="isSearchOpen" :restore-focus="restoreSearchFocus" @close="closeSearch" />
   </header>
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted, onUnmounted } from 'vue';
-import { Globe, Menu, X } from 'lucide-vue-next';
+import { ref, computed, onMounted, onUnmounted, watch } from 'vue';
+import { Globe, Menu, Search as SearchIcon, X } from 'lucide-vue-next';
 import { useRoute } from 'vue-router';
 import { useI18n } from '@/composables/useI18n';
 import { siteCopyState } from '@/services/dataService';
 import BrandLogo from '@/components/ui/BrandLogo.vue';
+import SearchOverlay from '@/components/ui/SearchOverlay.vue';
+import ThemeToggle from '@/components/ui/ThemeToggle.vue';
 
 const { currentLang, toggleLanguage, t } = useI18n();
 const route = useRoute();
 const isHome = computed(() => route.path === '/');
 const isMobileMenuOpen = ref(false);
+const isSearchOpen = ref(false);
+const restoreSearchFocus = ref(false);
 const isScrolled = ref(false);
+
+function toggleSearch(event: MouseEvent) {
+  isMobileMenuOpen.value = false;
+  restoreSearchFocus.value = event.detail === 0;
+  isSearchOpen.value = !isSearchOpen.value;
+}
+
+function closeSearch() {
+  isSearchOpen.value = false;
+}
 
 function switchDrawerLanguage() {
   toggleLanguage();
@@ -146,6 +191,8 @@ const navLinks = computed(() => [
 function handleScroll() {
   isScrolled.value = window.scrollY > 50;
 }
+
+watch(() => route.fullPath, closeSearch);
 
 onMounted(() => {
   window.addEventListener('scroll', handleScroll);

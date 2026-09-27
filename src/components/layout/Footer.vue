@@ -1,23 +1,24 @@
 <template>
-  <footer class="bg-navy-900 border-t border-navy-800 text-slate-400 pt-16 pb-8 relative overflow-hidden mt-auto">
+  <footer class="bg-navy-900 border-t border-navy-800 text-slate-400 pt-12 pb-6 relative overflow-hidden mt-auto">
+    <div class="site-footer-pattern absolute inset-0 bg-[url('/brand/pattern-2-01.png')] bg-[length:420px_420px] opacity-[0.035] pointer-events-none" aria-hidden="true"></div>
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-      <div class="site-footer-grid pb-12 border-b border-navy-800">
+      <div class="site-footer-grid pb-8 border-b border-navy-800">
 
         <!-- Company Info -->
-        <div class="site-footer-company space-y-4 min-w-0">
-          <router-link to="/" class="inline-flex items-center rounded-2xl bg-white px-3 py-1 shadow-sm focus:outline-none focus:ring-2 focus:ring-sky-400">
+        <div class="site-footer-company space-y-3 min-w-0">
+          <router-link to="/" class="inline-flex items-center rounded-2xl focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-400">
             <BrandLogo />
           </router-link>
 
-          <p class="text-sm leading-relaxed text-slate-300 max-w-sm">
+          <p class="text-[15px] leading-6 text-slate-300 max-w-sm">
             {{ t(companyState.aboutStory) }}
           </p>
         </div>
 
         <!-- Quick Links -->
-        <div class="space-y-4 min-w-0">
+        <div class="space-y-3 min-w-0">
           <h3 class="text-white font-semibold text-base">{{ t(siteCopyState.footer.quickLinks) }}</h3>
-          <ul class="space-y-2.5 text-sm">
+          <ul class="space-y-2 text-[15px] leading-5">
             <li v-for="link in navLinks" :key="link.path">
               <router-link :to="link.path" class="hover:text-sky-400 transition-colors">
                 {{ link.label }}
@@ -27,10 +28,10 @@
         </div>
 
         <!-- Contact Info & Social -->
-        <div class="space-y-4 min-w-0">
+        <div class="space-y-3 min-w-0">
           <h3 class="text-white font-semibold text-base">{{ t(siteCopyState.footer.contactInfo) }}</h3>
 
-          <div class="space-y-3 text-sm text-slate-300">
+          <div class="space-y-2.5 text-[15px] leading-5 text-slate-300">
             <div class="flex items-start gap-2.5">
               <MapPin class="w-4 h-4 text-sky-400 shrink-0 mt-1" />
               <span>{{ t(companyState.contact.address) }}</span>
@@ -50,7 +51,7 @@
           </div>
 
           <!-- Social Links Moved Here -->
-          <div class="flex items-center gap-3 pt-4">
+          <div class="flex items-center gap-3 pt-2">
             <a
               v-if="companyState.socials.linkedin"
               :href="companyState.socials.linkedin"
@@ -93,23 +94,34 @@
             </a>
           </div>
 
-          <button
-            type="button"
-            @click="toggleLanguage"
-            class="inline-flex items-center gap-2 min-h-11 px-1 font-bold text-sm text-slate-300 hover:text-sky-400 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-sky-500"
-            :aria-label="siteCopyState.common.languageSwitch[currentLang === 'ar' ? 'en' : 'ar']"
-          >
-            <Globe class="w-4 h-4" />
-            <span>{{ currentLang === 'ar' ? 'EN' : 'AR' }}</span>
-          </button>
+          <div class="flex flex-wrap items-center gap-2">
+            <button
+              type="button"
+              @click="toggleLanguage"
+              class="inline-flex items-center gap-2 min-h-11 px-1 font-bold text-sm text-slate-300 hover:text-sky-400 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-sky-500"
+              :aria-label="siteCopyState.common.languageSwitch[currentLang === 'ar' ? 'en' : 'ar']"
+            >
+              <Globe class="w-4 h-4" />
+              <span>{{ currentLang === 'ar' ? 'EN' : 'AR' }}</span>
+            </button>
+            <ThemeToggle show-label class="text-slate-300 hover:text-sky-400" />
+          </div>
 
         </div>
 
       </div>
 
       <!-- Bottom Bar -->
-      <div class="pt-8 text-xs text-slate-400">
+      <div class="flex flex-col gap-3 pt-5 text-[13px] leading-5 text-slate-400 sm:flex-row sm:items-center sm:justify-between">
         <p>{{ t(siteCopyState.footer.rights) }}</p>
+        <nav class="flex flex-wrap items-center gap-x-5 gap-y-2" :aria-label="t(siteCopyState.legal.privacyPolicy.title)">
+          <router-link to="/privacy-policy" class="transition-colors hover:text-sky-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-sky-500">
+            {{ t(siteCopyState.footer.privacyPolicy) }}
+          </router-link>
+          <router-link to="/terms" class="transition-colors hover:text-sky-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-sky-500">
+            {{ t(siteCopyState.footer.terms) }}
+          </router-link>
+        </nav>
       </div>
     </div>
   </footer>
@@ -122,6 +134,7 @@ import { Linkedin, Github, Twitter, Facebook, MapPin, Mail, Globe } from 'lucide
 import { useI18n } from '@/composables/useI18n';
 import { siteCopyState, companyState } from '@/services/dataService';
 import BrandLogo from '@/components/ui/BrandLogo.vue';
+import ThemeToggle from '@/components/ui/ThemeToggle.vue';
 
 const { currentLang, toggleLanguage, t } = useI18n();
 

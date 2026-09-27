@@ -37,6 +37,16 @@ const routes = [
     name: 'contact',
     component: () => import('@/views/ContactView.vue')
   },
+  {
+    path: '/privacy-policy',
+    name: 'privacy-policy',
+    component: () => import('@/views/PrivacyPolicyView.vue')
+  },
+  {
+    path: '/terms',
+    name: 'terms',
+    component: () => import('@/views/TermsView.vue')
+  },
   // Admin Routes
   {
     path: '/admin/login',
@@ -93,12 +103,18 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(),
   routes,
-  scrollBehavior(_to, _from, savedPosition) {
+  scrollBehavior(to, _from, savedPosition) {
     if (savedPosition) {
       return savedPosition;
-    } else {
-      return { top: 0 };
     }
+    if (to.hash) {
+      return {
+        el: to.hash,
+        top: 96,
+        behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'
+      };
+    }
+    return { top: 0 };
   }
 });
 

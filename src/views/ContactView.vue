@@ -185,6 +185,13 @@
               <Send class="w-5 h-5" />
               <span>{{ t(siteCopyState.buttons.sendMessage) }}</span>
             </button>
+
+            <p class="text-center text-xs leading-relaxed text-slate-500 sm:text-start">
+              {{ t(siteCopyState.contactPage.privacyNoticeBefore) }}
+              <router-link to="/privacy-policy" class="font-bold text-sky-600 underline-offset-2 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-sky-500">
+                {{ t(siteCopyState.contactPage.privacyNoticeLink) }}
+              </router-link>{{ t(siteCopyState.contactPage.privacyNoticeAfter) }}
+            </p>
           </form>
         </div>
       </div>
