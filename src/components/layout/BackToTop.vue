@@ -3,7 +3,7 @@
     v-show="visible"
     ref="buttonRef"
     type="button"
-    class="group fixed z-40 rounded-full border border-white/50 bg-navy-700 p-3 min-w-11 min-h-11 text-white shadow-xl transition-[background-color,border-color,box-shadow,bottom] duration-200 hover:border-sky-300 hover:bg-sky-500 hover:shadow-2xl focus-visible:border-sky-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-400"
+    class="back-to-top-button group fixed z-40 grid h-11 w-11 place-items-center rounded-full border border-white/50 bg-navy-700 text-white shadow-xl transition-[background-color,border-color,box-shadow,bottom] duration-200 hover:border-sky-300 hover:bg-sky-500 hover:shadow-2xl focus-visible:border-sky-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-400"
     :style="{ insetInlineEnd: '20px', bottom: `${safeBottom}px` }"
     :aria-label="t(siteCopyState.common.backToTop)"
     @click="scrollToTop"
@@ -11,7 +11,7 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, onUnmounted, ref } from 'vue';
+import { onMounted, onUnmounted, ref, watch } from 'vue';
 import { ArrowUp } from 'lucide-vue-next';
 import { useI18n } from '@/composables/useI18n';
 import { siteCopyState } from '@/services/dataService';
@@ -49,6 +49,16 @@ function onScroll() {
 function scrollToTop() {
   window.scrollTo({ top: 0, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
 }
+watch([visible, safeBottom], ([isVisible, bottom]) => {
+  document.body.classList.toggle('back-to-top-visible', isVisible);
+  document.documentElement.style.setProperty('--back-to-top-bottom', `${bottom}px`);
+});
 onMounted(() => { window.addEventListener('scroll', onScroll, { passive: true }); window.addEventListener('resize', onScroll); onScroll(); });
-onUnmounted(() => { window.removeEventListener('scroll', onScroll); window.removeEventListener('resize', onScroll); if (frame) cancelAnimationFrame(frame); });
+onUnmounted(() => {
+  window.removeEventListener('scroll', onScroll);
+  window.removeEventListener('resize', onScroll);
+  document.body.classList.remove('back-to-top-visible');
+  document.documentElement.style.removeProperty('--back-to-top-bottom');
+  if (frame) cancelAnimationFrame(frame);
+});
 </script>

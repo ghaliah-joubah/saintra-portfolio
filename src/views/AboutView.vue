@@ -3,7 +3,7 @@
 
     <!-- Header Banner -->
     <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
-      <h1 class="text-4xl sm:text-6xl font-extrabold text-navy-900 tracking-tight">
+      <h1 class="responsive-page-title text-4xl sm:text-6xl font-extrabold text-navy-900 tracking-tight">
         {{ t(siteCopyState.about.title) }}
       </h1>
       <p class="text-lg text-slate-600 max-w-3xl mx-auto leading-relaxed font-medium">

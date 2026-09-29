@@ -13,7 +13,7 @@
       </router-view>
     </main>
     <Footer v-if="!isAdminRoute" />
-    <BackToTop v-if="!isAdminRoute" />
+    <ChatbotWidget v-if="!isAdminRoute" />
   </div>
 </template>
 
@@ -22,7 +22,7 @@ import { computed } from 'vue';
 import { useRoute } from 'vue-router';
 import Navbar from '@/components/layout/Navbar.vue';
 import Footer from '@/components/layout/Footer.vue';
-import BackToTop from '@/components/layout/BackToTop.vue';
+import ChatbotWidget from '@/components/chatbot/ChatbotWidget.vue';
 import { useTheme } from '@/composables/useTheme';
 
 const route = useRoute();

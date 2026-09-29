@@ -16,7 +16,7 @@
           <div class="inline-block px-4 py-1.5 rounded-full text-xs font-bold bg-sky-100 text-sky-700 uppercase tracking-wider shadow-sm">
             {{ t(service.category) }}
           </div>
-          <h1 class="text-4xl sm:text-6xl font-extrabold text-navy-900 tracking-tight">
+          <h1 class="responsive-page-title text-4xl sm:text-6xl font-extrabold text-navy-900 tracking-tight">
             {{ t(service.title) }}
           </h1>
           <p class="text-lg leading-relaxed text-slate-600">{{ t(service.shortDescription) }}</p>

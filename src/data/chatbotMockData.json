@@ -1,0 +1,110 @@
+{
+  "responseDelayMs": 350,
+  "fallback": {
+    "unknown": {
+      "en": "I do not have a matching temporary answer for that yet. Please use the Services, Projects, or Contact pages for verified information.",
+      "ar": "لا أملك إجابة تجريبية مطابقة لهذا السؤال حاليًا. يرجى استخدام صفحات الخدمات أو المشاريع أو التواصل للحصول على المعلومات المتاحة."
+    },
+    "ambiguous": {
+      "en": "That could refer to more than one topic. Please mention whether you mean services, projects, technologies, or contact information.",
+      "ar": "قد يشير هذا السؤال إلى أكثر من موضوع. يرجى تحديد ما إذا كنت تقصد الخدمات أو المشاريع أو التقنيات أو معلومات التواصل."
+    }
+  },
+  "items": [
+    {
+      "id": "services",
+      "question": {
+        "en": "What services do you offer?",
+        "ar": "ما هي الخدمات التي تقدمونها؟"
+      },
+      "answer": {
+        "en": "This temporary assistant can direct you to SAINTRA's Services page, where the currently published web, mobile, custom systems, design, cloud, and AI integration services are listed.",
+        "ar": "يمكن لهذا المساعد التجريبي توجيهك إلى صفحة خدمات سينترا، حيث تظهر خدمات الويب والجوال والأنظمة الخاصة والتصميم والسحابة وتكامل الذكاء الاصطناعي المنشورة حاليًا."
+      },
+      "aliases": {
+        "en": ["services", "your services", "what do you provide", "what can you build"],
+        "ar": ["الخدمات", "خدماتكم", "ما هي خدماتكم", "شو خدماتكن", "شو الخدمات", "شو بتقدمو", "ماذا تقدمون"]
+      },
+      "keywords": {
+        "en": ["service", "services", "provide", "development", "work"],
+        "ar": ["خدمة", "خدمات", "خدماتكم", "تقدمون", "بتقدمو", "تطوير", "عمل"]
+      }
+    },
+    {
+      "id": "projects",
+      "question": {
+        "en": "Where can I see your projects?",
+        "ar": "أين يمكنني مشاهدة مشاريعكم؟"
+      },
+      "answer": {
+        "en": "The Projects page contains the currently published portfolio examples and links to their available detail pages.",
+        "ar": "تحتوي صفحة المشاريع على نماذج الأعمال المنشورة حاليًا وروابط صفحات التفاصيل المتاحة لكل مشروع."
+      },
+      "aliases": {
+        "en": ["projects", "your projects", "show me your work", "portfolio examples"],
+        "ar": ["المشاريع", "مشاريعكم", "اعرض أعمالكم", "نماذج الأعمال"]
+      },
+      "keywords": {
+        "en": ["project", "projects", "portfolio", "examples", "work"],
+        "ar": ["مشروع", "مشاريع", "اعمال", "نماذج", "عمل"]
+      }
+    },
+    {
+      "id": "contact",
+      "question": {
+        "en": "How can I contact you?",
+        "ar": "كيف يمكنني التواصل معكم؟"
+      },
+      "answer": {
+        "en": "Use the Contact page for the currently published email address, WhatsApp link, address, working hours, and contact form.",
+        "ar": "استخدم صفحة التواصل للوصول إلى البريد الإلكتروني ورابط واتساب والعنوان وساعات العمل ونموذج التواصل المنشورة حاليًا."
+      },
+      "aliases": {
+        "en": ["contact", "contact you", "get in touch", "how do I reach you"],
+        "ar": ["تواصل", "التواصل", "كيف اتواصل معكم", "بدي اتواصل معكن"]
+      },
+      "keywords": {
+        "en": ["contact", "email", "whatsapp", "reach", "message"],
+        "ar": ["تواصل", "بريد", "ايميل", "واتساب", "رسالة"]
+      }
+    },
+    {
+      "id": "technologies",
+      "question": {
+        "en": "What technologies do you use?",
+        "ar": "ما هي التقنيات التي تستخدمونها؟"
+      },
+      "answer": {
+        "en": "Technologies currently associated with SAINTRA's work are shown across the About, Services, and Project Details pages.",
+        "ar": "تظهر التقنيات المرتبطة بأعمال سينترا حاليًا ضمن صفحات من نحن والخدمات وتفاصيل المشاريع."
+      },
+      "aliases": {
+        "en": ["technologies", "technology stack", "tech stack", "frameworks you use"],
+        "ar": ["التقنيات", "التكنولوجيا", "التقنيات المستخدمة", "ادوات التطوير"]
+      },
+      "keywords": {
+        "en": ["technology", "technologies", "framework", "frameworks", "stack"],
+        "ar": ["تقنية", "تقنيات", "تكنولوجيا", "ادوات", "اطار"]
+      }
+    },
+    {
+      "id": "company",
+      "question": {
+        "en": "Who is SAINTRA?",
+        "ar": "من هي سينترا؟"
+      },
+      "answer": {
+        "en": "The About page contains SAINTRA's currently published company story, mission, vision, values, and technology information.",
+        "ar": "تحتوي صفحة من نحن على قصة سينترا ورسالتها ورؤيتها وقيمها ومعلوماتها التقنية المنشورة حاليًا."
+      },
+      "aliases": {
+        "en": ["who are you", "about saintra", "about the company", "company information"],
+        "ar": ["من انتم", "عن سينترا", "عن الشركة", "معلومات الشركة"]
+      },
+      "keywords": {
+        "en": ["saintra", "company", "about", "mission", "vision"],
+        "ar": ["سينترا", "شركة", "الشركة", "رسالة", "رؤية"]
+      }
+    }
+  ]
+}

@@ -18,7 +18,7 @@
 
         <div class="space-y-4">
           <p class="text-sm font-bold text-sky-700"><span class="text-slate-500">{{ t(siteCopyState.projectDetailsPage.typeLabel) }}:</span> {{ t(project.type) }}</p>
-          <h1 class="text-4xl sm:text-6xl font-extrabold text-navy-900 tracking-tight leading-tight">
+          <h1 class="responsive-page-title text-4xl sm:text-6xl font-extrabold text-navy-900 tracking-tight leading-tight">
             {{ t(project.title) }}
           </h1>
           <p class="text-slate-600 text-lg sm:text-xl leading-relaxed font-medium">

@@ -238,6 +238,17 @@ export interface SiteCopy {
       technologies: LocalizedString;
     };
   };
+  chatbot: {
+    title: LocalizedString;
+    subtitle: LocalizedString;
+    open: LocalizedString;
+    close: LocalizedString;
+    placeholder: LocalizedString;
+    send: LocalizedString;
+    greeting: LocalizedString;
+    typing: LocalizedString;
+    error: LocalizedString;
+  };
   legal: {
     lastUpdatedLabel: LocalizedString;
     contactLink: LocalizedString;

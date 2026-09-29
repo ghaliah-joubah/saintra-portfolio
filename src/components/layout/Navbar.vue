@@ -2,29 +2,50 @@
   <header
     class="site-navbar fixed top-0 inset-x-0 z-50 transition-[background-color,box-shadow,border-color,backdrop-filter] duration-500 ease-out"
     :class="[
-      isScrolled || !isHome || isMobileMenuOpen ? 'navbar-solid bg-white/95 backdrop-blur-md shadow-md border-b border-slate-200/80' : 'bg-transparent border-b border-transparent'
+      isScrolled || !isHome || isMobileMenuOpen
+        ? 'navbar-solid bg-white/95 backdrop-blur-md shadow-md border-b border-slate-200/80'
+        : 'bg-transparent border-b border-transparent',
     ]"
   >
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-
+    <div
+      class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between"
+    >
       <!-- Logo -->
-      <router-link to="/" class="flex items-center min-w-0 group focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 rounded-lg p-1">
-        <BrandLogo class="transition-transform duration-300 group-hover:scale-[1.03]" />
+      <router-link
+        to="/"
+        class="flex items-center min-w-0 group focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 rounded-lg p-1"
+      >
+        <BrandLogo
+          placement="navbar"
+          class="transition-transform duration-300 group-hover:scale-[1.03]"
+        />
+        <!-- <img src="/docs/Full Brand/Logo dark/test.jpg" alt="" /> -->
       </router-link>
 
       <!-- Desktop Nav -->
-      <nav class="desktop-navigation items-center gap-6" :aria-label="t(siteCopyState.common.mainNavigation)">
+      <nav
+        class="desktop-navigation items-center gap-6"
+        :aria-label="t(siteCopyState.common.mainNavigation)"
+      >
         <router-link
           v-for="link in navLinks"
           :key="link.path"
           :to="link.path"
-          class="text-sm font-semibold transition-colors duration-200 focus:outline-none py-2 relative group"
-          :class="$route.path === link.path ? 'text-sky-500' : 'text-navy-900 hover:text-sky-500'"
+          class="desktop-nav-link font-semibold transition-colors duration-200 focus:outline-none py-2 relative group"
+          :class="
+            $route.path === link.path
+              ? 'text-sky-500'
+              : 'text-navy-900 hover:text-sky-500'
+          "
         >
           {{ link.label }}
           <span
             class="absolute bottom-0 left-0 w-full h-0.5 bg-brand-coral transition-transform duration-300 origin-left"
-            :class="$route.path === link.path ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'"
+            :class="
+              $route.path === link.path
+                ? 'scale-x-100'
+                : 'scale-x-0 group-hover:scale-x-100'
+            "
           ></span>
         </router-link>
       </nav>
@@ -48,10 +69,14 @@
         <button
           @click="toggleLanguage"
           class="flex items-center gap-2 text-sm font-bold text-navy-900 hover:text-sky-500 transition-colors focus:outline-none"
-          :aria-label="siteCopyState.common.languageSwitch[currentLang === 'ar' ? 'en' : 'ar']"
+          :aria-label="
+            siteCopyState.common.languageSwitch[
+              currentLang === 'ar' ? 'en' : 'ar'
+            ]
+          "
         >
           <Globe class="w-4 h-4" />
-          <span>{{ currentLang === 'ar' ? 'EN' : 'AR' }}</span>
+          <span>{{ currentLang === "ar" ? "EN" : "AR" }}</span>
         </button>
 
         <router-link
@@ -67,10 +92,14 @@
         <button
           @click="toggleLanguage"
           class="nav-language-inline items-center gap-1.5 min-h-11 px-2 text-navy-900 font-bold text-sm focus:outline-none"
-          :aria-label="siteCopyState.common.languageSwitch[currentLang === 'ar' ? 'en' : 'ar']"
+          :aria-label="
+            siteCopyState.common.languageSwitch[
+              currentLang === 'ar' ? 'en' : 'ar'
+            ]
+          "
         >
           <Globe class="w-4 h-4" />
-          <span>{{ currentLang === 'ar' ? 'EN' : 'AR' }}</span>
+          <span>{{ currentLang === "ar" ? "EN" : "AR" }}</span>
         </button>
 
         <button
@@ -107,35 +136,46 @@
       leave-from-class="opacity-100 translate-y-0"
       leave-to-class="opacity-0 -translate-y-4"
     >
-      <div v-if="isMobileMenuOpen" class="mobile-drawer navbar-drawer bg-white border-b border-slate-200 px-4 pt-2 pb-6 space-y-3 absolute top-full w-full shadow-lg">
+      <div
+        v-if="isMobileMenuOpen"
+        class="mobile-drawer navbar-drawer bg-white border-b border-slate-200 px-4 pt-2 pb-6 space-y-3 absolute top-full w-full shadow-lg"
+      >
         <router-link
           v-for="link in navLinks"
           :key="link.path"
           :to="link.path"
           @click="isMobileMenuOpen = false"
           class="block px-4 py-3 rounded-xl text-base font-bold transition-colors"
-          :class="$route.path === link.path ? 'bg-sky-50 text-sky-500 border border-sky-100' : 'text-navy-900 hover:bg-slate-50'"
+          :class="
+            $route.path === link.path
+              ? 'bg-sky-50 text-sky-500 border border-sky-100'
+              : 'text-navy-900 hover:bg-slate-50'
+          "
         >
           {{ link.label }}
         </router-link>
 
-        <div class="pt-4 border-t border-slate-100 flex flex-col gap-3">
-          <div class="drawer-utilities gap-2">
-            <ThemeToggle show-label />
+        <div class="drawer-footer-actions pt-4 border-t border-slate-100 flex flex-col gap-3">
+          <div class="drawer-controls-row">
+            <ThemeToggle show-label class="drawer-control" @click="closeDrawerAfterThemeChange" />
+            <button
+              type="button"
+              class="drawer-language drawer-control items-center gap-2 min-h-11 px-4 font-bold text-navy-900"
+              :aria-label="
+                siteCopyState.common.languageSwitch[
+                  currentLang === 'ar' ? 'en' : 'ar'
+                ]
+              "
+              @click="switchDrawerLanguage"
+            >
+              <Globe class="w-4 h-4" />
+              <span>{{ currentLang === "ar" ? "EN" : "AR" }}</span>
+            </button>
           </div>
-          <button
-            type="button"
-            class="drawer-language items-center gap-2 min-h-11 px-4 font-bold text-navy-900"
-            :aria-label="siteCopyState.common.languageSwitch[currentLang === 'ar' ? 'en' : 'ar']"
-            @click="switchDrawerLanguage"
-          >
-            <Globe class="w-4 h-4" />
-            <span>{{ currentLang === 'ar' ? 'EN' : 'AR' }}</span>
-          </button>
           <router-link
             to="/contact"
             @click="isMobileMenuOpen = false"
-            class="w-full text-center py-3 rounded-xl bg-sky-500 text-white font-bold"
+            class="drawer-cta inline-flex items-center justify-center px-5 py-2.5 rounded-xl bg-sky-500 text-white font-bold"
           >
             {{ t(siteCopyState.buttons.contactUs) }}
           </router-link>
@@ -143,27 +183,34 @@
       </div>
     </transition>
 
-    <SearchOverlay :open="isSearchOpen" :restore-focus="restoreSearchFocus" @close="closeSearch" />
+    <SearchOverlay
+      :open="isSearchOpen"
+      :restore-focus="restoreSearchFocus"
+      @close="closeSearch"
+    />
   </header>
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted, onUnmounted, watch } from 'vue';
-import { Globe, Menu, Search as SearchIcon, X } from 'lucide-vue-next';
-import { useRoute } from 'vue-router';
-import { useI18n } from '@/composables/useI18n';
-import { siteCopyState } from '@/services/dataService';
-import BrandLogo from '@/components/ui/BrandLogo.vue';
-import SearchOverlay from '@/components/ui/SearchOverlay.vue';
-import ThemeToggle from '@/components/ui/ThemeToggle.vue';
+import { ref, computed, onMounted, onUnmounted, watch } from "vue";
+import { Globe, Menu, Search as SearchIcon, X } from "lucide-vue-next";
+import { useRoute } from "vue-router";
+import { useI18n } from "@/composables/useI18n";
+import { siteCopyState } from "@/services/dataService";
+import BrandLogo from "@/components/ui/BrandLogo.vue";
+import SearchOverlay from "@/components/ui/SearchOverlay.vue";
+import ThemeToggle from "@/components/ui/ThemeToggle.vue";
 
 const { currentLang, toggleLanguage, t } = useI18n();
 const route = useRoute();
-const isHome = computed(() => route.path === '/');
+const isHome = computed(() => route.path === "/");
 const isMobileMenuOpen = ref(false);
 const isSearchOpen = ref(false);
 const restoreSearchFocus = ref(false);
 const isScrolled = ref(false);
+let savedBodyOverflow = "";
+let savedBodyPaddingInlineEnd = "";
+let savedDocumentOverflow = "";
 
 function toggleSearch(event: MouseEvent) {
   isMobileMenuOpen.value = false;
@@ -175,17 +222,38 @@ function closeSearch() {
   isSearchOpen.value = false;
 }
 
+function setDrawerScrollLock(locked: boolean) {
+  if (locked) {
+    savedBodyOverflow = document.body.style.overflow;
+    savedBodyPaddingInlineEnd = document.body.style.paddingInlineEnd;
+    savedDocumentOverflow = document.documentElement.style.overflow;
+    const scrollbarWidth =
+      window.innerWidth - document.documentElement.clientWidth;
+    document.body.style.overflow = "hidden";
+    document.documentElement.style.overflow = "hidden";
+    if (scrollbarWidth > 0)
+      document.body.style.paddingInlineEnd = `${scrollbarWidth}px`;
+    return;
+  }
+  document.body.style.overflow = savedBodyOverflow;
+  document.body.style.paddingInlineEnd = savedBodyPaddingInlineEnd;
+  document.documentElement.style.overflow = savedDocumentOverflow;
+}
+
 function switchDrawerLanguage() {
   toggleLanguage();
   isMobileMenuOpen.value = false;
 }
 
+function closeDrawerAfterThemeChange() {
+  isMobileMenuOpen.value = false;
+}
+
 const navLinks = computed(() => [
-  { path: '/', label: t(siteCopyState.nav.home) },
-  { path: '/about', label: t(siteCopyState.nav.about) },
-  { path: '/services', label: t(siteCopyState.nav.services) },
-  { path: '/projects', label: t(siteCopyState.nav.projects) },
-  { path: '/contact', label: t(siteCopyState.nav.contact) }
+  { path: "/", label: t(siteCopyState.nav.home) },
+  { path: "/about", label: t(siteCopyState.nav.about) },
+  { path: "/services", label: t(siteCopyState.nav.services) },
+  { path: "/projects", label: t(siteCopyState.nav.projects) },
 ]);
 
 function handleScroll() {
@@ -193,13 +261,24 @@ function handleScroll() {
 }
 
 watch(() => route.fullPath, closeSearch);
+watch(isMobileMenuOpen, (isOpen) => {
+  setDrawerScrollLock(isOpen);
+  document.body.classList.toggle("mobile-drawer-open", isOpen);
+  if (isOpen) closeSearch();
+});
+watch(isSearchOpen, (isOpen) => {
+  document.body.classList.toggle("portfolio-search-open", isOpen);
+});
 
 onMounted(() => {
-  window.addEventListener('scroll', handleScroll);
+  window.addEventListener("scroll", handleScroll);
   handleScroll();
 });
 
 onUnmounted(() => {
-  window.removeEventListener('scroll', handleScroll);
+  window.removeEventListener("scroll", handleScroll);
+  if (isMobileMenuOpen.value) setDrawerScrollLock(false);
+  document.body.classList.remove("mobile-drawer-open");
+  document.body.classList.remove("portfolio-search-open");
 });
 </script>

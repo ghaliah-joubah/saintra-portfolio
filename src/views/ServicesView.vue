@@ -2,7 +2,7 @@
   <div class="space-y-12 pt-28 pb-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
     <div class="text-center space-y-4 max-w-3xl mx-auto">
-      <h1 class="text-4xl sm:text-5xl font-extrabold text-navy-900 tracking-tight">
+      <h1 class="responsive-page-title text-4xl sm:text-5xl font-extrabold text-navy-900 tracking-tight">
         {{ t(siteCopyState.servicesPage.title) }}
       </h1>
       <p class="text-slate-600 text-base leading-relaxed font-medium">

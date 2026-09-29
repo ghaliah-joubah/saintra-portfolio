@@ -2,7 +2,7 @@
   <div class="space-y-12 pt-28 pb-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
     <div class="text-center space-y-4 max-w-3xl mx-auto">
-      <h1 class="text-4xl sm:text-5xl font-extrabold text-navy-900 tracking-tight">
+      <h1 class="responsive-page-title text-4xl sm:text-5xl font-extrabold text-navy-900 tracking-tight">
         {{ t(siteCopyState.projectsPage.title) }}
       </h1>
       <p class="text-slate-600 text-base leading-relaxed font-medium">
@@ -14,18 +14,14 @@
     <div class="flex items-center justify-center pt-2">
       <div class="relative w-full max-w-xs space-y-2">
         <label for="project-filter" class="block text-sm font-bold text-navy-900">{{ t(siteCopyState.buttons.filterLabel) }}</label>
-        <select
+        <DropdownSelect
           id="project-filter"
           v-model="selectedType"
+          :options="projectFilterOptions"
+          :placeholder="t(siteCopyState.buttons.filterAll)"
+          :aria-label="t(siteCopyState.buttons.filterLabel)"
           @change="currentPage = 1"
-          class="w-full appearance-none px-5 py-3 rounded-xl bg-white border border-slate-200 text-navy-900 text-sm font-bold shadow-sm focus:outline-none focus:ring-2 focus:ring-sky-500 cursor-pointer"
-        >
-          <option value="ALL">{{ t(siteCopyState.buttons.filterAll) }}</option>
-          <option v-for="type in types" :key="type.en" :value="type.en">
-            {{ t(type) }}
-          </option>
-        </select>
-        <ChevronDown class="absolute end-4 bottom-3.5 w-5 h-5 text-slate-400 pointer-events-none" />
+        />
       </div>
     </div>
 
@@ -92,12 +88,12 @@ import { ref, computed, watch } from 'vue';
 import {
   ChevronLeft,
   ChevronRight,
-  ChevronDown,
   AlertCircle
 } from 'lucide-vue-next';
 import { useI18n } from '@/composables/useI18n';
 import { siteCopyState, projectsState } from '@/services/dataService';
 import ProjectCard from '@/components/ui/ProjectCard.vue';
+import DropdownSelect from '@/components/ui/DropdownSelect.vue';
 import { useResponsivePageCapacity } from '@/composables/useResponsivePageCapacity';
 
 const { isRtl, t } = useI18n();
@@ -114,6 +110,11 @@ const types = computed(() => {
   });
   return Array.from(map.values());
 });
+
+const projectFilterOptions = computed(() => [
+  { value: 'ALL', label: t(siteCopyState.buttons.filterAll) },
+  ...types.value.map((type) => ({ value: type.en, label: t(type) }))
+]);
 
 const filteredProjects = computed(() => {
   if (selectedType.value === 'ALL') return projectsState;
